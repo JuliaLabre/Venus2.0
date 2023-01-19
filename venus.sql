@@ -15,6 +15,7 @@ CREATE TABLE users (
     user_type ENUM ('user','admin','shop','deleted') DEFAULT 'user',
     last_login DATETIME,
     user_status ENUM ('online','offline','banned','deleted') DEFAULT 'online'
+    --acrescentar sexo ?? deixar só o CEP, complemento e numero ??
 );
 
  INSERT INTO users(
@@ -31,7 +32,7 @@ CREATE TABLE users (
       '2002-03-21',
      '13333333333',
      'mari@neuza.com',
-     'senha123',
+     '$2y$10$PDcffSzbeZ2.R.JVesp7MeO6i53Tovspzb0EjNO6tx7kzoIPcff7S',
      '23000000',
      '23000000',
      'https://randomuser.me/api/portraits/women/72.jpg'
