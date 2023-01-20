@@ -21,11 +21,11 @@ CREATE TABLE users (
  INSERT INTO users(
      user_name,
      user_birth,
-     user_reg,
+     user_CPF,
      user_email, 
      user_password,
-     user_adress,
-     user_billing,
+     user_CEPadress,
+     user_CEPbilling,
      user_photo   
 ) VALUES (
      'Marineuza Siriliano',
@@ -56,7 +56,7 @@ CREATE TABLE pay (
     pay_id INT PRIMARY KEY AUTO_INCREMENT,
     pay_type INT,
     pay_name VARCHAR (255),
-    pay_ativo BIT
+    pay_active BIT
 );
 CREATE TABLE request (
     req_id INT PRIMARY KEY AUTO_INCREMENT,

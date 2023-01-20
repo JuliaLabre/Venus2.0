@@ -8,8 +8,7 @@ ob_start();
 ?>
 <!-- Conteudo -->
 <div class="wrap">
-<h2 class='text-center'>Área do Aluno</h2>
-<h2 class='text-center'>Olá, <?php echo $_SESSION['user_name']?>! Seja bem vindo (a)  </h2>
+<h2 class='text-center'>Olá, <?php echo $_SESSION['user_name']?></h2>
    <div class="perfil">
 <img src="<?php echo $_SESSION['user_photo'] ?>">
 <ul>
@@ -21,13 +20,15 @@ ob_start();
 </div>
 
 <?php
-if(!isset($_SESSION['nome'])){
-  $_SESSION['msg'] = "Erro: Necessário realizar login";
-  header("Location: login.php");
+if(!isset($_SESSION['user_name'])){
+  $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">
+  Erro: Necessário realizar login
+ </div>';
+  header("Location: ../login");
 }
 ?>
 
-<a href="#"><button type="submit">Sair</button></a>
+<a href="../exit"><button type="submit">Sair</button></a>
 <!-- Footer -->
 <?php
 require '../../includes/footer.php'

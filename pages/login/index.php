@@ -6,6 +6,13 @@ include_once '../../includes/config.php';
 session_start();
 ob_start();
 
+/* Se usuário já está logado:
+Ver como vai ser a verificação nesse caso
+if (isset($_COOKIE[$c['ucookie']]))
+
+    // Envia o site para o perfil do usuário:
+    header('Location: /?profile');*/
+
 $dadoslogin = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 
@@ -33,10 +40,14 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
 
        header("location:../profile");
     }else{
-      $_SESSION['msg'] = "Error: Usuário ou senha inválidos";
+      $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">
+                          Error: Usuário ou senha inválidos!
+                         </div>';
 }
 }   else{
-  $_SESSION['msg'] = "Error: Usuário ou senha inválidos";
+  $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">
+                        Error: Usuário ou senha inválidos!
+                      </div>';
 }
 }
 if(isset($_SESSION['msg'])){
@@ -48,7 +59,7 @@ if(isset($_SESSION['msg'])){
 <!-- Conteúdo -->
 <div class="wrap">
 <h2 class='text-center'>Faça Login</h2>
-<div class="container-fluid text-center">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
@@ -65,7 +76,9 @@ if(isset($_SESSION['msg'])){
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Mantenha-me conectado</label>
   </div>
-  <input type="submit" class="btn btn-primary" name="btnlogin" value="Enviar">
+
+     <input type="submit" class="btn btn-primary" name="btnlogin" value="Enviar">
+  
 </form>
 </div>
 <div class="col-md-4"></div>
