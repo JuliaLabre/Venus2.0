@@ -18,9 +18,9 @@ $dadoslogin = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 if (!empty($dadoslogin['btnlogin'])) {
 
-$buscalogin = "SELECT user_name, user_email,user_birth, user_photo, user_adress,user_password
+$buscalogin = "SELECT *
                         FROM users
-                        WHERE user_email = :user
+                        WHERE user_email = :user AND user_status = 'online'
                         LIMIT 1";
            
 $resultado= $conn->prepare($buscalogin); 
@@ -36,14 +36,22 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
       $_SESSION['user_email'] = $resposta['user_email'];
       $_SESSION['user_birth'] = $resposta ['user_birth'];
       $_SESSION['user_photo'] = $resposta['user_photo'];
-      $_SESSION['user_adress'] = $resposta['user_adress'];
-
+      $_SESSION['user_CEPadress'] = $resposta['user_CEPadress'];
+      $_SESSION['user_id'] = $resposta['user_id'];
+ 
+      if ($resposta['user_type'] == "user"){
        header("location:../profile");
+      } else if ($resposta['user_type'] == "shop"){
+          header("location:../shop");
+      } else{
+        header("location:../admin");
+      }
+       
     }else{
       $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">
                           Error: Usuário ou senha inválidos!
                          </div>';
-}
+    }
 }   else{
   $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">
                         Error: Usuário ou senha inválidos!

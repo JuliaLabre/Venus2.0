@@ -4,7 +4,7 @@ include_once '../../includes/config.php';
 
 session_start();
 ob_start();
-
+// Precisa continuar o login para navegação das páginas
 ?>
 <!-- Conteudo -->
 <div class="wrap">
@@ -14,7 +14,7 @@ ob_start();
 <ul>
 <li>Nome: <?php echo $_SESSION['user_name'] ?></li>
 <li>Data de Nascimento: <?php echo $_SESSION['user_birth'] ?></li>
-<li>CEP :<?php echo $_SESSION['user_adress'] ?></li>
+<li>CEP :<?php echo $_SESSION['user_CEPadress'] ?></li>
 </ul>
 </div>
 </div>
