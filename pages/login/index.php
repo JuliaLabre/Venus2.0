@@ -18,7 +18,7 @@ $dadoslogin = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 if (!empty($dadoslogin['btnlogin'])) {
 
-$buscalogin = "SELECT *
+$buscalogin = "SELECT *, DATE_FORMAT(user_date, '%d/%m/%Y') AS datebr
                         FROM users
                         WHERE user_email = :user AND user_status = 'online'
                         LIMIT 1";
@@ -38,6 +38,7 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
       $_SESSION['user_photo'] = $resposta['user_photo'];
       $_SESSION['user_CEPadress'] = $resposta['user_CEPadress'];
       $_SESSION['user_id'] = $resposta['user_id'];
+      $_SESSION['datebr'] = $resposta['datebr'];
  
       if ($resposta['user_type'] == "user"){
        header("location:../profile");

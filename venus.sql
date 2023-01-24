@@ -1,12 +1,13 @@
 DROP DATABASE IF EXISTS venushop;
 CREATE DATABASE venushop CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE venushop;
+
 CREATE TABLE users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
     user_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     user_name VARCHAR (255) NOT NULL,
     user_birth DATE,
-    user_CPF INT NOT NULL,
+    user_CPF CHAR (14) NOT NULL,
     user_email VARCHAR (255) NOT NULL,
     user_password VARCHAR (255) NOT NULL,
     user_CEPadress VARCHAR (255) NOT NULL,
@@ -56,7 +57,7 @@ CREATE TABLE users (
      '$2y$10$PDcffSzbeZ2.R.JVesp7MeO6i53Tovspzb0EjNO6tx7kzoIPcff7S',
      '23059040',
      '23059040',
-     'https://randomuser.me/api/portraits/women/77.jpg',
+     'https://randomuser.me/api/portraits/women/70.jpg',
      'shop'
  );
 
@@ -83,7 +84,7 @@ CREATE TABLE products (
         prod_stock,
         prod_desc,
         prod_cat
-    )VALUES(
+    ) VALUES(
         '3',
         'Bolsa Glamour',
         'https://img.freepik.com/fotos-gratis/feche-o-tiro-de-mulher-com-vestido-voador-de-verao-leve-segurando-uma-bolsa-de-malha-na-praia-mar-no-fundo_343596-1231.jpg?w=996&t=st=1674495137~exp=1674495737~hmac=7a92c292caca78174d49166c066d522d148e9f8518ef2d834f10d54ca7eebe29',
@@ -91,7 +92,7 @@ CREATE TABLE products (
         '3',
         'Linda bolsa em Crôche, na cor marrom',
         'Acessórios'
-    )(
+    ),(
          '3',
         'Bolsa',
         'https://img.freepik.com/fotos-gratis/feche-o-tiro-de-mulher-com-vestido-voador-de-verao-leve-segurando-uma-bolsa-de-malha-na-praia-mar-no-fundo_343596-1231.jpg?w=996&t=st=1674495137~exp=1674495737~hmac=7a92c292caca78174d49166c066d522d148e9f8518ef2d834f10d54ca7eebe29',
