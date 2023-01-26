@@ -1,64 +1,49 @@
 <?php
 include_once '../../includes/config.php';
 
-try{
-$upgrade = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+session_start();
+ob_start();
 
+$user_id = $_SESSION['user_id'];
+//Resolver problema do preço
+//Psso tentar tratar depois que recebo do formulário
+try{ 
+    
+    $upgrade = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+ var_dump($upgrade);
 
 if (!empty($upgrade['btncad'])) {
 
     $vazio = false;
 
-    $upgrade = array_map('trim', $upgrade);
-    if (in_array("", $upgrade)) {
-        $vazio = true;
-        echo  "<script>
-            alert('Preencher todos os campos!!!');
-            parent.location = '../editprod';
-            </script>";
-   
-
-    } else if(!filter_var($upgrade['email'], FILTER_VALIDATE_EMAIL)) {
-        $vazio = true;
-        echo  "<script>
-            alert('Informe um e-mail válido!!!');
-            parent.location = '../editprod';
-            </script>";
-    }
-
     if (!$vazio) {
-
-    $sql = "INSERT INTO products (nome, telefone, emailaluno, CPF, RG, sexo, datanascimento, CEP, numerocasa, complemento, foto, senha)
-    values(:nome, :telefone, :emailaluno,:CPF, :RG, :sexo, :datanascimento, :CEP, :numerocasa, :complemento, :foto, :senha)";
+    $sql = "INSERT INTO products (prod_name, prod_photo, prod_price, prod_stock, prod_desc, prod_cat, prod_status,prod_shop)
+    values(:name, :photo, :price,:stock, :desc, :cat, :status, $user_id)";
 
     $salvar= $conn ->prepare($sql);
-    $salvar -> bindParam(':nome', $upgrade['nome'],PDO::PARAM_STR);
-    $salvar -> bindParam(':telefone', $upgrade['telefone'],PDO::PARAM_STR);
-    $salvar -> bindParam(':emailaluno', $upgrade['email'],PDO::PARAM_STR);
-    $salvar -> bindParam(':CPF', $upgrade['CPF'], PDO::PARAM_STR);
-    $salvar -> bindParam(':RG', $upgrade['RG'], PDO::PARAM_STR);
-    $salvar -> bindParam(':sexo', $upgrade['sexo'], PDO::PARAM_STR);
-    $salvar -> bindParam(':datanascimento', $upgrade['dn'], PDO::PARAM_STR);
-    $salvar -> bindParam(':CEP', $upgrade['cep'], PDO::PARAM_STR);
-    $salvar -> bindParam(':numerocasa', $upgrade['num'], PDO::PARAM_INT);
-    $salvar -> bindParam(':complemento', $upgrade['comple'], PDO::PARAM_STR);
-    $salvar -> bindParam(':foto', $upgrade['foto'], PDO::PARAM_STR);
-    $salvar->bindParam(':senha', $senha, PDO::PARAM_STR);
+    $salvar -> bindParam(':name', $upgrade['name'],PDO::PARAM_STR);
+    $salvar -> bindParam(':photo', $upgrade['photo'],PDO::PARAM_STR);
+    $salvar -> bindParam(':price', $upgrade['price'],PDO::PARAM_FLOAT);
+    $salvar -> bindParam(':stock', $upgrade['stock'], PDO::PARAM_INT);
+    $salvar -> bindParam(':desc', $upgrade['desc'], PDO::PARAM_STR);
+    $salvar -> bindParam(':cat', $upgrade['cat'], PDO::PARAM_STR);
+    $salvar -> bindParam(':status', $upgrade['status'], PDO::PARAM_STR);
     $salvar -> execute();
 
 
     if ($salvar->rowCount()) {
         
         echo "<script>
-        alert('Usuário cadastrado com sucesso!!');
-        parent.location = 'matricula.php';
+        alert('Produto cadastrado com sucesso!!');
+        parent.location = '../cadprod';
         </script>";
 
         unset($upgrade);
     } else {
         echo "<script>
-        alert('Usuário não cadastrado!');
-        parent.location = 'matricula.php';
+        alert('Produto não cadastrado. Tente novamente');
+        parent.location = '../cadprod';
         </script>";
         
     }
@@ -68,47 +53,32 @@ if (!empty($upgrade['btncad'])) {
 }
 if (!empty($upgrade['btnedit'])){
     
-    $upgrade = array_map('trim', $upgrade);
+    $sql = "UPDATE products 
+    set prod_name=:name, prod_photo=:photo, prod_price=:price, prod_stock=:stock, prod_desc=:desc, prod_cat=:cat, prod_status=:status, prod_shop=$user_id";
 
-    if(!filter_var($upgrade['email'], FILTER_VALIDATE_EMAIL)) {
-        $vazio = true;
-        echo  "<script>
-            alert('Informe um e-mail válido!!!');
-            parent.location = 'matricula.php';
-            </script>";
-    }
-    $sql = "UPDATE aluno 
-    set nome=:nome, telefone=:telefone, emailaluno=:emailaluno, CPF=:CPF, RG=:RG, sexo=:sexo, datanascimento=:datanascimento, 
-    CEP=:CEP, numerocasa=:numerocasa, complemento=:complemento, foto=:foto WHERE matricula = :matricula";
-
-    $salvar= $conn ->prepare($sql);
-    $salvar -> bindParam(':nome', $upgrade['nome'],PDO::PARAM_STR);
-    $salvar -> bindParam(':telefone', $upgrade['telefone'],PDO::PARAM_STR);
-    $salvar -> bindParam(':emailaluno', $upgrade['email'],PDO::PARAM_STR);
-    $salvar -> bindParam(':CPF', $upgrade['CPF'], PDO::PARAM_STR);
-    $salvar -> bindParam(':RG', $upgrade['RG'], PDO::PARAM_STR);
-    $salvar -> bindParam(':sexo', $upgrade['sexo'], PDO::PARAM_STR);
-    $salvar -> bindParam(':datanascimento', $upgrade['dn'], PDO::PARAM_STR);
-    $salvar -> bindParam(':CEP', $upgrade['cep'], PDO::PARAM_STR);
-    $salvar -> bindParam(':numerocasa', $upgrade['num'], PDO::PARAM_INT);
-    $salvar -> bindParam(':complemento', $upgrade['comple'], PDO::PARAM_STR);
-    $salvar -> bindParam(':foto', $upgrade['foto'], PDO::PARAM_STR);
-    $salvar -> bindParam(':matricula', $upgrade['matricula'], PDO::PARAM_INT);
-    $salvar -> execute();
+$salvar= $conn ->prepare($sql);
+$salvar -> bindParam(':name', $upgrade['name'],PDO::PARAM_STR);
+$salvar -> bindParam(':photo', $upgrade['photo'],PDO::PARAM_STR);
+$salvar -> bindParam(':price', $upgrade['price'],PDO::PARAM_STR);
+$salvar -> bindParam(':stock', $upgrade['stock'], PDO::PARAM_INT);
+$salvar -> bindParam(':desc', $upgrade['desc'], PDO::PARAM_STR);
+$salvar -> bindParam(':cat', $upgrade['cat'], PDO::PARAM_STR);
+$salvar -> bindParam(':status', $upgrade['status'], PDO::PARAM_STR);
+$salvar -> execute();
 
 
     if ($salvar->rowCount()) {
         
         echo "<script>
-        alert('Dados atualizados com sucesso!!');
-        parent.location = 'matricula.php';
+        alert('Produto atualizado com sucesso!!');
+        parent.location = '../shop';
         </script>";
 
         unset($upgrade);
     } else {
         echo "<script>
         alert('Aluno não cadastrado!');
-        parent.location = 'matricula.php';
+        parent.location = '../shop';
         </script>";
         
     }

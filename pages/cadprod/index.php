@@ -1,10 +1,14 @@
 <?php
 include_once '../../includes/config.php';
+session_start();
+ob_start();
+
+$user_id = $_SESSION['user_id'];
 
 ?>
 <h2 class="text-center">Alterações</h2>
-<!-- Precisa do ID do Shop ver como vai pegar isso -->
-<form method="post" action="../updateprod">
+
+<form method="POST" action="../updateprod/index.php">
             <div class="form-row">
              <div class="col-md-4 mb-3">
                     <label>Nome do Produto</label>
@@ -18,7 +22,7 @@ include_once '../../includes/config.php';
                 
                 <div class="col-md-4 mb-3">
                     <label>Preço do Produto</label>
-                    <input name="price" type="number" class="form-control" required>
+                    <input name="price" type="text" class="form-control" required>
                 </div>   
 
             </div>
@@ -27,7 +31,7 @@ include_once '../../includes/config.php';
                 
                 <div class="col-md-4 mb-3">
                     <label>Quantidade em Estoque</label>
-                    <input type="number" class="form-control" required>
+                    <input name="stock" type="number" class="form-control" required>
                 </div>
              
                 <div class="col-md-4 mb-3">
@@ -62,5 +66,5 @@ include_once '../../includes/config.php';
                     </div>
                 </div>
 
-                <input class="btn btn-primary btn-lg btn-block" type="submit" value='Editar' name='btncad' >
+                <input class="btn" type="submit" value="Editar" name="btncad">
         </form>

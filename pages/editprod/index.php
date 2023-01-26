@@ -21,7 +21,7 @@ $resultado->execute();
 
 if(($resultado) AND ($resultado->rowCount()!= 0)){
     $linha = $resultado->fetch(PDO::FETCH_ASSOC);
-    var_dump($linha);
+    //var_dump($linha);
     extract($linha);
 
 }else{
@@ -29,9 +29,8 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
     header("Location: ../shop");
 }
 ?>
-<!-- Precisa do ID do Shop ver como vai pegar isso -->
 <h2 class="text-center">Alterações</h2>
-<form method="post" action="../updateprod">
+<form method="POST" action="../updateprod/index.php">
             <div class="form-row">
 
              <div class="col-md-4 mb-3">
@@ -90,5 +89,5 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
                     </div>
                 </div>
 
-                <input class="btn btn-primary btn-lg btn-block" type="submit" value='Editar' name='btnedit' >
+                <input class="btn btn-primary btn-lg btn-block" type="submit" value='Editar' name="btnedit">
         </form>
