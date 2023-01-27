@@ -12,3 +12,4 @@ try {
 } catch(PDOExcepcion $erro) {
    echo "Erro: Conexão com o banco de dados não realizada".$erro;
 }
+

@@ -6,14 +6,21 @@ include_once '../../includes/config.php';
 session_start();
 ob_start();
 
+/* Se usuário já está logado:
+Ver como vai ser a verificação nesse caso
+if (isset($_COOKIE[$c['ucookie']]))
+
+    // Envia o site para o perfil do usuário:
+    header('Location: /?profile');*/
+
 $dadoslogin = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 
 if (!empty($dadoslogin['btnlogin'])) {
 
-$buscalogin = "SELECT user_name, user_email,user_birth, user_photo, user_adress,user_password
+$buscalogin = "SELECT *, DATE_FORMAT(user_date, '%d/%m/%Y') AS datebr
                         FROM users
-                        WHERE user_email = :user
+                        WHERE user_email = :user AND user_status = 'online'
                         LIMIT 1";
            
 $resultado= $conn->prepare($buscalogin); 
@@ -29,14 +36,27 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
       $_SESSION['user_email'] = $resposta['user_email'];
       $_SESSION['user_birth'] = $resposta ['user_birth'];
       $_SESSION['user_photo'] = $resposta['user_photo'];
-      $_SESSION['user_adress'] = $resposta['user_adress'];
-
+      $_SESSION['user_CEPadress'] = $resposta['user_CEPadress'];
+      $_SESSION['user_id'] = $resposta['user_id'];
+      $_SESSION['datebr'] = $resposta['datebr'];
+ 
+      if ($resposta['user_type'] == "user"){
        header("location:../profile");
+      } else if ($resposta['user_type'] == "shop"){
+          header("location:../shop");
+      } else{
+        header("location:../admin");
+      }
+       
     }else{
-      $_SESSION['msg'] = "Error: Usuário ou senha inválidos";
-}
+      $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">
+                          Error: Usuário ou senha inválidos!
+                         </div>';
+    }
 }   else{
-  $_SESSION['msg'] = "Error: Usuário ou senha inválidos";
+  $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">
+                        Error: Usuário ou senha inválidos!
+                      </div>';
 }
 }
 if(isset($_SESSION['msg'])){
@@ -48,7 +68,7 @@ if(isset($_SESSION['msg'])){
 <!-- Conteúdo -->
 <div class="wrap">
 <h2 class='text-center'>Faça Login</h2>
-<div class="container-fluid text-center">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
@@ -65,7 +85,9 @@ if(isset($_SESSION['msg'])){
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Mantenha-me conectado</label>
   </div>
-  <input type="submit" class="btn btn-primary" name="btnlogin" value="Enviar">
+
+     <input type="submit" class="btn btn-primary" name="btnlogin" value="Enviar">
+  
 </form>
 </div>
 <div class="col-md-4"></div>
