@@ -1,0 +1,204 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/********
+* Reset *
+********/
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 16px;
+  outline: none;
+}
+
+html, body {
+  background: white;
+  color: #474747;
+}
+
+a{
+  text-decoration: none;
+}
+
+/*****************
+* Menu principal *
+*****************/
+.form-inline {
+  display: inline-block;
+}
+
+.navbar {		
+  padding-left: 16px;
+  padding-right: 16px;
+  border-bottom: 1px solid #d6d6d6;
+  box-shadow: 0 0 4px rgba(0,0,0,.1);
+  color: #474747;
+  border: none;
+  background: none;
+}
+
+/*Icon da VS*/
+.navbar .navbar-brand {
+  padding-left: 0;
+  position: absolute;
+  padding-right: 30px;
+}
+.navbar .navbar-brand img {
+  margin-right: 50px;
+  margin-left: 2rem;
+  width: 70px;
+  height: 40px;
+}
+
+/*Barra de pesquisa*/
+#search-box{
+  position: relative;
+  margin: 0px 98px -22px 0px;
+  color:#474747;
+  width: 25rem;
+}
+#search-box input {
+  border-radius: 15px 0px 0px 15px !important;
+}
+#search-box button {
+  border-radius: 0px 15px 15px 0px !important;
+}
+
+/*Bolinha de notificação da sacola*/
+.navbar .badge {
+  background: #f43665;
+  font-size: 11px;
+  border-radius: 20px;
+  position: absolute;
+  min-width: 10px;
+  padding: 4px 6px 0px;
+  min-height: 18px;
+  top: 25px;
+  right: 0px;
+}
+/* Icons de notificações+usuário */
+.navbar ul li i {
+  font-size: 24px;
+  color: #474747;
+  margin: 25px 0px 0px 0px;
+}
+
+#iuserm{
+  padding-right: 10px;
+}
+
+/*Botão QueroVender*/
+#btnvender{
+  padding-top: 30px;
+  padding-right: 30px;
+}
+
+/*links do menu*/
+#conteudoNavbarSuportado ul{
+  margin: 20px 10px 2px 13rem;
+  padding-right: 30px;
+  border: none;
+  background: none;
+}
+
+#linknav a{
+  color: #474747
+}
+
+/********* 
+* Rodapé *
+*********/
+
+/* Superior */
+.footersup{
+  padding-top: 20px;
+}
+
+.footersup img{
+  margin: -30px 0px 0px 0px;
+}
+
+.footersup i{
+  font-size: 22px;
+  padding: 0px 10px 15px 0px;
+  color: #474747;
+}
+
+.footersup p a{
+  text-decoration: none;
+  color: #474747;
+  font-size: 13px;
+}
+
+#titlef {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#titlevenda{
+  margin: 20px 0px 15px 0px;
+  font-size: 20px;
+  font-weight: bold;
+  color:#bb1919;
+}
+
+/*Botão quero vender */
+.footersup p input{
+  position: relative;
+  background-color: #bb1919;
+  border-radius: 8px;
+  border: 0px;
+  font-size: 1.5rem;
+  color: white;
+  padding: 10px;
+  width: 47%;
+  text-align: center;
+  text-decoration: solid;
+  overflow: hidden;
+}
+.footersup p input:hover{
+  background-color: #a01616;
+  color: white;
+}
+
+/* Inferior */
+.footerinf{
+  border-top: 1px solid #d6d6d6;
+  padding-top: 15px;
+}
+
+#copy {
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+/******************
+* Responsividades *
+******************/
+
+/*********
+* FOOTER *
+*********/
+
+/* Botão quero vender */
+@media screen and (max-width: 320px){
+  .footersup p input{
+    position: relative;
+    background-color: #bb1919;
+    border-radius: 8px;
+    border: 0px;
+    font-size: 1.1rem;
+    color: white;
+    padding: 10px;
+    width: 50%;
+    text-align: center;
+    text-decoration: solid;
+    overflow: hidden;
+  }
+  .footersup p input:hover{
+    background-color: #a01616;
+    color: white;
+  }
+}

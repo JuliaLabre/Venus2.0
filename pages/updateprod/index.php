@@ -31,7 +31,7 @@ if(isset($_FILES['photo'])){
     $exten = strtolower(pathinfo($namefile, PATHINFO_EXTENSION)); //Coloca o nome do arquivo com a sua extensão
     
 
-    if($exten != "jpg" && $exten != "png" && $exten != "webp"){
+    if($exten != "jpg" && $exten != "png" && $exten != "webp"&& $exten != "avif"){
         echo "<script>
         alert('Essa extensão de arquivo não é aceita');
         </script>";

@@ -1,9 +1,9 @@
 <?php
-require '../../includes/header.php';
-include_once '../../includes/config.php';
-
 session_start();
 ob_start();
+
+require '../../includes/header.php';
+include_once '../../includes/config.php';
 
 $user_id = $_SESSION['user_id'];
 
