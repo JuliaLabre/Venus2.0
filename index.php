@@ -1,21 +1,29 @@
+
 <?php
- require_once 'includes/header/header.php';
+require_once 'includes/header.php';
+
 ?>
 
 
+<main>
+      <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit temporibus minima inventore enim? Inventore sed deserunt eligendi vitae odio veniam, alias quibusdam possimus eius, amet, necessitatibus quis libero asperiores ut.</h4>
+      <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit temporibus minima inventore enim? Inventore sed deserunt eligendi vitae odio veniam, alias quibusdam possimus eius, amet, necessitatibus quis libero asperiores ut.</h4>
+      <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit temporibus minima inventore enim? Inventore sed deserunt eligendi vitae odio veniam, alias quibusdam possimus eius, amet, necessitatibus quis libero asperiores ut.</h4>
+      <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit temporibus minima inventore enim? Inventore sed deserunt eligendi vitae odio veniam, alias quibusdam possimus eius, amet, necessitatibus quis libero asperiores ut.</h4>
+      <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit temporibus minima inventore enim? Inventore sed deserunt eligendi vitae odio veniam, alias quibusdam possimus eius, amet, necessitatibus quis libero asperiores ut.</h4>
+      <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit temporibus minima inventore enim? Inventore sed deserunt eligendi vitae odio veniam, alias quibusdam possimus eius, amet, necessitatibus quis libero asperiores ut.</h4>
+      <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit temporibus minima inventore enim? Inventore sed deserunt eligendi vitae odio veniam, alias quibusdam possimus eius, amet, necessitatibus quis libero asperiores ut.</h4>
+      <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit temporibus minima inventore enim? Inventore sed deserunt eligendi vitae odio veniam, alias quibusdam possimus eius, amet, necessitatibus quis libero asperiores ut.</h4>
+      <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit temporibus minima inventore enim? Inventore sed deserunt eligendi vitae odio veniam, alias quibusdam possimus eius, amet, necessitatibus quis libero asperiores ut.</h4>
+      <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit temporibus minima inventore enim? Inventore sed deserunt eligendi vitae odio veniam, alias quibusdam possimus eius, amet, necessitatibus quis libero asperiores ut.</h4>
+
+   
+    
+    
+    </main>
 
 
-
-
-
-
-<a href="/">teste voltando pra index</a>
-
-
-<a href="../pages/404">Página 404</a>     
-
-
-
-<?php
-      require_once 'includes/footer/footer.php';
-    ?>
+<hr>
+    <?php
+require 'includes/footer.php'
+?>
