@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="../img/icondosite.png">
+    <link rel="icon" href="../../img/icondosite.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venus Shop - O Sistema Delas</title>
@@ -12,15 +12,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../../layout2.css">
+
+
   </head>
-
- 
+  <body>
     <header>
-
       <nav class="navbar navbar-expand-lg navbar-light">
         <!--Nome + Icon-->
-          <a class="navbar-brand" href="/"><img src="../img/logo-principal.png" alt="Logo da VenusShop" title="Venus Shop"></a>
+          <a class="navbar-brand" href="/"><img src="../../img/logo-principal.png" alt="Logo da VenusShop" title="Venus Shop"></a>
           <!--Dropdown para telas menores-->  		
           <button type="button" data-target="#conteudoNavbarSuportado" data-toggle="collapse" class="navbar-toggle">
             <span class="navbar-toggler-icon"></span>
@@ -32,7 +32,7 @@
         <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
           <ul class="nav navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="../pages/about.php"><b>quem somos</b></a>
+              <a class="nav-link" href="../../pages/about"><b>quem somos</b></a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="#"><b>você&venus</b></a>
@@ -78,7 +78,7 @@
             <li class="dropdown-user navbar-inline">
               <a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><i class="fa-solid fa-circle-user" title="minha conta" alt="Minha conta"></i></a>
               <ul class="dropdown-menu">
-                <li><a href="#"><i class="fa-solid fa-user-astronaut"></i> meu perfil</a></li>
+                <li><a href="../pages/login"><i class="fa-solid fa-user-astronaut"></i> meu perfil</a></li>
                 <li><a href="#"><i class="fa-solid fa-bag-shopping"></i> continue comprando</a></li>
                 <li><a href="#"><i class="fa-solid fa-heart"></i> favoritos</a></li>
                 <li><a href="#"><i class="fa-solid fa-cart-shopping"></i> minhas compras</a></li>
@@ -94,5 +94,4 @@
           <a href="#"><button type="button" class="btn btn-dark">quero vender</button></a>
         </form>
       </nav>
-
     </header>

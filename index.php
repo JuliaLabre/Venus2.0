@@ -1,29 +1,16 @@
-
+<!-- Cabeçalho -->
 <?php
-require_once 'includes/header.php';
+require 'includes/header.php';
+include_once 'includes/config.php';
+
 
 ?>
 
-
-<main>
-      <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit temporibus minima inventore enim? Inventore sed deserunt eligendi vitae odio veniam, alias quibusdam possimus eius, amet, necessitatibus quis libero asperiores ut.</h4>
-      <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit temporibus minima inventore enim? Inventore sed deserunt eligendi vitae odio veniam, alias quibusdam possimus eius, amet, necessitatibus quis libero asperiores ut.</h4>
-      <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit temporibus minima inventore enim? Inventore sed deserunt eligendi vitae odio veniam, alias quibusdam possimus eius, amet, necessitatibus quis libero asperiores ut.</h4>
-      <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit temporibus minima inventore enim? Inventore sed deserunt eligendi vitae odio veniam, alias quibusdam possimus eius, amet, necessitatibus quis libero asperiores ut.</h4>
-      <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit temporibus minima inventore enim? Inventore sed deserunt eligendi vitae odio veniam, alias quibusdam possimus eius, amet, necessitatibus quis libero asperiores ut.</h4>
-      <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit temporibus minima inventore enim? Inventore sed deserunt eligendi vitae odio veniam, alias quibusdam possimus eius, amet, necessitatibus quis libero asperiores ut.</h4>
-      <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit temporibus minima inventore enim? Inventore sed deserunt eligendi vitae odio veniam, alias quibusdam possimus eius, amet, necessitatibus quis libero asperiores ut.</h4>
-      <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit temporibus minima inventore enim? Inventore sed deserunt eligendi vitae odio veniam, alias quibusdam possimus eius, amet, necessitatibus quis libero asperiores ut.</h4>
-      <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit temporibus minima inventore enim? Inventore sed deserunt eligendi vitae odio veniam, alias quibusdam possimus eius, amet, necessitatibus quis libero asperiores ut.</h4>
-      <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit temporibus minima inventore enim? Inventore sed deserunt eligendi vitae odio veniam, alias quibusdam possimus eius, amet, necessitatibus quis libero asperiores ut.</h4>
-
-   
-    
-    
-    </main>
+<a href="/pages/login" title="Login de usuário" class="dropable"> login </a>
 
 
-<hr>
-    <?php
+<!-- Footer -->
+<?php
 require 'includes/footer.php'
 ?>
+
