@@ -36,11 +36,6 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
                     <label>Nome do Produto</label>
                     <input name="name" type="text" class="form-control" value="<?php echo $prod_name ?>" required>
                 </div>
-
-                <div class="col-md-4 mb-3">
-                    <label>Foto do Produto</label>
-                    <input name="photo" type="file" class="form-control" value="<?php echo $prod_photo ?>">
-                </div>
                 
                 <div class="col-md-4 mb-3">
                     <label>Preço do Produto</label>
@@ -65,14 +60,43 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
 
             <div class="form-row">
                 <div class="col-md-4 mb-3">
-                    <label>Categoria</label>
+                    <label>Categoria</label>             
+                    <select class="form-control" name="cat">
+    <?php 
+    
+    $cat = $prod_id;
+
+    $sql = "SELECT * FROM category";
+
+    $result= $conn->prepare($sql); 
+    $result->execute();
+
+    if(($result)&&($result->rowCount()!=0)) { 
+            while ($linha = $result->fetch(PDO::FETCH_ASSOC)){
+                extract($linha);
+
+    ?>                
+            <option value="<?php echo $cat_id ?>"
+                
+                <?php
+                if($cat == $cat_id){
+                    echo "selected";
+                }
+
+                ?>                
+                >
+                <?php echo $cat_name?></option>
+    <?php
+            }
+        }
+    ?>
+                 </select> 
                     <input name="cat" type="text"  class="form-control" required value="<?php echo $prod_cat ?>" >
                 </div>
                 <div class="col-md-4 mb-3">
                     <label>Status</label>
                     <select name="status" class="custom-select" required>
-                        <option selected>Status</option>
-                        <option type="radio" value="online">Online</option>
+                        <option selected type="radio" value="online">Online</option>
                         <option type="radio" value="offline">Offline</option>
                     </select>                    
                 </div>                

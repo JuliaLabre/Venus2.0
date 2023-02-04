@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02-Fev-2023 às 20:48
+-- Tempo de geração: 04-Fev-2023 às 14:56
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.2.0
 
@@ -52,11 +52,11 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`cat_name`, `cat_id`) VALUES
-('cat_girls', 1),
-('cat_pets', 2),
-('cat_beuty', 3),
-('cat_decor', 4),
-('cat_office', 5);
+('Moças', 1),
+('Pets', 2),
+('Beleza', 3),
+('Deco&Casa', 4),
+('Escritório', 5);
 
 -- --------------------------------------------------------
 
@@ -125,8 +125,8 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`prod_id`, `shop`, `prod_date`, `prod_name`, `prod_photo`, `prod_size`, `prod_price`, `prod_stock`, `prod_desc`, `prod_cat`, `prod_status`, `views`) VALUES
-(1, 3, '2023-02-02 16:32:31', 'Bolsa Glamour', 'https://img.freepik.com/fotos-gratis/feche-o-tiro-de-mulher-com-vestido-voador-de-verao-leve-segurando-uma-bolsa-de-malha-na-praia-mar-no-fundo_343596-1231.jpg?w=996&t=st=1674495137~exp=1674495737~hmac=7a92c292caca78174d49166c066d522d148e9f8518ef2d834f10d', '', 50, 3, 'Linda bolsa em Crôche, na cor marrom', 1, 'online', 0),
-(2, 3, '2023-02-02 16:32:31', 'Bolsa', 'https://img.freepik.com/fotos-gratis/feche-o-tiro-de-mulher-com-vestido-voador-de-verao-leve-segurando-uma-bolsa-de-malha-na-praia-mar-no-fundo_343596-1231.jpg?w=996&t=st=1674495137~exp=1674495737~hmac=7a92c292caca78174d49166c066d522d148e9f8518ef2d834f10d', '', 50, 3, 'Linda bolsa em Crôche, na cor marrom', 1, 'online', 0),
+(1, 3, '2023-02-02 16:32:31', 'Bolsa Glamour', '../photos/63de60573bc24.jpg', '', 50, 3, 'Linda bolsa em Crôche, na cor marrom', 1, 'online', 0),
+(2, 3, '2023-02-02 16:32:31', 'Bolsa', '../photos/63de6073a39a5.webp', '', 50, 3, 'Linda bolsa em Crôche, na cor marrom', 1, 'online', 0),
 (3, 3, '2023-02-02 19:42:03', 'Blusa Florida', '../photos/63dc120b67f8e.avif', '', 30, 2, 'Linda blusa florida', 1, 'online', 0);
 
 -- --------------------------------------------------------
@@ -180,7 +180,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `user_date`, `user_name`, `user_gen`, `user_birth`, `user_CPF`, `user_email`, `user_password`, `user_CEPadress`, `user_comp`, `user_num`, `user_CEPbilling`, `user_photo`, `user_type`, `last_login`, `user_status`) VALUES
 (1, '2023-02-02 16:32:31', 'Marineuza Siriliano', '', '2002-03-21', '13333333333', 'mari@neuza.com', '$2y$10$PDcffSzbeZ2.R.JVesp7MeO6i53Tovspzb0EjNO6tx7kzoIPcff7S', '23000000', '0', 0, '23000000', 'https://randomuser.me/api/portraits/women/72.jpg', 'user', NULL, 'online'),
 (2, '2023-02-02 16:32:31', 'Admin Admin', '', '2002-03-21', '13333333332', 'admin@admin.com', '$2y$10$PDcffSzbeZ2.R.JVesp7MeO6i53Tovspzb0EjNO6tx7kzoIPcff7S', '23059020', '0', 0, '23059020', 'https://randomuser.me/api/portraits/women/75.jpg', 'admin', NULL, 'online'),
-(3, '2023-02-02 16:32:31', 'Crocheteria', '', '2002-03-21', '13333333322', 'croche@teria.com', '$2y$10$WwLfPne8sDlcNqdkl5Vm.uy.BVk5FJ//YF.wgwBlgVOaC5GbGvxpi', '23059040', '0', 0, '23059040', 'https://randomuser.me/api/portraits/women/70.jpg', 'shop', NULL, 'online');
+(3, '2023-02-02 16:32:31', 'Crocheteria', '', '2002-03-21', '13333333322', 'croche@teria.com', '$2y$10$WwLfPne8sDlcNqdkl5Vm.uy.BVk5FJ//YF.wgwBlgVOaC5GbGvxpi', '23059040', '0', 0, '23059040', '../photousers/63de6302e8277.png', 'shop', NULL, 'online');
 
 --
 -- Índices para tabelas despejadas

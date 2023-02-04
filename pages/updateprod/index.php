@@ -49,6 +49,41 @@ if(isset($_FILES['photo'])){
 
 }
 
+//recebe a foto
+
+if (!empty($upgrade['edprodft'])) {
+
+    $upgrade = array_map('trim', $upgrade);
+
+    //var_dump($upgrade);
+
+    $sql = "UPDATE products 
+    set prod_photo=:photo
+    WHERE prod_id = :prod_id";
+
+    $salvar= $conn ->prepare($sql);
+    $salvar -> bindParam(':photo', $path,PDO::PARAM_STR);
+    $salvar -> bindParam(':prod_id', $upgrade['id'], PDO::PARAM_INT);
+    $salvar -> execute();
+
+
+    if ($salvar->rowCount()) {
+        
+        echo "<script>
+        alert('Foto atualizada com sucesso!!');
+        parent.location = '../shop';
+        </script>";
+
+        unset($upgrade);
+    } else {
+        echo "<script>
+        alert('Erro: Tente novamente!');
+        parent.location = '../shop';
+        </script>";
+        
+    }
+
+}
  //var_dump($upgrade);
 
 if (!empty($upgrade['btncad'])) {
@@ -74,7 +109,7 @@ if (!empty($upgrade['btncad'])) {
         
         echo "<script>
         alert('Produto cadastrado com sucesso!!');
-        parent.location = '../shop';
+        parent.location = '../cadprod';
         </script>";
 
         unset($upgrade);
@@ -93,12 +128,11 @@ if (!empty($upgrade['btncad'])) {
 if (!empty($upgrade['btnedit'])){
     
     $sql = "UPDATE products 
-    set prod_name=:name, prod_photo=:photo, prod_price=:price, prod_stock=:stock, prod_desc=:desc, prod_cat=:cat, prod_status=:status, shop=$user_id
+    set prod_name=:name, prod_price=:price, prod_stock=:stock, prod_desc=:desc, prod_cat=:cat, prod_status=:status, shop=$user_id
     WHERE prod_id=:id";
 
 $salvar= $conn ->prepare($sql);
 $salvar -> bindParam(':name', $upgrade['name'],PDO::PARAM_STR);
-$salvar -> bindParam(':photo', $path,PDO::PARAM_STR);
 $salvar -> bindParam(':price', $upgrade['price'],PDO::PARAM_STR);
 $salvar -> bindParam(':stock', $upgrade['stock'], PDO::PARAM_STR);
 $salvar -> bindParam(':desc', $upgrade['desc'], PDO::PARAM_STR);

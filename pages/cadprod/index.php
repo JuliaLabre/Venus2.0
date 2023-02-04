@@ -44,7 +44,19 @@ $user_id = $_SESSION['user_id'];
             <div class="form-row">
                 <div class="col-md-4 mb-3">
                     <label>Categoria</label>
-                    <input name="cat" type="text"  class="form-control" required>
+                    <select name="cat"  class="form-control" required>
+                    <option selected>Escolha a Categoria...</option>
+    <?php if(($resultado)&&($resultado->rowCount()!=0)) { 
+            while ($linha = $resultado->fetch(PDO::FETCH_ASSOC)){
+                extract($linha);
+
+    ?>                
+                <option value="<?php echo $idcategoria ?>"><?php echo $nomecategoria?></option>
+    <?php
+            }
+        }
+    ?>
+                 </select>       
                 </div>
                 <div class="col-md-4 mb-3">
                     <label>Status</label>
