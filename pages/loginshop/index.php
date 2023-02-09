@@ -5,12 +5,7 @@ include_once '../../includes/config.php';
 session_start();
 ob_start();
 
-/* Se usuário já está logado:
-Ver como vai ser a verificação nesse caso
-if (isset($_COOKIE[$c['ucookie']]))
-
-    // Envia o site para o perfil do usuário:
-    header('Location: /?profile');*/
+/* mudar para shop*/
 
 $dadoslogin = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 //echo "admin".password_hash(123,PASSWORD_DEFAULT);

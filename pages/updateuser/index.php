@@ -3,7 +3,7 @@ include_once '../../includes/config.php';
 
 session_start();
 ob_start();
-
+//mudar de shop para profile
 $user_id = $_SESSION['user_id'];
 /*Resolver problema do preço
 Posso tentar tratar depois que recebo do formulário
@@ -21,7 +21,7 @@ if(isset($_FILES['photo'])){
 
     if($file['error']){
         echo 'Erro ao carregar arquivo';
-        header("Location: ../shop");
+        header("Location: ../profile");
     }
    
     // o erro ao carregar a foto era o caminho, como estou em pastas, precisei acrescentar os ../
@@ -70,14 +70,14 @@ if (!empty($upgrade['eduserft'])) {
     if ($salvar->rowCount()) {        
         echo "<script>
         alert('Foto atualizada com sucesso!!');
-        parent.location = '../shop';
+        parent.location = '../profile';
         </script>";
-
+        $_SESSION['user_photo'] = $path;
         unset($upgrade);
     } else {
         echo "<script>
         alert('Erro: Tente novamente!');
-        parent.location = '../shop';
+        parent.location = '../profile';
         </script>";
         
     }

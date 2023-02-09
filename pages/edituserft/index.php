@@ -6,13 +6,13 @@ ob_start();
 
 $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
 
-if (empty($id)) {
+/*if (empty($id)) {
     $_SESSION['msg'] = "Erro";
-    header("Location: ../shop");
+    header("Location: ../profile");
     exit();
-}
+}*/
 
-$sql =  "SELECT * FROM users WHERE user_id = $id";
+ $sql =  "SELECT * FROM users WHERE user_id = $id";
            
 $resultado= $conn->prepare($sql); 
 $resultado->execute();
@@ -24,11 +24,11 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
 
 }else{
     $_SESSION['msg'] = "Erro";
-    header("Location: ../shop");
+    header("Location: ../profile");
 }
 ?>
 Foto atual:
-<img  width="150" height="150" src="<?php echo $user_photo ?>" alt="Foto do Produto">
+<img  width="150" height="150" src="<?php echo $user_photo ?>" alt="Foto de <?php echo $user_name ?> ">
  <form method="post" action="../updateuser/index.php" enctype="multipart/form-data">
         <input name="id" type="hidden" value="<?php echo $id ?>">
                 <div class="col-md-4">                

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 04-Fev-2023 às 14:56
+-- Tempo de geração: 09-Fev-2023 às 20:52
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.2.0
 
@@ -22,6 +22,25 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `venushop` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `venushop`;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `admin`
+--
+
+CREATE TABLE `admin` (
+  `admin_id` int(11) NOT NULL,
+  `admin_email` varchar(255) NOT NULL,
+  `admin_password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `admin`
+--
+
+INSERT INTO `admin` (`admin_id`, `admin_email`, `admin_password`) VALUES
+(1, 'admin@admin.com', '$2y$10$g4j9l/A4XnkZbcpVjHi4Le3prr3KZU8tsVNFPTcpW.VAZFLTBCwiG');
 
 -- --------------------------------------------------------
 
@@ -120,15 +139,6 @@ CREATE TABLE `products` (
   `views` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
---
--- Extraindo dados da tabela `products`
---
-
-INSERT INTO `products` (`prod_id`, `shop`, `prod_date`, `prod_name`, `prod_photo`, `prod_size`, `prod_price`, `prod_stock`, `prod_desc`, `prod_cat`, `prod_status`, `views`) VALUES
-(1, 3, '2023-02-02 16:32:31', 'Bolsa Glamour', '../photos/63de60573bc24.jpg', '', 50, 3, 'Linda bolsa em Crôche, na cor marrom', 1, 'online', 0),
-(2, 3, '2023-02-02 16:32:31', 'Bolsa', '../photos/63de6073a39a5.webp', '', 50, 3, 'Linda bolsa em Crôche, na cor marrom', 1, 'online', 0),
-(3, 3, '2023-02-02 19:42:03', 'Blusa Florida', '../photos/63dc120b67f8e.avif', '', 30, 2, 'Linda blusa florida', 1, 'online', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -151,6 +161,34 @@ CREATE TABLE `request` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `shop`
+--
+
+CREATE TABLE `shop` (
+  `shop_id` int(11) NOT NULL,
+  `shop_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `shop_name` varchar(255) NOT NULL,
+  `shop_CNPJ` char(14) NOT NULL,
+  `shop_email` varchar(255) NOT NULL,
+  `shop_password` varchar(255) NOT NULL,
+  `shop_photo` varchar(255) NOT NULL,
+  `shop_lastlogin` datetime NOT NULL,
+  `shop_status` enum('online','offline','banned','deleted') NOT NULL DEFAULT 'online'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `shop`
+--
+
+INSERT INTO `shop` (`shop_id`, `shop_date`, `shop_name`, `shop_CNPJ`, `shop_email`, `shop_password`, `shop_photo`, `shop_lastlogin`, `shop_status`) VALUES
+(1, '2023-02-09 17:26:07', 'Crocheteria', '12345678912345', 'croche@teria.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '', '2023-02-09 18:18:15', 'online'),
+(2, '2023-02-09 17:26:10', 'Costurices da Lu', '01472589630258', 'costu@rices.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '', '2023-02-09 18:18:15', 'online'),
+(3, '2023-02-09 17:26:15', 'Picolés da Lê', '78945612307894', 'pi@cole.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '', '2023-02-09 18:19:52', 'online'),
+(4, '2023-02-09 17:26:17', 'Camisolaria', '12345678912355', 'cami@sola.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '', '2023-02-09 18:19:52', 'online');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `users`
 --
 
@@ -168,7 +206,6 @@ CREATE TABLE `users` (
   `user_num` int(11) NOT NULL,
   `user_CEPbilling` varchar(255) NOT NULL,
   `user_photo` varchar(255) DEFAULT NULL,
-  `user_type` enum('user','admin','shop') DEFAULT 'user',
   `last_login` datetime DEFAULT NULL,
   `user_status` enum('online','offline','banned','deleted') DEFAULT 'online'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -177,22 +214,19 @@ CREATE TABLE `users` (
 -- Extraindo dados da tabela `users`
 --
 
-INSERT INTO `users` (`user_id`, `user_date`, `user_name`, `user_gen`, `user_birth`, `user_CPF`, `user_email`, `user_password`, `user_CEPadress`, `user_comp`, `user_num`, `user_CEPbilling`, `user_photo`, `user_type`, `last_login`, `user_status`) VALUES
-(1, '2023-02-02 16:32:31', 'Marineuza Siriliano', '', '2002-03-21', '13333333333', 'mari@neuza.com', '$2y$10$PDcffSzbeZ2.R.JVesp7MeO6i53Tovspzb0EjNO6tx7kzoIPcff7S', '23000000', '0', 0, '23000000', 'https://randomuser.me/api/portraits/women/72.jpg', 'user', NULL, 'online'),
-(2, '2023-02-02 16:32:31', 'Admin Admin', '', '2002-03-21', '13333333332', 'admin@admin.com', '$2y$10$PDcffSzbeZ2.R.JVesp7MeO6i53Tovspzb0EjNO6tx7kzoIPcff7S', '23059020', '0', 0, '23059020', 'https://randomuser.me/api/portraits/women/75.jpg', 'admin', NULL, 'online'),
-(3, '2023-02-02 16:32:31', 'Crocheteria', '', '2002-03-21', '13333333322', 'croche@teria.com', '$2y$10$WwLfPne8sDlcNqdkl5Vm.uy.BVk5FJ//YF.wgwBlgVOaC5GbGvxpi', '23059040', '0', 0, '23059040', '../photousers/63de6302e8277.png', 'shop', NULL, 'online');
+INSERT INTO `users` (`user_id`, `user_date`, `user_name`, `user_gen`, `user_birth`, `user_CPF`, `user_email`, `user_password`, `user_CEPadress`, `user_comp`, `user_num`, `user_CEPbilling`, `user_photo`, `last_login`, `user_status`) VALUES
+(4, '2023-02-09 17:18:06', 'Josefina Silva', 'F', '1995-02-17', '12345678910', 'jose@fina.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '23059020', 'Fundos', 55, '23059020', '../photousers/63e54472daf0b.avif', NULL, 'online'),
+(5, '2023-02-09 17:18:06', 'Cicrano Souza', 'M', '1995-06-25', '12345665412', 'ci@crano.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '23059020', 'Casa 1', 55, '23059020', NULL, NULL, 'online');
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices para tabela `cart`
+-- Índices para tabela `admin`
 --
-ALTER TABLE `cart`
-  ADD PRIMARY KEY (`id_cart`),
-  ADD KEY `cart_ibfk_1` (`id_prod`),
-  ADD KEY `id_user` (`id_user`);
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`admin_id`);
 
 --
 -- Índices para tabela `category`
@@ -225,16 +259,20 @@ ALTER TABLE `pay`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`prod_id`),
-  ADD KEY `shop` (`shop`),
-  ADD KEY `prod_cat` (`prod_cat`);
+  ADD KEY `prod_cat` (`prod_cat`),
+  ADD KEY `shop` (`shop`);
 
 --
 -- Índices para tabela `request`
 --
 ALTER TABLE `request`
-  ADD PRIMARY KEY (`req_id`),
-  ADD KEY `req_pay` (`req_pay`),
-  ADD KEY `request_ibfk_1` (`client_cart`);
+  ADD PRIMARY KEY (`req_id`);
+
+--
+-- Índices para tabela `shop`
+--
+ALTER TABLE `shop`
+  ADD PRIMARY KEY (`shop_id`);
 
 --
 -- Índices para tabela `users`
@@ -247,10 +285,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT de tabela `cart`
+-- AUTO_INCREMENT de tabela `admin`
 --
-ALTER TABLE `cart`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `admin`
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `category`
@@ -289,21 +327,20 @@ ALTER TABLE `request`
   MODIFY `req_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de tabela `shop`
+--
+ALTER TABLE `shop`
+  MODIFY `shop_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restrições para despejos de tabelas
 --
-
---
--- Limitadores para a tabela `cart`
---
-ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`id_prod`) REFERENCES `products` (`prod_id`),
-  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`user_id`);
 
 --
 -- Limitadores para a tabela `comments`
@@ -321,14 +358,13 @@ ALTER TABLE `delivery`
 -- Limitadores para a tabela `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`shop`) REFERENCES `users` (`user_id`),
-  ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`prod_cat`) REFERENCES `category` (`cat_id`);
+  ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`prod_cat`) REFERENCES `category` (`cat_id`),
+  ADD CONSTRAINT `products_ibfk_3` FOREIGN KEY (`shop`) REFERENCES `shop` (`shop_id`);
 
 --
 -- Limitadores para a tabela `request`
 --
 ALTER TABLE `request`
-  ADD CONSTRAINT `request_ibfk_1` FOREIGN KEY (`client_cart`) REFERENCES `cart` (`id_cart`),
   ADD CONSTRAINT `request_ibfk_2` FOREIGN KEY (`req_pay`) REFERENCES `pay` (`pay_id`);
 COMMIT;
 

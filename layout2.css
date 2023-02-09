@@ -25,6 +25,17 @@ a{
 /*****************
 * Menu principal *
 *****************/
+
+.dropdown-menu img{
+  border-radius: 50%;
+  width: 50px;
+
+}
+.nav-profile img {
+border-radius: 50%;
+width: 50px;
+}
+
 .form-inline {
   display: inline-block;
 }

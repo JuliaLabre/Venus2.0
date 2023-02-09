@@ -1,3 +1,7 @@
+<?php
+session_start();
+ob_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -75,11 +79,21 @@
               <span class="badge">10</span>
             </a>
           </li>
+          
+      <!-- Area do cliente  -->
+      <?php 
+     
+     // Se o usuário está logado...
+     if (isset($_SESSION['user_name'])) :
+
+     ?>
             <!--Perfil do usuário logado-->
-            <li class="dropdown-user navbar-inline">
-              <a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><i class="fa-solid fa-circle-user" title="minha conta" alt="Minha conta"></i></a>
+            <li class="dropdown-user navbar-inline nav-profile">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle user-action">
+              <img src="<?php echo $_SESSION['user_photo'] ?>">
+              </a>
               <ul class="dropdown-menu">
-                <li><a href="../pages/login"><i class="fa-solid fa-user-astronaut"></i> meu perfil</a></li>
+                <li class="nav-profile"><a href="../../pages/profile"><img src="<?php echo $_SESSION['user_photo'] ?>">meu perfil</a></li>
                 <li><a href="#"><i class="fa-solid fa-bag-shopping"></i> continue comprando</a></li>
                 <li><a href="#"><i class="fa-solid fa-heart"></i> favoritos</a></li>
                 <li><a href="#"><i class="fa-solid fa-cart-shopping"></i> minhas compras</a></li>
@@ -90,6 +104,20 @@
                 <li><a href="#"><i class="fa-solid fa-right-from-bracket"></i> <b>sair</b></a></li>
               </ul>
             </li>
+            <?php
+
+      // Se não está logado...
+      else :
+
+      ?>
+      <li>
+      <li class="nav-item">
+      <a class="nav-link" href="../pages/login"><i class="fa-solid fa-circle-user" title="Fazer Login" alt="Fazer Login"></i></a>
+
+      <?php
+      endif;
+      ?>
+
         </ul>
         <form class="form-inline my-2 my-lg-0" id="btnvender">
           <a href="#"><button type="button" class="btn btn-dark">quero vender</button></a>
