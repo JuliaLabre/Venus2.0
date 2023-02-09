@@ -35,7 +35,7 @@
               <a class="nav-link" href="../../pages/about"><b>quem somos</b></a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#"><b>você&venus</b></a>
+              <a class="nav-link" href="../../pages/aboutloja"><b>você&venus</b></a>
             </li>
             <li class="nav-item dropdown active">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>categorias</b></a>
@@ -51,7 +51,7 @@
               <a class="nav-link" href="#"><b>lojas</b></a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#"><b>contato</b></a>
+              <a class="nav-link" href="../../pages/404"><b>contato</b></a>
             </li>
           </ul>
         </div>

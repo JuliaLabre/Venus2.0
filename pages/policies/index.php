@@ -3,7 +3,7 @@
 require '../../includes/header.php';
 ?>
 
-<!--<link rel="stylesheet" href="about.css"> ESTÁ DANDO ERRO NO MENU-->
+<link rel="stylesheet" href="policies.css"> 
 
 <div>
 <h2>Políticas de Privacidade</h2>
@@ -15,7 +15,7 @@ require '../../includes/header.php';
     <p>Você é livre para recusar a nossa solicitação de informações pessoais, entendendo que talvez não possamos fornecer alguns dos serviços desejados.</p>
     <p>O uso continuado de nosso site será considerado como aceitação de nossas práticas em torno de privacidade e informações pessoais. Se você tiver alguma dúvida sobre como lidamos com dados do usuário e informações pessoais, entre em contacto connosco.</p>
  
-    <h3>Política de Cookies <em><strong>Vênus Shop</strong></em></h3>
+    <h3>Política de Cookies Vênus Shop</h3>
     <h4>O que são cookies?</h4>
     <p>Como é prática comum em quase todos os sites profissionais, este site usa cookies, que são pequenos arquivos baixados no seu computador, para melhorar sua experiência. Esta página descreve quais informações eles coletam, como as usamos e por que às vezes precisamos armazenar esses cookies. Também compartilharemos como você pode impedir que esses cookies sejam armazenados, no entanto, isso pode fazer o downgrade ou 'quebrar' certos elementos da funcionalidade do site.</p>
     <h4>Como usamos os cookies?</h4>
