@@ -12,4 +12,4 @@ $_SESSION['datebr']
 $_SESSION['msg'] = '<div class="alert alert-secondary" role="alert">
 Sessão Encerrada, nos vemos em breve!
 </div>';
-header("location:../login");
+header("location:/");

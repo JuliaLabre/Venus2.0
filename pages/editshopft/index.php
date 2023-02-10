@@ -6,13 +6,13 @@ ob_start();
 
 $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
 
-/*if (empty($id)) {
+if (empty($id)) {
     $_SESSION['msg'] = "Erro";
-    header("Location: ../profile");
+    header("Location: ../shop");
     exit();
-}*/
+}
 
- $sql =  "SELECT * FROM users WHERE user_id = $id";
+ $sql =  "SELECT shop_photo FROM shop WHERE shop_id = $id";
            
 $resultado= $conn->prepare($sql); 
 $resultado->execute();
@@ -24,25 +24,27 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
 
 }else{
     $_SESSION['msg'] = "Erro";
-    header("Location: ../profile");
+    header("Location: ../shop");
 }
 ?>
-<?php
+ 
+ <?php
 //Se tiver foto...
-if (!empty($_SESSION['user_photo'])) :
+if (!empty($_SESSION['shop_photo'])) :
     ?>
 Foto atual:
-<img  width="150" height="150" src="<?php echo $user_photo ?>" alt="Foto de <?php echo $user_name ?> ">
+<img  width="150" height="150" src="<?php echo $shop_photo ?>" alt="Foto de <?php echo $shop_name ?> ">
 <?php
       endif;
       ?>
- <form method="post" action="../updateuser/index.php" enctype="multipart/form-data">
+
+ <form method="post" action="../updateshop/index.php" enctype="multipart/form-data">
         <input name="id" type="hidden" value="<?php echo $id ?>">
                 <div class="col-md-4">                
-                <label for="Name">Imagem</label>
+                <label for="Name">Carregue a foto da sua loja</label>
                 <input type="file" class="form-control" name="photo">               
             </div>
         </div>
         <br>
-        <input class="btn btn-primary btn-lg btn-block" type="submit" value="Editar" name="eduserft" >
+        <input class="btn btn-primary btn-lg btn-block" type="submit" value="Editar" name="edshopft" >
         </form>

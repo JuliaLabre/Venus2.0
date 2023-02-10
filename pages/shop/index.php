@@ -5,27 +5,41 @@ ob_start();
 //require '../../includes/header.php';
 include_once '../../includes/config.php';
 
-$user_id = $_SESSION['user_id'];
+$shop_id = $_SESSION['shop_id'];
 
 
 $produtos = "SELECT p.prod_id, p.prod_name,p.prod_photo, p.prod_price, p.prod_size, p.prod_stock, p.prod_desc, p.prod_status, c.cat_name
      FROM products p, category c 
-     WHERE shop = $user_id 
+     WHERE shop = $shop_id 
      AND p.prod_cat = c.cat_id  ";
            
 $resultado= $conn->prepare($produtos); 
 $resultado->execute();
 
 ?>
-<!-- Conteudo -->
+<!-- Pensei em um menu ao lado com opções do que ele pode fazer, como editar os produtos, cadastrar produtos e na area principal pode ficar os produtos mais vendidos-->
 <div class="perfil-bonito">
-  <h2 class='text-center'>Espaço <?php echo $_SESSION['user_name']?></h2>
+  <h2 class='text-center'>Espaço <?php echo $_SESSION['shop_name']?></h2>
    <div class="perfil">
-      <a title="Editar foto" <?php echo "href='../edituserft?id=$user_id'"?>>
-        <img src="<?php echo $_SESSION['user_photo'] ?>"width="150" height="150"> 
+
+   <?php
+   if (!empty($_SESSION['shop_photo'])) :
+    ?>
+       <a title="Editar foto" <?php echo "href='../editshopft?id=$shop_id'"?>>
+        <img src="<?php echo $_SESSION['shop_photo'] ?>"width="150" height="150"> 
       </a>
+      <?php
+      // Se não está logado...
+      else :
+      ?>
+      <a <?php echo "href='../editshopft?id=$shop_id'"?>><button type="submit" class="btn">Carregue a foto da sua loja</button></a>
+    
+<?php
+      endif;
+      ?>
+     
       <ul>
-        <li><?php echo $_SESSION['user_name'] ?></li>
+        <li><?php echo $_SESSION['shop_name'] ?></li>
         <li>Membro desde <?php echo $_SESSION['datebr'] ?></li>
         <li>Total de itens vendidos : </li>
       </ul>
@@ -42,9 +56,8 @@ $resultado->execute();
       <th scope="col">Foto</th>
       <th scope="col">Nome</th>
       <th scope="col">Valor</th>
-      <th scope="col">Tamanho</th>
-      <th scope="col">Cor</th>
       <th scope="col">Quantidade</th>
+      <th scope="col">Em estoque</th>
       <th scope="col">Categoria</th>
       <th scope="col">Status</th>
       <th scope="col"></th>
@@ -96,7 +109,7 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
 
 
 <?php
-if(!isset($_SESSION['user_name'])){
+if(!isset($_SESSION['shop_name'])){
   $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">
   Erro: Necessário realizar login
  </div>';
@@ -105,7 +118,3 @@ if(!isset($_SESSION['user_name'])){
 ?>
 
 <a href="../exit"><button type="submit">Sair</button></a>
-<!-- Footer -->
-<?php
-require '../../includes/footer.php'
-?>

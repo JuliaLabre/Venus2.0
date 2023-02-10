@@ -4,7 +4,7 @@ include_once '../../includes/config.php';
 session_start();
 ob_start();
 
-$user_id = $_SESSION['user_id'];
+$shop_id = $_SESSION['shop_id'];
 /*Resolver problema do preço
 Posso tentar tratar depois que recebo do formulário
 Não está trazendo as fotos do banco de dados
@@ -92,7 +92,7 @@ if (!empty($upgrade['btncad'])) {
 
     if (!$vazio) {
     $sql = "INSERT INTO products (prod_name, prod_photo, prod_price, prod_stock, prod_desc, prod_cat, prod_status,shop)
-    values(:name, :photo, :price,:stock, :desc, :cat, :status, $user_id)";
+    values(:name, :photo, :price,:stock, :desc, :cat, :status, $shop_id)";
 
     $salvar= $conn ->prepare($sql);
     $salvar -> bindParam(':name', $upgrade['name'],PDO::PARAM_STR);
@@ -128,7 +128,7 @@ if (!empty($upgrade['btncad'])) {
 if (!empty($upgrade['btnedit'])){
     
     $sql = "UPDATE products 
-    set prod_name=:name, prod_price=:price, prod_stock=:stock, prod_desc=:desc, prod_cat=:cat, prod_status=:status, shop=$user_id
+    set prod_name=:name, prod_price=:price, prod_stock=:stock, prod_desc=:desc, prod_cat=:cat, prod_status=:status, shop=$shop_id
     WHERE prod_id=:id";
 
 $salvar= $conn ->prepare($sql);

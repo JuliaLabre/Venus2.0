@@ -40,7 +40,7 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
       $_SESSION['user_id'] = $resposta['user_id'];
       $_SESSION['datebr'] = $resposta['datebr'];
     
-      echo  $_SESSION['user_email'];
+      //echo  $_SESSION['user_email'];
       
      
        header("location:../profile");

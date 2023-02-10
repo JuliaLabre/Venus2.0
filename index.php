@@ -4,12 +4,48 @@ require 'includes/header.php';
 include_once 'includes/config.php';
 
 
+$produtos = "SELECT * FROM shop WHERE shop_status = 'online' ";
+
+
+$resultado = $conn->prepare($produtos);
+$resultado->execute(); 
+
+?>
+<!-- Conteudo -->
+<h2 class='text-center'>Lojas na Venus</h2>
+
+<div class="row">
+
+<?php
+
+if(($resultado) AND ($resultado->rowCount()!= 0)){
+while($resposta = $resultado->fetch(PDO::FETCH_ASSOC)){
+
+extract($resposta);
+//não está aparecendo a foto
 ?>
 
-<a href="/pages/login" title="Login de usuário" class="dropable"> login </a>
+<div class="col-md-2 text-center">
+  <div class="card bg-light mb-2">
+    <img class="card-img-top" src="<?php echo $shop_photo ?>" alt="Logo da <?php echo $shop_name ?>">
+    <div class="card-body">
+        <h5 class="card-title"><?php echo $shop_name ?></h5>
+        <p class="card-text"> <?php echo $shop_desc?>
+        <a <?php echo "href='pages/shopping?id=$shop_id'"?>><button type="submit" class="btn">Conheça essa loja</button></a>
+    </div>
+  </div>
+</div> 
+
+<?php
+}
+
+}
+?>
+</div>
 
 
-<!-- Footer -->
+
+
 <?php
 require 'includes/footer.php'
 ?>

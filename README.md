@@ -2,12 +2,17 @@
 Projeto integrador - Marketplace
 
 
-
+Falta:
 Formulario de cadastro de lojas
-login de lojista
-
-login de admin
-
 CRUD de lojas/shop
+acesso dos produtos da loja pelos usuarios
+Resolver os poblemasd de navegação
+dashboard admin
+menu lojista
+
+feito:
+login de lojista
+login de admin
+login usuario
 
 
