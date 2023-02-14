@@ -32,7 +32,7 @@
         <div class="col-md-4">
           <a href="../../pages/loginshop"><h4 id="titlevenda">Sua loja na Venus Shop</h4></a>
           <p>Gostaria de vender seus produtos com a gente?</p>
-          <p><input type="button" value="Criar minha loja virtual" onclick="msg()"></p>
+          <p><a href="../../pages/registration"><input type="button" value="Criar minha loja virtual"></a></p>
           
         </div>
       </div>

@@ -90,10 +90,10 @@ ob_start();
             <!--Perfil do usuário logado-->
             <li class="dropdown-user navbar-inline nav-profile">
               <a href="#" data-toggle="dropdown" class="dropdown-toggle user-action">
-              <img src="<?php echo $_SESSION['user_photo'] ?>">
+              <img src="../../pages/photousers/<?php echo $_SESSION['user_photo'] ?>">
               </a>
               <ul class="dropdown-menu">
-                <li class="nav-profile"><a href="../../pages/profile"><img src="<?php echo $_SESSION['user_photo'] ?>">meu perfil</a></li>
+                <li class="nav-profile"><a href="../../pages/profile"><img src="../../pages/photousers/<?php echo $_SESSION['user_photo'] ?>">meu perfil</a></li>
                 <li><a href="#"><i class="fa-solid fa-bag-shopping"></i> continue comprando</a></li>
                 <li><a href="#"><i class="fa-solid fa-heart"></i> favoritos</a></li>
                 <li><a href="#"><i class="fa-solid fa-cart-shopping"></i> minhas compras</a></li>
@@ -101,7 +101,7 @@ ob_start();
                 <li><a href="#"><i class="fa-solid fa-circle-question"></i> ajuda</a></li>
                 <li><a href="#"><i class="fa-solid fa-gear"></i> configurações</a></li>
                 <li class="divider"></li>
-                <li><a href="#"><i class="fa-solid fa-right-from-bracket"></i> <b>sair</b></a></li>
+                <li><a href="../../pages/exit"><i class="fa-solid fa-right-from-bracket"></i> <b>sair</b></a></li>
               </ul>
             </li>
             <?php
@@ -112,7 +112,7 @@ ob_start();
       ?>
       <li>
       <li class="nav-item">
-      <a class="nav-link" href="../pages/login"><i class="fa-solid fa-circle-user" title="Fazer Login" alt="Fazer Login"></i></a>
+      <a class="nav-link" href="../../pages/login"><i class="fa-solid fa-circle-user" title="Fazer Login" alt="Fazer Login"></i></a>
 
       <?php
       endif;

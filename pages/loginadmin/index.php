@@ -2,35 +2,26 @@
 <?php
 include_once '../../includes/config.php';
 
-session_start();
-ob_start();
-
-/* Se usuário já está logado:
-Ver como vai ser a verificação nesse caso
-if (isset($_COOKIE[$c['ucookie']]))
-
-    // Envia o site para o perfil do usuário:
-    header('Location: /?profile');*/
-
-
 $dadoslogin = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 //echo "123".password_hash(123,PASSWORD_DEFAULT);
+var_dump($dadoslogin);
 
 if (!empty($dadoslogin['btnlogin'])) {
 
-$buscalogin = "SELECT * FROM admin WHERE  admin_email = :user";
+$buscalogin = "SELECT * FROM users WHERE user_email = :admin AND user_type = 'admin' LIMIT 1";
            
 $resultado= $conn->prepare($buscalogin); 
-$resultado->bindParam(':user', $dadoslogin['user'],PDO::PARAM_STR);
+$resultado->bindParam(':admin', $dadoslogin['admin'],PDO::PARAM_STR);
 $resultado->execute();
 
+//Não ta reconhecendo o usuario
 if(($resultado) AND ($resultado->rowCount()!= 0)){
     $resposta = $resultado->fetch(PDO::FETCH_ASSOC);
-    //var_dump($resposta);
+   echo 'aqui';
 
 // salvando dados na variavel
 //o passwordverify so funcionou com 123,tentei a senha admin e ele não conseguiu verificar
-    if(password_verify($dadoslogin['pass'],$resposta['admin_password'])){     
+    if(password_verify($dadoslogin['passw'],$resposta['user_password'])){     
      
        header("location:../admin");
      
@@ -84,13 +75,13 @@ if(isset($_SESSION['msg'])){
         <form method= "post" action="">
           <!-- Email input -->
           <div class="form-outline mb-4">
-            <input type="email" id="form1Example13" class="form-control form-control-lg" name="user">
+            <input type="email" id="form1Example13" class="form-control form-control-lg" name="admin">
             <label class="form-label" for="form1Example13">Email address</label>
           </div>
 
           <!-- Password input -->
           <div class="form-outline mb-4">
-            <input type="password" id="form1Example23" class="form-control form-control-lg" name="pass">
+            <input type="password" id="form1Example23" class="form-control form-control-lg" name="passw">
             <label class="form-label" for="form1Example23">Password</label>
           </div>
 

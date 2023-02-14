@@ -27,11 +27,13 @@ extract($resposta);
 
 <div class="col-md-2 text-center">
   <div class="card bg-light mb-2">
-    <img class="card-img-top" src="<?php echo $shop_photo ?>" alt="Logo da <?php echo $shop_name ?>">
+    <img class="card-img-top" src="../pages/photoshop/<?php echo $shop_photo ?>" alt="Logo da <?php echo $shop_name ?>">
     <div class="card-body">
-        <h5 class="card-title"><?php echo $shop_name ?></h5>
+        <h4 class="card-title"><strong><?php echo $shop_name ?></strong></h4>
         <p class="card-text"> <?php echo $shop_desc?>
-        <a <?php echo "href='pages/shopping?id=$shop_id'"?>><button type="submit" class="btn">Conheça essa loja</button></a>
+        <a <?php echo "href='pages/shopping?id=$shop_id'"?>><button type="submit" value="<?php echo $shop_name; 
+        $_SESSION['loja'] = $shop_name;        
+        ?>" name= "loja" class="btn">Conheça essa loja</button></a>
     </div>
   </div>
 </div> 

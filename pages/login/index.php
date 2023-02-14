@@ -19,7 +19,7 @@ if (!empty($dadoslogin['btnlogin'])) {
 
 $buscalogin = "SELECT *, DATE_FORMAT(user_birth, '%d/%m/%Y') AS datebr
                         FROM users
-                        WHERE user_email = :user AND user_status = 'online'
+                        WHERE user_email = :user AND user_status = 'online' AND user_type = 'user'
                         LIMIT 1";
            
 $resultado= $conn->prepare($buscalogin); 

@@ -1,7 +1,7 @@
 <!-- Cabeçalho -->
 <?php
-include_once '../includes/header.php';
-include_once '../includes/conexao.php';
+include_once '../../includes/header.php';
+include_once '../../includes/config.php';
 
 
 
@@ -9,10 +9,22 @@ $pagatual = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
 $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
 $pag = (!empty($pagatual)) ? $pagatual : 1;
 
+$sql = "SELECT * FROM shop WHERE shop_id = $id";
+$resultado = $conn->prepare($sql);
+$resultado->execute();
+
+
+if(($resultado) AND ($resultado->rowCount()!= 0)){
+  $resposta = $resultado->fetch(PDO::FETCH_ASSOC);
+  extract($resposta);
+  
+}
+
     $limitereg = 10;
 
     $inicio = ($limitereg * $pag) - $limitereg;
 
+  
     $busca= "SELECT *
     FROM products  WHERE 
     shop = $id AND
@@ -24,7 +36,7 @@ $pag = (!empty($pagatual)) ? $pagatual : 1;
 ?>
 <!-- Conteudo -->
 
-<h2 class='text-center'><?php echo $shop_name?></h2>
+<h2 class='text-center'><img src="<?php echo $shop_photo ?>" style=width:150px;> <?php echo $shop_name?></h2>
 
 <div class="row">
 <?php
@@ -40,7 +52,7 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
         <img class="card-img-top" src="<?php echo $prod_photo ?>" alt="Imagem de capa do card">
         <div class="card-body">
         <h5 class="card-title"><?php echo $prod_name ?></h5>
-        <p class="card-text"> <?php echo $prod_desc?> - R$<?php echo $price ?>,00</p> 
+        <p class="card-text"> <?php echo $prod_desc?> - R$<?php echo $prod_price ?>,00</p> 
         <form method="post" action="carrinho.php">
         <h6>   
         <label>Quant</label>
@@ -62,7 +74,8 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
  
  <?php
 //Contar os registros no banco
-    $qtregistro = "SELECT COUNT(prod_id) AS registros products WHERE 
+    $qtregistro = "SELECT COUNT(prod_id) AS registros FROM
+    products WHERE 
     shop = $id AND prod_status = 'online' AND prod_stock > 0 ";  
      $resultado = $conn->prepare($qtregistro);
      $resultado->execute();
@@ -103,5 +116,5 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
  
 <!-- Footer -->
 <?php
-require '../includes/footer.php'
+include_once '../../includes/footer.php'
 ?>
