@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 10-Fev-2023 às 20:40
+-- Tempo de geração: 14-Fev-2023 às 20:56
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.2.0
 
@@ -22,25 +22,6 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `venushop` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `venushop`;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `admin`
---
-
-CREATE TABLE `admin` (
-  `admin_id` int(11) NOT NULL,
-  `admin_email` varchar(255) NOT NULL,
-  `admin_password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Extraindo dados da tabela `admin`
---
-
-INSERT INTO `admin` (`admin_id`, `admin_email`, `admin_password`) VALUES
-(1, 'admin@admin.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW');
 
 -- --------------------------------------------------------
 
@@ -99,9 +80,21 @@ CREATE TABLE `comments` (
 
 CREATE TABLE `delivery` (
   `deli_id` int(11) NOT NULL,
-  `deli_order` int(11) NOT NULL,
+  `deli_sale` int(11) NOT NULL,
   `deli_status` enum('in separation','in transit','delivered','canceled') NOT NULL DEFAULT 'in separation',
   `deli_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `favorite`
+--
+
+CREATE TABLE `favorite` (
+  `fav_id` int(11) NOT NULL,
+  `fav_user` int(11) NOT NULL,
+  `fav_prod` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -205,6 +198,7 @@ CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `user_date` timestamp NOT NULL DEFAULT current_timestamp(),
   `user_name` varchar(255) NOT NULL,
+  `user_tel` varchar(11) NOT NULL,
   `user_gen` varchar(1) NOT NULL,
   `user_birth` date DEFAULT NULL,
   `user_CPF` char(14) NOT NULL,
@@ -216,26 +210,22 @@ CREATE TABLE `users` (
   `user_CEPbilling` varchar(255) NOT NULL,
   `user_photo` varchar(255) DEFAULT NULL,
   `last_login` datetime DEFAULT NULL,
-  `user_status` enum('online','offline','banned','deleted') DEFAULT 'online'
+  `user_status` enum('online','offline','banned','deleted') DEFAULT 'online',
+  `user_type` enum('user','admin') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `users`
 --
 
-INSERT INTO `users` (`user_id`, `user_date`, `user_name`, `user_gen`, `user_birth`, `user_CPF`, `user_email`, `user_password`, `user_CEPadress`, `user_comp`, `user_num`, `user_CEPbilling`, `user_photo`, `last_login`, `user_status`) VALUES
-(4, '2023-02-09 17:18:06', 'Josefina Silva', 'F', '1995-02-17', '12345678910', 'jose@fina.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '23059020', 'Fundos', 55, '23059020', '../photousers/63e54472daf0b.avif', NULL, 'online'),
-(5, '2023-02-09 17:18:06', 'Cicrano Souza', 'M', '1995-06-25', '12345665412', 'ci@crano.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '23059020', 'Casa 1', 55, '23059020', NULL, NULL, 'online');
+INSERT INTO `users` (`user_id`, `user_date`, `user_name`, `user_tel`, `user_gen`, `user_birth`, `user_CPF`, `user_email`, `user_password`, `user_CEPadress`, `user_comp`, `user_num`, `user_CEPbilling`, `user_photo`, `last_login`, `user_status`, `user_type`) VALUES
+(4, '2023-02-09 17:18:06', 'Josefina Silva', '', 'F', '1995-02-17', '12345678910', 'jose@fina.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '23059020', 'Fundos', 55, '23059020', '../photousers/63e54472daf0b.avif', NULL, 'online', 'user'),
+(5, '2023-02-09 17:18:06', 'Cicrano Souza', '', 'M', '1995-06-25', '12345665412', 'ci@crano.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '23059020', 'Casa 1', 55, '23059020', NULL, NULL, 'online', 'user'),
+(6, '2023-02-14 17:32:03', 'Admin', '', 'F', '1995-02-17', '111111111111', 'admin@admin.com', '$2y$10$.C1e.8NZxDbJxixH9UvMpe.pQncwmrxYBuFzERu/Wf0Ees.yzres.', '11111111', '11', 0, '11111111', NULL, NULL, 'online', 'admin');
 
 --
 -- Índices para tabelas despejadas
 --
-
---
--- Índices para tabela `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`admin_id`);
 
 --
 -- Índices para tabela `category`
@@ -247,15 +237,21 @@ ALTER TABLE `category`
 -- Índices para tabela `comments`
 --
 ALTER TABLE `comments`
-  ADD PRIMARY KEY (`com_id`),
-  ADD KEY `com_deli` (`com_deli`);
+  ADD PRIMARY KEY (`com_id`);
 
 --
 -- Índices para tabela `delivery`
 --
 ALTER TABLE `delivery`
-  ADD PRIMARY KEY (`deli_id`),
-  ADD KEY `deli_order` (`deli_order`);
+  ADD PRIMARY KEY (`deli_id`);
+
+--
+-- Índices para tabela `favorite`
+--
+ALTER TABLE `favorite`
+  ADD PRIMARY KEY (`fav_id`),
+  ADD KEY `fav_prod` (`fav_prod`),
+  ADD KEY `fav_user` (`fav_user`);
 
 --
 -- Índices para tabela `order`
@@ -297,12 +293,6 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT de tabela `admin`
---
-ALTER TABLE `admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT de tabela `category`
 --
 ALTER TABLE `category`
@@ -319,6 +309,12 @@ ALTER TABLE `comments`
 --
 ALTER TABLE `delivery`
   MODIFY `deli_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `favorite`
+--
+ALTER TABLE `favorite`
+  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `order`
@@ -348,7 +344,7 @@ ALTER TABLE `shop`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restrições para despejos de tabelas
@@ -364,7 +360,14 @@ ALTER TABLE `comments`
 -- Limitadores para a tabela `delivery`
 --
 ALTER TABLE `delivery`
-  ADD CONSTRAINT `delivery_ibfk_1` FOREIGN KEY (`deli_order`) REFERENCES `order` (`order_id`);
+  ADD CONSTRAINT `delivery_ibfk_1` FOREIGN KEY (`deli_sale`) REFERENCES `sale` (`sale_id`);
+
+--
+-- Limitadores para a tabela `favorite`
+--
+ALTER TABLE `favorite`
+  ADD CONSTRAINT `favorite_ibfk_1` FOREIGN KEY (`fav_prod`) REFERENCES `products` (`prod_id`),
+  ADD CONSTRAINT `favorite_ibfk_2` FOREIGN KEY (`fav_user`) REFERENCES `users` (`user_id`);
 
 --
 -- Limitadores para a tabela `order`
