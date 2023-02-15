@@ -1,3 +1,7 @@
+<?php
+session_start();
+ob_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -13,11 +17,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
     <link rel="stylesheet" href="../../layout2.css">
-
-
+     
   </head>
+
   <body>
+
     <header>
+
       <nav class="navbar navbar-expand-lg navbar-light">
         <!--Nome + Icon-->
           <a class="navbar-brand" href="/"><img src="../../img/logo-principal.png" alt="Logo da VenusShop" title="Venus Shop"></a>
@@ -35,7 +41,7 @@
               <a class="nav-link" href="../../pages/about"><b>quem somos</b></a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="../../pages/aboutloja"><b>você&venus</b></a>
+              <a class="nav-link" href="../../pages/aboutshop"><b>você&venus</b></a>
             </li>
             <li class="nav-item dropdown active">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>categorias</b></a>
@@ -51,7 +57,7 @@
               <a class="nav-link" href="#"><b>lojas</b></a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="../../pages/404"><b>contato</b></a>
+              <a class="nav-link" href="#"><b>contato</b></a>
             </li>
           </ul>
         </div>
@@ -74,11 +80,44 @@
               <span class="badge">10</span>
             </a>
           </li>
-            <!--Perfil do usuário logado-->
-            <li class="dropdown-user navbar-inline">
-              <a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><i class="fa-solid fa-circle-user" title="minha conta" alt="Minha conta"></i></a>
+          
+      <!-- Area do cliente  -->
+      <?php 
+     
+     // Se o usuário está logado...
+     if (isset($_SESSION['user_name'])) :
+
+     ?>
+            <!--Perfil do usuário logado e tiver foto-->
+            <li class="dropdown-user navbar-inline nav-profile">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle user-action">
+              <?php
+                if (!empty($_SESSION['user_photo'])):
+                  ?>
+              <img src="../../pages/photousers/<?php echo $_SESSION['user_photo']?>">
+              </a>
+              <?php 
+                else:
+                  ?>
+             <i class="fa-solid fa-circle-user" title="minha conta" alt="Minha conta"></i></a>
+  
+             <?php
+               endif;
+               ?>
               <ul class="dropdown-menu">
-                <li><a href="../pages/login"><i class="fa-solid fa-user-astronaut"></i> meu perfil</a></li>
+                <li class="nav-profile">
+                  <?php
+                if (!empty($_SESSION['user_photo'])):
+                  ?>                
+                <li class="nav-profile"><a href="../../pages/profile"><img src="../../pages/photousers/<?php echo $_SESSION['user_photo'] ?>">meu perfil</a></li>
+                <?php 
+                else:
+                  ?>
+                   <li><a href="../../pages/profile"><i class="fa-solid fa-user-astronaut"></i> meu perfil</a></li>                
+                
+               <?php
+               endif;
+               ?>
                 <li><a href="#"><i class="fa-solid fa-bag-shopping"></i> continue comprando</a></li>
                 <li><a href="#"><i class="fa-solid fa-heart"></i> favoritos</a></li>
                 <li><a href="#"><i class="fa-solid fa-cart-shopping"></i> minhas compras</a></li>
@@ -86,12 +125,27 @@
                 <li><a href="#"><i class="fa-solid fa-circle-question"></i> ajuda</a></li>
                 <li><a href="#"><i class="fa-solid fa-gear"></i> configurações</a></li>
                 <li class="divider"></li>
-                <li><a href="#"><i class="fa-solid fa-right-from-bracket"></i> <b>sair</b></a></li>
+                <li><a href="../../pages/exit"><i class="fa-solid fa-right-from-bracket"></i> <b>sair</b></a></li>
               </ul>
             </li>
+            <?php
+
+      // Se não está logado...
+      else :
+
+      ?>
+      <li>
+      <li class="nav-item">
+      <a class="nav-link" href="../../pages/login"><i class="fa-solid fa-circle-user" title="Fazer Login" alt="Fazer Login"></i></a>
+
+      <?php
+      endif;
+      ?>
+
         </ul>
         <form class="form-inline my-2 my-lg-0" id="btnvender">
-          <a href="#"><button type="button" class="btn btn-dark">quero vender</button></a>
+          <a href="../../pages/frmshop"><button type="button" class="btn btn-dark">quero vender</button></a>
         </form>
       </nav>
+
     </header>

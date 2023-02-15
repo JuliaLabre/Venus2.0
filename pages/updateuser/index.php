@@ -3,8 +3,8 @@ include_once '../../includes/config.php';
 
 session_start();
 ob_start();
-
-$shop_id = $_SESSION['shop_id'];
+//mudar de shop para profile
+$user_id = $_SESSION['user_id'];
 /*Resolver problema do preço
 Posso tentar tratar depois que recebo do formulário
 Não está trazendo as fotos do banco de dados
@@ -21,11 +21,11 @@ if(isset($_FILES['photo'])){
 
     if($file['error']){
         echo 'Erro ao carregar arquivo';
-        header("Location: ../shop");
+        header("Location: ../profile");
     }
    
     // o erro ao carregar a foto era o caminho, como estou em pastas, precisei acrescentar os ../
-    $folder = "../photos/"; //Salva nessa pasta    
+    $folder = "../photousers/"; //Salva nessa pasta    
     $namefile = $file['name']; //pega o nome do arquivo da array que é criada automaticamente no envio do formulario    
     $newname = uniqid(); //nome unico, para não haver duplicidade e substituição  
     $exten = strtolower(pathinfo($namefile, PATHINFO_EXTENSION)); //Coloca o nome do arquivo com a sua extensão
@@ -35,7 +35,7 @@ if(isset($_FILES['photo'])){
         echo "<script>
         alert('Essa extensão de arquivo não é aceita');
         </script>";
-      
+        //header("Location: ../shop");
     } else {
         
         $saveimg = move_uploaded_file($file['tmp_name'], $folder . $newname . "." . $exten );
@@ -51,48 +51,48 @@ if(isset($_FILES['photo'])){
 
 //recebe a foto
 
-if (!empty($upgrade['edprodft'])) {
+if (!empty($upgrade['eduserft'])) {
 
     $upgrade = array_map('trim', $upgrade);
 
-  
+    //var_dump($upgrade);
 
-    $sql = "UPDATE products 
-    set prod_photo=:photo
-    WHERE prod_id = :prod_id";
+    $sql = "UPDATE users 
+    set user_photo=:photo
+    WHERE user_id = :id";
 
     $salvar= $conn ->prepare($sql);
     $salvar -> bindParam(':photo', $path,PDO::PARAM_STR);
-    $salvar -> bindParam(':prod_id', $upgrade['id'], PDO::PARAM_INT);
+    $salvar -> bindParam(':id', $upgrade['id'], PDO::PARAM_INT);
     $salvar -> execute();
 
 
-    if ($salvar->rowCount()) {
-        
+    if ($salvar->rowCount()) {        
         echo "<script>
         alert('Foto atualizada com sucesso!!');
-        parent.location = '../shop';
+        parent.location = '../profile';
         </script>";
-
+        $_SESSION['user_photo'] = $path;
         unset($upgrade);
     } else {
         echo "<script>
         alert('Erro: Tente novamente!');
-        parent.location = '../shop';
+        parent.location = '../profile';
         </script>";
         
     }
 
 }
+ //var_dump($upgrade);
  
-//cadastrar
+ //*****************************************************EDITAR CONFORME DADOS DA TABELA FORM USER */
 if (!empty($upgrade['btncad'])) {
 
     $vazio = false;
 
     if (!$vazio) {
     $sql = "INSERT INTO products (prod_name, prod_photo, prod_price, prod_stock, prod_desc, prod_cat, prod_status,shop)
-    values(:name, :photo, :price,:stock, :desc, :cat, :status, $shop_id)";
+    values(:name, :photo, :price,:stock, :desc, :cat, :status, $user_id)";
 
     $salvar= $conn ->prepare($sql);
     $salvar -> bindParam(':name', $upgrade['name'],PDO::PARAM_STR);
@@ -124,17 +124,16 @@ if (!empty($upgrade['btncad'])) {
 }
 
 }
-//editar
+/*Não está pegando a quantidade em estoque
 if (!empty($upgrade['btnedit'])){
     
     $sql = "UPDATE products 
-    set prod_name=:name, prod_price=:price, prod_size=:size,prod_stock=:stock, prod_desc=:desc, prod_cat=:cat, prod_status=:status, shop=$shop_id
+    set prod_name=:name, prod_price=:price, prod_stock=:stock, prod_desc=:desc, prod_cat=:cat, prod_status=:status, shop=$user_id
     WHERE prod_id=:id";
 
 $salvar= $conn ->prepare($sql);
 $salvar -> bindParam(':name', $upgrade['name'],PDO::PARAM_STR);
 $salvar -> bindParam(':price', $upgrade['price'],PDO::PARAM_STR);
-$salvar -> bindParam(':size', $upgrade['size'],PDO::PARAM_STR);
 $salvar -> bindParam(':stock', $upgrade['stock'], PDO::PARAM_STR);
 $salvar -> bindParam(':desc', $upgrade['desc'], PDO::PARAM_STR);
 $salvar -> bindParam(':cat', $upgrade['cat'], PDO::PARAM_STR);
@@ -153,15 +152,13 @@ $salvar -> execute();
         unset($upgrade);
     } else {
         echo "<script>
-        alert('Erro! Tente novamente!');       
+        alert('Aluno não cadastrado!');
+        parent.location = '../shop';
         </script>";
         
     }
 
-}
-
-
-
+}*/
 }
 catch(PDOException $erro){
     echo $erro;

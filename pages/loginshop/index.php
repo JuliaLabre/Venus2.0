@@ -5,18 +5,20 @@ include_once '../../includes/config.php';
 session_start();
 ob_start();
 
+/* mudar para shop*/
+
 $dadoslogin = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 //echo "admin".password_hash(123,PASSWORD_DEFAULT);
 
 if (!empty($dadoslogin['btnlogin'])) {
 
-$buscalogin = "SELECT *, DATE_FORMAT(user_birth, '%d/%m/%Y') AS datebr
-                        FROM users
-                        WHERE user_email = :user AND user_status = 'online' AND user_type = 'user'
+$buscalogin = "SELECT *, DATE_FORMAT(shop_date, '%d/%m/%Y') AS datebr
+                        FROM shop
+                        WHERE shop_email = :shop AND shop_status = 'online'
                         LIMIT 1";
            
 $resultado= $conn->prepare($buscalogin); 
-$resultado->bindParam(':user', $dadoslogin['user'],PDO::PARAM_STR);
+$resultado->bindParam(':shop', $dadoslogin['shop'],PDO::PARAM_STR);
 $resultado->execute();
 
 if(($resultado) AND ($resultado->rowCount()!= 0)){
@@ -25,18 +27,16 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
 
 // salvando dados na variavel
 
-    if(password_verify($dadoslogin['pass'],$resposta['user_password'])){
-      $_SESSION['user_name'] = $resposta['user_name'];
-      $_SESSION['user_email'] = $resposta['user_email'];
-      $_SESSION['user_photo'] = $resposta['user_photo'];
-      $_SESSION['user_CEPadress'] = $resposta['user_CEPadress'];
-      $_SESSION['user_id'] = $resposta['user_id'];
+    if(password_verify($dadoslogin['pass'],$resposta['shop_password'])){
+      $_SESSION['shop_name'] = $resposta['shop_name'];
+      $_SESSION['shop_email'] = $resposta['shop_email'];
+      $_SESSION['shop_photo'] = $resposta['shop_photo'];
+      $_SESSION['shop_id'] = $resposta['shop_id'];
       $_SESSION['datebr'] = $resposta['datebr'];
     
-      //echo  $_SESSION['user_email'];
-      
+         
      
-       header("location:../profile");
+       header("location:../shop");
      
     }else{
       $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">
@@ -94,7 +94,7 @@ if(isset($_SESSION['msg'])){
                     <p>Por favor, preencha os campos abaixo</p>
   
                     <div class="form-outline mb-4">
-                      <input type="email" id="form2Example11" class="form-control" name="user"
+                      <input type="email" id="form2Example11" class="form-control" name="shop"
                         placeholder="email" />
                       <label class="form-label" for="form2Example11">usuário</label>
                     </div>
@@ -111,7 +111,7 @@ if(isset($_SESSION['msg'])){
   
                     <div class="d-flex align-items-center justify-content-center pb-4">
                       <p class="mb-0 me-2">Ainda não possui conta?</p>
-                      <a href="../frmuser"><button type="button" class="btn btn-dark">Registre-se</button></a>
+                      <button type="button" class="btn btn-dark">Registre-se</button>
                     </div>
   
                   </form>
@@ -120,10 +120,10 @@ if(isset($_SESSION['msg'])){
               </div>
               <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
                 <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                  <h4 class="mb-4">Nós somos a <strong>Venus Shop</strong></h4>
-                  <p class="small mb-0">Um marktplace voltado exclusivamente para empreendedoras mulheres.
-                    A Vênus Shop é a plataforma de divulgação da sua loja.</p>
-                  </div>
+                  <h4 class="mb-4">Nós somos a Venus Shop</h4>
+                  <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 </div>
               </div>
             </div>

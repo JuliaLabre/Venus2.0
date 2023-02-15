@@ -3,7 +3,12 @@ include_once '../../includes/config.php';
 session_start();
 ob_start();
 
-$user_id = $_SESSION['user_id'];
+$shop_id = $_SESSION['shop_id'];
+
+$sql = "SELECT * FROM category";
+
+$resultado=$conn->prepare($sql);
+$resultado->execute();   
 
 ?>
 <h2 class="text-center">Alterações</h2>
@@ -44,13 +49,26 @@ $user_id = $_SESSION['user_id'];
             <div class="form-row">
                 <div class="col-md-4 mb-3">
                     <label>Categoria</label>
-                    <input name="cat" type="text"  class="form-control" required>
+                    <select name="cat"  class="form-control" required>
+                    <option selected>Escolha a Categoria...</option>
+    <?php 
+    
+    if(($resultado)&&($resultado->rowCount()!=0)) { 
+            while ($linha = $resultado->fetch(PDO::FETCH_ASSOC)){
+                extract($linha);
+
+    ?>                
+                <option value="<?php echo $cat_id ?>"><?php echo $cat_name?></option>
+    <?php
+            }
+        }
+    ?>
+                 </select>       
                 </div>
                 <div class="col-md-4 mb-3">
                     <label>Status</label>
-                    <select name="status" class="custom-select">
-                        <option selected>Status</option>
-                        <option type="radio" value="online">Online</option>
+                    <select name="status" class="custom-select">                       
+                        <option type="radio" value="online" selected>Online</option>
                         <option type="radio" value="offline">Offline</option>
                     </select>                    
                 </div>                

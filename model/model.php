@@ -1,10 +1,10 @@
 <?php
-require 'includes/header.php';
-include_once 'includes/config.php';
+require '../../includes/header.php';
+include_once '../../includes/config.php';
 
 ?>
 
 
 <?php
-require 'includes/footer.php'
+require '../../includes/footer.php'
 ?>
