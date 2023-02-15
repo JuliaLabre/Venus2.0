@@ -9,7 +9,10 @@ $_SESSION['user_CEPadress'],
 $_SESSION['user_id'],
 $_SESSION['datebr']
 );
-$_SESSION['msg'] = '<div class="alert alert-secondary" role="alert">
-Sessão Encerrada, nos vemos em breve!
-</div>';
-header("location:/");
+
+
+echo "<script>
+alert('Sessão encerrada, nos vemos em breve!');
+parent.location = '/';
+</script>";
+

@@ -11,12 +11,13 @@ $shop_id = $_SESSION['shop_id'];
 $produtos = "SELECT p.prod_id, p.prod_name,p.prod_photo, p.prod_price, p.prod_size, p.prod_stock, p.prod_desc, p.prod_status, c.cat_name
      FROM products p, category c 
      WHERE shop = $shop_id 
-     AND p.prod_cat = c.cat_id  ";
+     AND p.prod_cat = c.cat_id AND prod_status = 'online' ";
            
 $resultado= $conn->prepare($produtos); 
 $resultado->execute();
 
 ?>
+<!-- Podemos acrescentar um botão pra ver os produtos offline, e a questão do estoque, se ele tiver zerado, ter alguma coisa diferente.  -->
 <!-- Pensei em um menu ao lado com opções do que ele pode fazer, como editar os produtos, cadastrar produtos e na area principal pode ficar os produtos mais vendidos-->
 <div class="perfil-bonito">
   <h2 class='text-center'>Espaço <?php echo $_SESSION['shop_name']?></h2>
@@ -56,8 +57,9 @@ $resultado->execute();
       <th scope="col">Foto</th>
       <th scope="col">Nome</th>
       <th scope="col">Valor</th>
-      <th scope="col">Quantidade</th>
-      <th scope="col">Em estoque</th>
+      <th scope="col">Tamanho</th>
+      <th scope="col">Quantidade</th>      
+      <th scope="col">Descrição</th>
       <th scope="col">Categoria</th>
       <th scope="col">Status</th>
       <th scope="col"></th>

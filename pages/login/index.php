@@ -5,13 +5,6 @@ include_once '../../includes/config.php';
 session_start();
 ob_start();
 
-/* Se usuário já está logado:
-Ver como vai ser a verificação nesse caso
-if (isset($_COOKIE[$c['ucookie']]))
-
-    // Envia o site para o perfil do usuário:
-    header('Location: /?profile');*/
-
 $dadoslogin = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 //echo "admin".password_hash(123,PASSWORD_DEFAULT);
 
@@ -118,7 +111,7 @@ if(isset($_SESSION['msg'])){
   
                     <div class="d-flex align-items-center justify-content-center pb-4">
                       <p class="mb-0 me-2">Ainda não possui conta?</p>
-                      <button type="button" class="btn btn-dark">Registre-se</button>
+                      <a href="frmuser"><button type="button" class="btn btn-dark">Registre-se</button></a>
                     </div>
   
                   </form>

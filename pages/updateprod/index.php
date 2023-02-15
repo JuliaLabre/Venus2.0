@@ -35,7 +35,7 @@ if(isset($_FILES['photo'])){
         echo "<script>
         alert('Essa extensão de arquivo não é aceita');
         </script>";
-        //header("Location: ../shop");
+      
     } else {
         
         $saveimg = move_uploaded_file($file['tmp_name'], $folder . $newname . "." . $exten );
@@ -55,7 +55,7 @@ if (!empty($upgrade['edprodft'])) {
 
     $upgrade = array_map('trim', $upgrade);
 
-    //var_dump($upgrade);
+  
 
     $sql = "UPDATE products 
     set prod_photo=:photo
@@ -84,8 +84,8 @@ if (!empty($upgrade['edprodft'])) {
     }
 
 }
- //var_dump($upgrade);
-
+ 
+//cadastrar
 if (!empty($upgrade['btncad'])) {
 
     $vazio = false;
@@ -124,16 +124,17 @@ if (!empty($upgrade['btncad'])) {
 }
 
 }
-//Não está pegando a quantidade em estoque
+//editar
 if (!empty($upgrade['btnedit'])){
     
     $sql = "UPDATE products 
-    set prod_name=:name, prod_price=:price, prod_stock=:stock, prod_desc=:desc, prod_cat=:cat, prod_status=:status, shop=$shop_id
+    set prod_name=:name, prod_price=:price, prod_size=:size,prod_stock=:stock, prod_desc=:desc, prod_cat=:cat, prod_status=:status, shop=$shop_id
     WHERE prod_id=:id";
 
 $salvar= $conn ->prepare($sql);
 $salvar -> bindParam(':name', $upgrade['name'],PDO::PARAM_STR);
 $salvar -> bindParam(':price', $upgrade['price'],PDO::PARAM_STR);
+$salvar -> bindParam(':size', $upgrade['size'],PDO::PARAM_STR);
 $salvar -> bindParam(':stock', $upgrade['stock'], PDO::PARAM_STR);
 $salvar -> bindParam(':desc', $upgrade['desc'], PDO::PARAM_STR);
 $salvar -> bindParam(':cat', $upgrade['cat'], PDO::PARAM_STR);
@@ -152,13 +153,15 @@ $salvar -> execute();
         unset($upgrade);
     } else {
         echo "<script>
-        alert('Aluno não cadastrado!');
-        parent.location = '../shop';
+        alert('Erro! Tente novamente!');       
         </script>";
         
     }
 
 }
+
+
+
 }
 catch(PDOException $erro){
     echo $erro;

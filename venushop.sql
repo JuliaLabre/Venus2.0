@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 14-Fev-2023 às 20:56
+-- Tempo de geração: 15-Fev-2023 às 15:26
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.2.0
 
@@ -56,7 +56,7 @@ INSERT INTO `category` (`cat_name`, `cat_id`) VALUES
 ('Pets', 2),
 ('Beleza', 3),
 ('Deco&Casa', 4),
-('Escritório', 5);
+('Artesanato', 5);
 
 -- --------------------------------------------------------
 
@@ -137,14 +137,16 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`prod_id`, `shop`, `prod_date`, `prod_name`, `prod_photo`, `prod_size`, `prod_price`, `prod_stock`, `prod_desc`, `prod_cat`, `prod_status`, `views`) VALUES
-(4, 1, '2023-02-10 18:55:55', 'Anjinho em croche', '../photos/63e6933b41cb8.jpg', '', 50, 5, 'Lindo anjinho para enfeitar, bricar e funciona também como naninha', 1, 'online', 0),
-(5, 1, '2023-02-10 18:57:16', 'Bolsa Marrom', '../photos/63e6938c73dea.jpg', '', 150, 2, 'Linda Bolsa colorida, ideal para qualquer passeio.', 1, 'online', 0),
-(6, 3, '2023-02-10 19:01:26', 'Picolés tropicais', '../photos/63e69486bbad5.avif', '', 5, 50, 'Pricolés tropicais maravilhosos', 1, 'online', 0),
-(7, 3, '2023-02-10 19:02:02', 'Picolés ao leite', '../photos/63e694aaab3fe.avif', '', 10, 50, 'Os super cremosos', 1, 'online', 0),
+(4, 1, '2023-02-10 18:55:55', 'Anjinho em croche', '../photos/63e6933b41cb8.jpg', 'P', 50, 2, 'Lindo anjinho para enfeitar, bricar e funciona também como naninha', 5, 'online', 0),
+(5, 1, '2023-02-10 18:57:16', 'Bolsa Marrom', '../photos/63e6938c73dea.jpg', 'M', 150, 2, 'Linda Bolsa colorida, ideal para qualquer passeio.', 5, 'online', 0),
+(6, 3, '2023-02-10 19:01:26', 'Picolés tropicais', '../photos/63e69486bbad5.avif', '', 5, 50, 'Pricolés tropicais maravilhosos', 1, 'deleted', 0),
+(7, 3, '2023-02-10 19:02:02', 'Tapete Branco', '../photos/63ecdb4641e3c.avif', 'G', 150, 5, 'Lindo e facil de limpar', 4, 'online', 0),
 (8, 2, '2023-02-10 19:05:58', 'Ecobag', '../photos/63e695962bbe7.avif', '', 15, 10, 'Ultimas unidades em promoção', 1, 'online', 0),
 (9, 2, '2023-02-10 19:06:46', 'Ecobag Personalizada', '../photos/63e695c6ed9b1.avif', '', 25, 25, 'Linda Ecobag, fazemos também personalizada', 1, 'online', 0),
-(10, 4, '2023-02-10 19:08:01', 'Camisola Vermelha', '../photos/63e69611a02f1.avif', '', 50, 10, 'Lindo e belo', 1, 'online', 0),
-(11, 4, '2023-02-10 19:08:38', 'Camisola verde', '../photos/63e696360f7c5.jpg', '', 50, 5, 'Hobe não acompanha', 1, 'online', 0);
+(10, 4, '2023-02-10 19:08:01', 'Kit Brinquedos', '../photos/63ecdc359e2fe.avif', 'G', 55, 10, '2 bolinhas e 3 ossos', 2, 'online', 0),
+(11, 4, '2023-02-10 19:08:38', 'Case para saco de recolher', '../photos/63ecdc446fb25.avif', 'P', 49, 5, 'Case para levar as suas sacolinhas de forma deslumbrante', 2, 'online', 0),
+(12, 1, '2023-02-15 12:28:33', 'Cama em Croche', '../photos/63eccff146deb.avif', 'G', 100, 2, 'Aconchegante, lindo e sustentavel.', 2, 'online', 0),
+(13, 3, '2023-02-15 13:18:03', 'Mesa de Madeira', '../photos/63ecdb8bced93.avif', '', 99, 6, 'Linda Mesinha de madeira', 4, 'online', 0);
 
 -- --------------------------------------------------------
 
@@ -185,8 +187,8 @@ CREATE TABLE `shop` (
 INSERT INTO `shop` (`shop_id`, `shop_date`, `shop_name`, `shop_desc`, `shop_CNPJ`, `shop_email`, `shop_password`, `shop_photo`, `shop_lastlogin`, `shop_status`) VALUES
 (1, '2023-02-10 19:14:00', 'Crocheteria', 'Trabalho com Croches de forma em geral.', '12345678912345', 'croche@teria.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '../photoshop/63e690a350dd6.avif', '2023-02-09 18:18:15', 'online'),
 (2, '2023-02-10 19:14:16', 'Costurices da Lu', 'Trabalho com personalizados.', '01472589630258', 'costu@rices.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '../photoshop/63e6957529a88.avif', '2023-02-09 18:18:15', 'online'),
-(3, '2023-02-10 19:14:33', 'Picolés da Lê', 'Tudo que você precisa para se refrescar no verão.', '78945612307894', 'pi@cole.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '../photoshop/63e6944e83d41.avif', '2023-02-09 18:19:52', 'online'),
-(4, '2023-02-10 19:15:05', 'Camisolaria', 'Você merece o melhor, que tal dorimir como uma princesa?', '12345678912355', 'cami@sola.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '../photoshop/63e695e9e29d7.avif', '2023-02-09 18:19:52', 'online');
+(3, '2023-02-15 13:14:20', 'DecoRê', 'Sua casa mais bonita!', '78945612307894', 'deco@re.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '../photoshop/63ecdaace9dc1.avif', '2023-02-09 18:19:52', 'online'),
+(4, '2023-02-15 13:19:47', 'PetLandia', 'o mundo do seu pet', '12345678912355', 'pet@landia.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '../photoshop/63ecdbf33dcf5.avif', '2023-02-09 18:19:52', 'online');
 
 -- --------------------------------------------------------
 
@@ -237,13 +239,15 @@ ALTER TABLE `category`
 -- Índices para tabela `comments`
 --
 ALTER TABLE `comments`
-  ADD PRIMARY KEY (`com_id`);
+  ADD PRIMARY KEY (`com_id`),
+  ADD KEY `comments_ibfk_1` (`com_deli`);
 
 --
 -- Índices para tabela `delivery`
 --
 ALTER TABLE `delivery`
-  ADD PRIMARY KEY (`deli_id`);
+  ADD PRIMARY KEY (`deli_id`),
+  ADD KEY `delivery_ibfk_1` (`deli_sale`);
 
 --
 -- Índices para tabela `favorite`
@@ -326,7 +330,7 @@ ALTER TABLE `order`
 -- AUTO_INCREMENT de tabela `products`
 --
 ALTER TABLE `products`
-  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de tabela `sale`

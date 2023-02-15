@@ -43,6 +43,7 @@ ob_start();
               <a class="nav-link" href="#"><b>você&venus</b></a>
             </li>
             <li class="nav-item dropdown active">
+              <!-- tentei fazer uma programação pra chamar as categorias do banco, mas ta dando erro, fica conflitando ai desisti então vamos ter que ver como camar essa bagaça e redirecionar as categorias -->
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>categorias</b></a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">					
                 <a class="dropdown-item" href="#">moças</a>
@@ -87,13 +88,36 @@ ob_start();
      if (isset($_SESSION['user_name'])) :
 
      ?>
-            <!--Perfil do usuário logado-->
+            <!--Perfil do usuário logado e tiver foto-->
             <li class="dropdown-user navbar-inline nav-profile">
               <a href="#" data-toggle="dropdown" class="dropdown-toggle user-action">
-              <img src="../../pages/photousers/<?php echo $_SESSION['user_photo'] ?>">
+              <?php
+                if (!empty($_SESSION['user_photo'])):
+                  ?>
+              <img src="../../pages/photousers/<?php echo $_SESSION['user_photo']?>">
               </a>
+              <?php 
+                else:
+                  ?>
+             <i class="fa-solid fa-circle-user" title="minha conta" alt="Minha conta"></i></a>
+  
+             <?php
+               endif;
+               ?>
               <ul class="dropdown-menu">
+                <li class="nav-profile">
+                  <?php
+                if (!empty($_SESSION['user_photo'])):
+                  ?>                
                 <li class="nav-profile"><a href="../../pages/profile"><img src="../../pages/photousers/<?php echo $_SESSION['user_photo'] ?>">meu perfil</a></li>
+                <?php 
+                else:
+                  ?>
+                   <li><a href="../../pages/profile"><i class="fa-solid fa-user-astronaut"></i> meu perfil</a></li>                
+                
+               <?php
+               endif;
+               ?>
                 <li><a href="#"><i class="fa-solid fa-bag-shopping"></i> continue comprando</a></li>
                 <li><a href="#"><i class="fa-solid fa-heart"></i> favoritos</a></li>
                 <li><a href="#"><i class="fa-solid fa-cart-shopping"></i> minhas compras</a></li>
