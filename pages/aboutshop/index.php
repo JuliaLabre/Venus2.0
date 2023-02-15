@@ -65,11 +65,11 @@ Ou seja, sem conhecimento de programação e design e sem custos iniciais, você
 <p>Por isso, a recomendação é evitar erros de português e a inserção equivocada de dados.</p>
 
 <div class="row d-flex justify-content-center">
-<a class="botao" href="/" type="submit">Criar minha loja</a> <!--Direcionar para página criar loja-->
+<a class="botao" href="../frmshop" type="submit">Criar minha loja</a> <!--Direcionar para página criar loja-->
 </div>
 
 <div class="row d-flex justify-content-center">
-<a class="botao" href="/" type="submit">Acessar minha loja</a> <!--Direcionar para perfil da loja-->
+<a class="botao" href="../loginshop" type="submit">Acessar minha loja</a> <!--Direcionar para perfil da loja-->
 </div>
 
 

@@ -20,15 +20,14 @@
           <p><a href="../../pages/about">Sobre nós</a></p>
           <p><a href="../../pages/policies">Políticas de privacidade</a></p>
           <p><a href="../../pages/termos">Termos de uso</a></p>
-          <p><a href="#">Ofertas e trocas</a></p>
-          <p><a href="#">Envios e entregas</a></p>
+          
         </div>
         <div class="col-md-3">
           <h4 id="titlef">Ajuda</h4>
           <p><a href="#">Dúvidas frequentes</a></p>
           <p><a href="#">Fale com a gente</a></p>
-          <p><a href="#">Como vender</a></p>
-          <p><a href="#">Mapa do site</a></p>
+          <p><a href="../../aboutshop">Como vender</a></p>
+          
         </div>
         <div class="col-md-4">
           <a href="../../pages/loginshop"><h4 id="titlevenda">Sua loja na Venus Shop</h4></a>

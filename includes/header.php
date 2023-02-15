@@ -40,7 +40,7 @@ ob_start();
               <a class="nav-link" href="../../pages/about"><b>quem somos</b></a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="../../pages/aboutloja"><b>você&venus</b></a>
+              <a class="nav-link" href="../../pages/aboutshop"><b>você&venus</b></a>
             </li>
             <li class="nav-item dropdown active">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>categorias</b></a>
@@ -143,7 +143,7 @@ ob_start();
 
         </ul>
         <form class="form-inline my-2 my-lg-0" id="btnvender">
-          <a href="#"><button type="button" class="btn btn-dark">quero vender</button></a>
+          <a href="../../pages/frmshop"><button type="button" class="btn btn-dark">quero vender</button></a>
         </form>
       </nav>
 
