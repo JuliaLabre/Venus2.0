@@ -1,0 +1,1 @@
+Acrescentar o favorito a tabela de favoritos, lincando o id e depois mostrar os itens favoritos

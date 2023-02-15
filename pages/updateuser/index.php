@@ -122,42 +122,46 @@ if (!empty($upgrade['btncad'])) {
 
 }
 
-}
-//Não está pegando a quantidade em estoque
+}*/
+
 if (!empty($upgrade['btnedit'])){
     
-    $sql = "UPDATE products 
-    set prod_name=:name, prod_price=:price, prod_stock=:stock, prod_desc=:desc, prod_cat=:cat, prod_status=:status, shop=$user_id
-    WHERE prod_id=:id";
+    $sql = "UPDATE users 
+    set user_name=:name,user_tel=:tel, user_email=:email, user_birth=:birth, user_gen=:gen, user_CPF=:CPF, user_CEPadress=:cep, user_num=:num, user_comp=:comp
+    WHERE user_id=:id";
 
 $salvar= $conn ->prepare($sql);
+$salvar -> bindParam(':id', $upgrade['id'], PDO::PARAM_INT);
 $salvar -> bindParam(':name', $upgrade['name'],PDO::PARAM_STR);
-$salvar -> bindParam(':price', $upgrade['price'],PDO::PARAM_STR);
-$salvar -> bindParam(':stock', $upgrade['stock'], PDO::PARAM_STR);
-$salvar -> bindParam(':desc', $upgrade['desc'], PDO::PARAM_STR);
-$salvar -> bindParam(':cat', $upgrade['cat'], PDO::PARAM_STR);
-$salvar -> bindParam(':status', $upgrade['status'], PDO::PARAM_STR);
-$salvar -> bindParam(':id', $upgrade['id'], PDO::PARAM_STR);
+$salvar -> bindParam(':tel', $upgrade['tel'],PDO::PARAM_STR);
+$salvar -> bindParam(':email', $upgrade['email'], PDO::PARAM_STR);
+$salvar -> bindParam(':birth', $upgrade['birth'], PDO::PARAM_STR);
+$salvar -> bindParam(':gen', $upgrade['gen'], PDO::PARAM_STR);
+$salvar -> bindParam(':CPF', $upgrade['CPF'], PDO::PARAM_STR);
+$salvar -> bindParam(':cep', $upgrade['cep'], PDO::PARAM_STR);
+$salvar -> bindParam(':num', $upgrade['num'], PDO::PARAM_INT);
+$salvar -> bindParam(':comp', $upgrade['comp'], PDO::PARAM_INT);
+
 $salvar -> execute();
 
 
     if ($salvar->rowCount()) {
         
         echo "<script>
-        alert('Produto atualizado com sucesso!!');
-        parent.location = '../shop';
+        alert('Dados atualizados com sucesso!!');
+        parent.location = '../profile';
         </script>";
 
         unset($upgrade);
     } else {
         echo "<script>
-        alert('Aluno não cadastrado!');
-        parent.location = '../shop';
+        alert('Erro: Tente novamente!');
+        parent.location = '../profile';
         </script>";
         
     }
 
-}*/
+}
 }
 catch(PDOException $erro){
     echo $erro;

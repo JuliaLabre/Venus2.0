@@ -45,15 +45,15 @@ ob_start();
             <li class="nav-item dropdown active">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>categorias</b></a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">					
-                <a class="dropdown-item" href="#">moças</a>
-                <a class="dropdown-item" href="#">pets</a>
-                <a class="dropdown-item" href="#">beleza</a>
-                <a class="dropdown-item" href="#">deco&casa</a>
-                <a class="dropdown-item" href="#">escritório</a>
+                <a class="dropdown-item" href="../../pages/category?id=1">moças</a>
+                <a class="dropdown-item" href="../../pages/category?id=2">pets</a>
+                <a class="dropdown-item" href="../../pages/category?id=3">beleza</a>
+                <a class="dropdown-item" href="../../pages/category?id=4">deco&casa</a>
+                <a class="dropdown-item" href="../../pages/category?id=5">artesanato</a>
               </div>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#"><b>lojas</b></a>
+              <a class="nav-link" href="../../pages/navshops"><b>lojas</b></a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="#"><b>contato</b></a>
@@ -61,9 +61,9 @@ ob_start();
           </ul>
         </div>
         <!--Barra de pesquisa-->
-        <form id="search-box">
+        <form id="search-box" method="post" action="../../pages/search/index.php">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="pesquise em venus" name="search">
+            <input type="text" class="form-control" placeholder="pesquise em venus" name="search" required >
             <div class="input-group-btn">
               <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search" title="pesquisar"></i></button>
             </div>
