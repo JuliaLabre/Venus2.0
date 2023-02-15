@@ -103,7 +103,7 @@ if(isset($_SESSION['msg'])){
   
                   <form method="POST" id="login-form" class="form" action= "">
                     <p>Por favor, preencha os campos abaixo</p>
-  
+   
                     <div class="form-outline mb-4">
                       <input type="email" id="form2Example11" class="form-control" name="user"
                         placeholder="email" />
