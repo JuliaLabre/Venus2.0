@@ -8,8 +8,8 @@ ob_start();
 $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
 
 if (empty($id)) {
-    $_SESSION['msg'] = "Erro: Produto não encontrado";
-    header("Location: ../user");
+    $_SESSION['msg'] = "Erro";
+    header("Location: ../404");
     exit();
 }
 
