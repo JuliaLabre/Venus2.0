@@ -3,7 +3,7 @@
 include_once '../../includes/config.php';
 ?>
 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
@@ -43,7 +43,7 @@ include_once '../../includes/config.php';
   
                     <div class="form-outline mb-3">
                     <label for="validationDefault01">Nome Completo</label>
-                    <input name="nome" type="text" class="form-control" id="validationDefault01" placeholder="Nome" required>
+                    <input name="name" type="text" class="form-control" id="validationDefault01" placeholder="Nome" required>
                     </div>
 
                     <div class="form-outline mb-3">
@@ -71,7 +71,7 @@ include_once '../../includes/config.php';
                     
                     <div class="d-flex align-items-center justify-content-center pb-4">
                       <p class="mb-0 me-2">Já é cliente? </p>
-                      <a href="../../pages/login"><button type="button" class="btn btn-danger">Faça Login</button></a>
+                      <a href="../../pages/login"><button type="button" name="btncad" class="btn btn-danger">Faça Login</button></a>
                     </div>
                     
                   </div>
