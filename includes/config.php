@@ -10,6 +10,6 @@ try {
     $conn = new PDO("mysql:host=$host;port=$port;dbname=".$dbname,$user,$pass);
     
 } catch(PDOExcepcion $erro) {
-   echo "Erro: Conexão com o banco de dados não realizada".$erro;
+   //echo "Erro: Conexão com o banco de dados não realizada".$erro;
 }
 

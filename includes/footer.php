@@ -1,5 +1,6 @@
+<hr>
 
-    <footer>
+<footer>
       <!--Rodapé superior -->
       <div class="container-fluid">
       <div class="row text-center footersup">
@@ -16,9 +17,9 @@
         </div>
         <div class="col-md-3">
           <h4 id="titlef">A Venus Shop</h4>
-          <p><a href="#">Sobre nós</a></p>
-          <p><a href="#">Políticas de privacidade</a></p>
-          <p><a href="#">Termos de uso</a></p>
+          <p><a href="../../pages/about">Sobre nós</a></p>
+          <p><a href="../../pages/policies">Políticas de privacidade</a></p>
+          <p><a href="../../pages/termos">Termos de uso</a></p>
           <p><a href="#">Ofertas e trocas</a></p>
           <p><a href="#">Envios e entregas</a></p>
         </div>

@@ -120,10 +120,10 @@ if(isset($_SESSION['msg'])){
               </div>
               <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
                 <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                  <h4 class="mb-4">Nós somos a Venus Shop</h4>
-                  <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  <h4 class="mb-4">Nós somos a <strong>Venus Shop</strong></h4>
+                  <p class="small mb-0">Um marktplace voltado exclusivamente para empreendedoras mulheres.
+                    A Vênus Shop é a plataforma de divulgação da sua loja.</p>
+                  </div>
                 </div>
               </div>
             </div>

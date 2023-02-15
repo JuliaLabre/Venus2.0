@@ -7,7 +7,7 @@ ob_start();
 
   <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="/img/icondosite.png">
+    <link rel="icon" href="../../img/icondosite.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venus Shop - O Sistema Delas</title>
@@ -37,13 +37,12 @@ ob_start();
         <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
           <ul class="nav navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="#"><b>quem somos</b></a>
+              <a class="nav-link" href="../../pages/about"><b>quem somos</b></a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#"><b>você&venus</b></a>
+              <a class="nav-link" href="../../pages/aboutloja"><b>você&venus</b></a>
             </li>
             <li class="nav-item dropdown active">
-              <!-- tentei fazer uma programação pra chamar as categorias do banco, mas ta dando erro, fica conflitando ai desisti então vamos ter que ver como camar essa bagaça e redirecionar as categorias -->
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>categorias</b></a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">					
                 <a class="dropdown-item" href="#">moças</a>
