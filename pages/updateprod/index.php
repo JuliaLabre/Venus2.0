@@ -104,7 +104,7 @@ if (!empty($upgrade['btncad'])) {
     $salvar -> bindParam(':status', $upgrade['status'], PDO::PARAM_STR);
     $salvar -> execute();
 
-
+ 
     if ($salvar->rowCount()) {
         
         echo "<script>

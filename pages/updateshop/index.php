@@ -48,6 +48,49 @@ if(isset($_FILES['photo'])){
 
 }
 
+//*****************************************************EDITAR CONFORME DADOS DA TABELA FORM USER */
+if (!empty($upgrade['btncad'])) {
+
+    $vazio = false;
+
+    if (!$vazio) {
+
+    $pass = password_hash($upgrade['pass'], PASSWORD_DEFAULT);    
+
+        
+    $sql = "INSERT INTO users (user_name, user_email, user_password)
+    values(:name, :email, :pass)";
+
+    $salvar= $conn ->prepare($sql);
+    $salvar -> bindParam(':name', $upgrade['name'],PDO::PARAM_STR);
+    $salvar -> bindParam(':email', $upgrade['email'],PDO::PARAM_STR);
+    $salvar -> bindParam(':pass', $pass,PDO::PARAM_STR);
+    $salvar -> execute();
+
+
+    if ($salvar->rowCount()) {
+        
+        echo "<script>
+        alert('Usuário cadastrado com sucesso!!');
+        parent.location = '../frmuser';
+        </script>";
+
+        unset($upgrade);
+    } else {
+
+        echo "<script>
+        alert('Usuário não cadastrado, tente novamente!!');
+        parent.location = '../frmuser';
+        </script>";
+        
+    }
+
+}
+
+}
+
+
+
 //recebe a foto
 
 if (!empty($upgrade['edshopft'])) {
@@ -83,46 +126,7 @@ if (!empty($upgrade['edshopft'])) {
 
 }
 
-//*****************************************************EDITAR CONFORME DADOS DA TABELA FORM SHOP */
-if (!empty($upgrade['btncad'])) {
 
-    $vazio = false;
-
-    if (!$vazio) {
-    $sql = "INSERT INTO products (prod_name, prod_photo, prod_price, prod_stock, prod_desc, prod_cat, prod_status,shop)
-    values(:name, :photo, :price,:stock, :desc, :cat, :status, $user_id)";
-
-    $salvar= $conn ->prepare($sql);
-    $salvar -> bindParam(':name', $upgrade['name'],PDO::PARAM_STR);
-    $salvar -> bindParam(':photo', $path,PDO::PARAM_STR);
-    $salvar -> bindParam(':price', $upgrade['price'],PDO::PARAM_STR);
-    $salvar -> bindParam(':stock', $upgrade['stock'], PDO::PARAM_STR);
-    $salvar -> bindParam(':desc', $upgrade['desc'], PDO::PARAM_STR);
-    $salvar -> bindParam(':cat', $upgrade['cat'], PDO::PARAM_STR);
-    $salvar -> bindParam(':status', $upgrade['status'], PDO::PARAM_STR);
-    $salvar -> execute();
-
-
-    if ($salvar->rowCount()) {
-        
-        echo "<script>
-        alert('Produto cadastrado com sucesso!!');
-        parent.location = '../cadprod';
-        </script>";
-
-        unset($upgrade);
-    } else {
-        echo "<script>
-        alert('Produto não cadastrado. Tente novamente');
-        parent.location = '../cadprod';
-        </script>";
-        
-    }
-
-}
-
-}
-}
 catch(PDOException $erro){
     echo $erro;
 

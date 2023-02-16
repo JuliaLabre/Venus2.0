@@ -64,7 +64,7 @@ $resultado->execute();
         }
     ?>
                  </select>       
-                </div>
+                </div> 
                 <div class="col-md-4 mb-3">
                     <label>Status</label>
                     <select name="status" class="custom-select">                       

@@ -49,6 +49,48 @@ if(isset($_FILES['photo'])){
 
 }
 
+//*****************************************************EDITAR CONFORME DADOS DA TABELA FORM USER */
+if (!empty($upgrade['btncad'])) {
+
+    $vazio = false;
+
+    if (!$vazio) {
+
+    $pass = password_hash($upgrade['pass'], PASSWORD_DEFAULT);    
+
+        
+    $sql = "INSERT INTO users (user_name, user_email, user_password)
+    values(:name, :email, :pass)";
+
+    $salvar= $conn ->prepare($sql);
+    $salvar -> bindParam(':name', $upgrade['name'],PDO::PARAM_STR);
+    $salvar -> bindParam(':email', $upgrade['email'],PDO::PARAM_STR);
+    $salvar -> bindParam(':pass', $pass,PDO::PARAM_STR);
+    $salvar -> execute();
+
+
+    if ($salvar->rowCount()) {
+        
+        echo "<script>
+        alert('Usuário cadastrado com sucesso!!');
+        parent.location = '../frmuser';
+        </script>";
+
+        unset($upgrade);
+    } else {
+
+        echo "<script>
+        alert('Usuário não cadastrado, tente novamente!!');
+        parent.location = '../frmuser';
+        </script>";
+        
+    }
+
+}
+
+}
+
+
 //recebe a foto
 
 if (!empty($upgrade['eduserft'])) {
@@ -85,42 +127,7 @@ if (!empty($upgrade['eduserft'])) {
 }
  //var_dump($upgrade);
  
- //*****************************************************EDITAR CONFORME DADOS DA TABELA FORM USER */
-if (!empty($upgrade['btncad'])) {
-
-    $vazio = false;
-
-    if (!$vazio) {
-    $sql = "INSERT INTO users (user_name, user_email, user_password)
-    values(:name, :email, :pass)";
-
-    $salvar= $conn ->prepare($sql);
-    $salvar -> bindParam(':name', $upgrade['name'],PDO::PARAM_STR);
-    $salvar -> bindParam(':photo', $path,PDO::PARAM_STR);
-    $salvar -> bindParam(':pass', $senha,PDO::PARAM_STR);
-    $salvar -> execute();
-
-
-    if ($salvar->rowCount()) {
-        
-        echo "<script>
-        alert('Cadastro efetuado com sucesso!!');
-        parent.location = '../frmuser';
-        </script>";
-
-        unset($upgrade);
-    } else {
-        echo "<script>
-        alert('Cadastro não efetuado, tente novamente!!');
-        parent.location = '../frmuser';
-        </script>";
-        
-    }
-
-}
-
-}
-/*Não está pegando a quantidade em estoque
+ /*Não está pegando a quantidade em estoque
 if (!empty($upgrade['btnedit'])){
     
     $sql = "UPDATE products 

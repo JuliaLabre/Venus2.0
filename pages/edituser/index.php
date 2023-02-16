@@ -119,9 +119,9 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
                     </div>
                 </div>
 
-                <input class="btn btn-primary btn-lg btn-block" type="submit" value='Editar' name="btnedit">
+                <a href="../../pages/profile"><input class="btn btn-primary btn-lg btn-block" type="submit" value='Editar' name="btnedit">
         </form>
 
-        <a href="../profile" ><input class="btn btn-primary btn-lg btn-block" type="submit" value="Sair"></a>
+        <a href="../../pages/profile" ><input class="btn btn-primary btn-lg btn-block" type="submit" value="Sair"></a>
 
         <script src="script.js"></script>
