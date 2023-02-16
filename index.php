@@ -1,7 +1,7 @@
 <!-- Cabeçalho -->
 <?php
 require 'includes/header.php';
-include 'includes/config.php';
+include_once 'includes/config.php';
 
 
 $produtos = "SELECT * FROM shop WHERE shop_status = 'online' ";
