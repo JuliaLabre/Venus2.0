@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 15-Fev-2023 às 15:26
+-- Tempo de geração: 16-Fev-2023 às 13:50
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.2.0
 
@@ -70,6 +70,22 @@ CREATE TABLE `comments` (
   `com_deli` int(11) NOT NULL,
   `comment` text NOT NULL,
   `com_status` enum('online','offline','banned','deleted') NOT NULL DEFAULT 'online'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` int(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `status` enum('sended','readed','responded','deleted') DEFAULT 'sended'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -243,6 +259,12 @@ ALTER TABLE `comments`
   ADD KEY `comments_ibfk_1` (`com_deli`);
 
 --
+-- Índices para tabela `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `delivery`
 --
 ALTER TABLE `delivery`
@@ -307,6 +329,12 @@ ALTER TABLE `category`
 --
 ALTER TABLE `comments`
   MODIFY `com_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `delivery`
