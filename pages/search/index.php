@@ -80,7 +80,7 @@ extract($resshop);
     <div class="card-body">
         <h4 class="card-title"><strong><?php echo $shop_name ?></strong></h4>
         <p class="card-text"> <?php echo $shop_desc?>
-        <a <?php echo "href='pages/shopping?id=$shop_id'"?>><button type="submit" class="btn">Conheça essa loja</button></a>
+        <a <?php echo "href='../../pages/shopping?id=$shop_id'"?>><button type="submit" class="btn">Conheça essa loja</button></a>
     </div>
   </div>
 </div> 

@@ -4,7 +4,7 @@ require '../../includes/header.php';
 ?>
 
 <link rel="stylesheet" href="about.css">
-
+<div class="wrap">
 <div class="about">
     <div class="row">
       <div class="col-md-12 text-center">
@@ -42,6 +42,7 @@ require '../../includes/header.php';
 
 <div class="row d-flex justify-content-center">
 <a class="botao" href="/" type="submit">Conheça Venus Shop</a>
+</div>
 </div>
 
 

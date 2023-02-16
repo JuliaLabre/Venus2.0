@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16-Fev-2023 às 15:06
--- Versão do servidor: 10.4.27-MariaDB
--- versão do PHP: 8.2.0
+-- Tempo de geração: 16-Fev-2023 às 20:56
+-- Versão do servidor: 10.4.24-MariaDB
+-- versão do PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,7 +34,7 @@ CREATE TABLE `cart` (
   `id_prod` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `quant` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -45,7 +45,7 @@ CREATE TABLE `cart` (
 CREATE TABLE `category` (
   `cat_name` varchar(255) NOT NULL,
   `cat_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `category`
@@ -70,7 +70,7 @@ CREATE TABLE `comments` (
   `com_deli` int(11) NOT NULL,
   `comment` text NOT NULL,
   `com_status` enum('online','offline','banned','deleted') NOT NULL DEFAULT 'online'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -83,10 +83,11 @@ CREATE TABLE `contacts` (
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `address` int(11) NOT NULL,
   `subject` varchar(255) NOT NULL,
   `message` text NOT NULL,
   `status` enum('sended','readed','responded','deleted') DEFAULT 'sended'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -99,7 +100,7 @@ CREATE TABLE `delivery` (
   `deli_sale` int(11) NOT NULL,
   `deli_status` enum('in separation','in transit','delivered','canceled') NOT NULL DEFAULT 'in separation',
   `deli_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -111,15 +112,20 @@ CREATE TABLE `favorite` (
   `fav_id` int(11) NOT NULL,
   `fav_user` int(11) NOT NULL,
   `fav_prod` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `favorite`
 --
 
 INSERT INTO `favorite` (`fav_id`, `fav_user`, `fav_prod`) VALUES
-(1, 4, 12),
-(3, 4, 4);
+(2, 4, 11),
+(4, 4, 9),
+(5, 4, 8),
+(11, 4, 13),
+(21, 4, 4),
+(25, 4, 5),
+(30, 4, 12);
 
 -- --------------------------------------------------------
 
@@ -133,7 +139,7 @@ CREATE TABLE `order` (
   `order_prod` int(11) NOT NULL,
   `order_quant` int(11) NOT NULL,
   `order_value` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -154,7 +160,7 @@ CREATE TABLE `products` (
   `prod_cat` int(11) NOT NULL,
   `prod_status` enum('online','offline','banned','deleted') DEFAULT 'online',
   `views` int(11) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `products`
@@ -183,7 +189,7 @@ CREATE TABLE `sale` (
   `sale_client` int(11) NOT NULL,
   `sale_value` double NOT NULL,
   `sale_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -202,7 +208,7 @@ CREATE TABLE `shop` (
   `shop_photo` varchar(255) NOT NULL,
   `shop_lastlogin` datetime NOT NULL,
   `shop_status` enum('online','offline','banned','deleted') NOT NULL DEFAULT 'online'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `shop`
@@ -238,14 +244,14 @@ CREATE TABLE `users` (
   `last_login` datetime DEFAULT NULL,
   `user_status` enum('online','offline','banned','deleted') DEFAULT 'online',
   `user_type` enum('user','admin') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `users`
 --
 
 INSERT INTO `users` (`user_id`, `user_date`, `user_name`, `user_tel`, `user_gen`, `user_birth`, `user_CPF`, `user_email`, `user_password`, `user_CEPadress`, `user_comp`, `user_num`, `user_CEPbilling`, `user_photo`, `last_login`, `user_status`, `user_type`) VALUES
-(4, '2023-02-09 17:18:06', 'Josefina Silva', '', 'F', '1995-02-17', '12345678910', 'jose@fina.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '23059020', 'Fundos', 55, '23059020', '../photousers/63e54472daf0b.avif', NULL, 'online', 'user'),
+(4, '2023-02-09 17:18:06', ' Josefina Silva', ' 2197577012', 'F', '1995-02-17', '12345678910', 'jose@fina.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '23059020', '0', 55, '23059020', '../photousers/63e54472daf0b.avif', NULL, 'online', 'user'),
 (5, '2023-02-09 17:18:06', 'Cicrano Souza', '', 'M', '1995-06-25', '12345665412', 'ci@crano.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '23059020', 'Casa 1', 55, '23059020', NULL, NULL, 'online', 'user'),
 (6, '2023-02-14 17:32:03', 'Admin', '', 'F', '1995-02-17', '111111111111', 'admin@admin.com', '$2y$10$.C1e.8NZxDbJxixH9UvMpe.pQncwmrxYBuFzERu/Wf0Ees.yzres.', '11111111', '11', 0, '11111111', NULL, NULL, 'online', 'admin');
 
@@ -270,7 +276,8 @@ ALTER TABLE `comments`
 -- Índices para tabela `contacts`
 --
 ALTER TABLE `contacts`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `address` (`address`);
 
 --
 -- Índices para tabela `delivery`
@@ -354,7 +361,7 @@ ALTER TABLE `delivery`
 -- AUTO_INCREMENT de tabela `favorite`
 --
 ALTER TABLE `favorite`
-  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de tabela `order`
@@ -395,6 +402,13 @@ ALTER TABLE `users`
 --
 ALTER TABLE `comments`
   ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`com_deli`) REFERENCES `delivery` (`deli_id`);
+
+--
+-- Limitadores para a tabela `contacts`
+--
+ALTER TABLE `contacts`
+  ADD CONSTRAINT `contacts_ibfk_1` FOREIGN KEY (`address`) REFERENCES `users` (`user_id`),
+  ADD CONSTRAINT `contacts_ibfk_2` FOREIGN KEY (`address`) REFERENCES `shop` (`shop_id`);
 
 --
 -- Limitadores para a tabela `delivery`

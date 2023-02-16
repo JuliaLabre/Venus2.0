@@ -35,6 +35,7 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
 ?>
 <!-- Conteudo -->
 
+<div class="wrap">
 <h2 class='text-center'><?php echo $cat_name?></h2>
 
 <div class="row">
@@ -112,7 +113,7 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
 
 
 ?>
-
+</div>
  
 <!-- Footer -->
 <?php

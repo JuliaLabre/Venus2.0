@@ -4,7 +4,8 @@ require '../../includes/header.php';
 ?>
 
 <link rel="stylesheet" href="aboutloja.css">
-
+<!-- Conteudo -->
+<div class="wrap">
 <div class="about">
     <div class="row">
       <div class="col-md-12 text-center">
@@ -71,10 +72,8 @@ Ou seja, sem conhecimento de programação e design e sem custos iniciais, você
 <div class="row d-flex justify-content-center">
 <a class="botao" href="../loginshop" type="submit">Acessar minha loja</a> <!--Direcionar para perfil da loja-->
 </div>
-
-
-
-    
+</div>
+ 
     
 
 

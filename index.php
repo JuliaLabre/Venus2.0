@@ -12,6 +12,7 @@ $resultado->execute();
 
 ?>
 <!-- Colocar produtos mais comprados -->
+<div class="wrap">
 <h2 class='text-center'>Lojas na Venus</h2>
 
 <div class="row">
@@ -65,7 +66,7 @@ if(($result)&&($result->rowCount()!=0)) {
 
 
 
-
+  </div>
 
 
 
