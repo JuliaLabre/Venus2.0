@@ -56,7 +56,7 @@ ob_start();
               <a class="nav-link" href="../../pages/navshops"><b>lojas</b></a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#"><b>contato</b></a>
+              <a class="nav-link" href="../../pages/contacts"><b>contato</b></a>
             </li>
           </ul>
         </div>
