@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16-Fev-2023 às 13:50
+-- Tempo de geração: 16-Fev-2023 às 15:06
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.2.0
 
@@ -112,6 +112,14 @@ CREATE TABLE `favorite` (
   `fav_user` int(11) NOT NULL,
   `fav_prod` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `favorite`
+--
+
+INSERT INTO `favorite` (`fav_id`, `fav_user`, `fav_prod`) VALUES
+(1, 4, 12),
+(3, 4, 4);
 
 -- --------------------------------------------------------
 
@@ -346,7 +354,7 @@ ALTER TABLE `delivery`
 -- AUTO_INCREMENT de tabela `favorite`
 --
 ALTER TABLE `favorite`
-  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `order`

@@ -55,7 +55,7 @@ extract($resprod);
     <input type="number" name="quantcompra" value="1" style=width:45px;>
     </h6> 
     <input type="hidden" value="<?php echo $prod_id ?>" name="codigoproduto">
-    <a href="../favorite"><i class="fa-regular fa-heart"></i></a>            
+    <a <?php echo "href='../favorite?id=$prod_id'" ?>><i class="fa-regular fa-heart"></i></a>             
     <input type="submit" class="btn btn-primary" name="carrinho" value="Comprar">
     </form>
     </div>

@@ -3,7 +3,7 @@
 include_once '../../includes/header.php';
 include_once '../../includes/config.php';
 
-
+//fazer busca dos favoritos para mudar os icones
 
 $pagatual = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
 $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
@@ -59,7 +59,7 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
         <input type="number" name="quantcompra" value="1" style=width:45px;>
         </h6> 
         <input type="hidden" value="<?php echo $prod_id ?>" name="codigoproduto">
-        <a href="../favorite"><i class="fa-regular fa-heart"></i></a>            
+        <a <?php echo "href='../favorite?id=$prod_id'" ?>><i class="fa-regular fa-heart"></i></a>            
         <input type="submit" class="btn btn-primary" name="carrinho" value="Comprar">
         </form>
         </div>
