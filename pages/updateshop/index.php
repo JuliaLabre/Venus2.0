@@ -58,7 +58,7 @@ if (!empty($upgrade['btncad'])) {
     $pass = password_hash($upgrade['pass'], PASSWORD_DEFAULT);    
 
         
-    $sql = "INSERT INTO users (user_name, user_email, user_password)
+    $sql = "INSERT INTO shop (shop_name, shop_email, shop_password)
     values(:name, :email, :pass)";
 
     $salvar= $conn ->prepare($sql);
@@ -71,8 +71,8 @@ if (!empty($upgrade['btncad'])) {
     if ($salvar->rowCount()) {
         
         echo "<script>
-        alert('Usuário cadastrado com sucesso!!');
-        parent.location = '../frmuser';
+        alert('Loja cadastrada com sucesso!!');
+        parent.location = '../loginshop';
         </script>";
 
         unset($upgrade);
@@ -80,7 +80,7 @@ if (!empty($upgrade['btncad'])) {
 
         echo "<script>
         alert('Usuário não cadastrado, tente novamente!!');
-        parent.location = '../frmuser';
+        parent.location = '../frmshop';
         </script>";
         
     }
@@ -126,7 +126,7 @@ if (!empty($upgrade['edshopft'])) {
 
 }
 
-
+}
 catch(PDOException $erro){
     echo $erro;
 

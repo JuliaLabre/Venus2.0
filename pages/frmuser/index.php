@@ -19,7 +19,7 @@ include_once '../../includes/config.php';
 </head>
 <body>
   <header>
-
+ 
 
 
   </header>
@@ -38,21 +38,22 @@ include_once '../../includes/config.php';
                     <h4 class="mt-1 mb-5 pb-1"><strong>Junte-se a nós!</strong></h4>
                   </div>
   
+                  <!--formulário-->
                   <form method="POST" id="login-form" class="form" action= "../updateuser/index.php">
                     <p>Por favor, preencha os campos abaixo</p>
   
                     <div class="form-outline mb-3">
-                    <label for="validationDefault01">Nome Completo</label>
-                    <input name="name" type="text" class="form-control" id="validationDefault01" placeholder="Nome" required>
+                      <label for="validationDefault01">Nome Completo</label>
+                      <input name="name" type="text" class="form-control" id="validationDefault01" placeholder="Nome" required>
                     </div>
 
                     <div class="form-outline mb-3">
-                    <label for="validationDefaultUsername">Email</label>
-                    <input name="email" type="email" class="form-control" id="validationDefaultUsername" placeholder="Email" aria-describedby="inputGroupPrepend2" required>
+                      <label for="validationDefaultUsername">Email</label>
+                      <input name="email" type="email" class="form-control" id="validationDefaultUsername" placeholder="Email" aria-describedby="inputGroupPrepend2" required>
                     </div>
   
                     <div class="form-outline mb-3">
-                      <label class="form-label" for="form2Example22">senha</label>
+                      <label class="form-label" for="form2Example22">Senha</label>
                       <input type="password" id="form2Example22" class="form-control"  name="pass" placeholder="........">
                     </div>
   
@@ -64,6 +65,7 @@ include_once '../../includes/config.php';
   
                 </div>
               </div>
+              <!--adicional com direcionamento para termos e políticas de privacidade-->
               <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
                 <div class="text-white px-3 py-4 p-md-5 mx-md-4">
                   <p class="small mb-0">Ao criar uma conta você concorda com os <a href="../../pages/termos">Termos de uso </a>da Vênus Shop.</p>
@@ -73,7 +75,6 @@ include_once '../../includes/config.php';
                       <p class="mb-0 me-2">Já é cliente? </p>
                       <a href="../../pages/login"><button type="button" name="btncad" class="btn btn-danger">Faça Login</button></a>
                     </div>
-                    
                   </div>
                 </div>
               </div>

@@ -2,6 +2,8 @@
 session_start();
 ob_start();
 ?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -78,6 +80,8 @@ ob_start();
           <li class="nav-item">
             <a class="nav-link" href="#" id="shopicon"><i class="fa-solid fa-bag-shopping" title="continue comprando" alt="Minha sacola"></i>
               <span class="badge">10</span>
+              <a href="formcarrinho.php">
+            <img src="../img/carrinho.png" style=width:50px;height:50px;></a>
             </a>
           </li>
           
