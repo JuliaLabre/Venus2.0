@@ -7,6 +7,7 @@ include_once '../../includes/config.php';
 $pagatual = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
 $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
 $pag = (!empty($pagatual)) ? $pagatual : 1;
+$icon = '<i class="fa-regular fa-heart"></i>';
 
 $sql = "SELECT * FROM category WHERE cat_id = $id";
 $resultado = $conn->prepare($sql);
@@ -59,7 +60,27 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
         <input type="number" name="quantcompra" value="1" style=width:45px;>
         </h6> 
         <input type="hidden" value="<?php echo $prod_id ?>" name="codigoproduto">
-        <a <?php echo "href='../favorite?id=$prod_id'" ?>><i class="fa-regular fa-heart"></i></a>             
+        <?php
+
+
+  // Se o usuario tiver logado e tiver esse produto como favorito:
+  if (isset($_SESSION['user_name'])) {
+    $iduser = $_SESSION['user_id'];
+
+    $buscafav= "SELECT * FROM favorite WHERE fav_prod = $prod_id AND fav_user = $iduser LIMIT 1";  
+      $resulfav = $conn->prepare($buscafav);
+      $resulfav->execute();      
+
+      if (($resulfav) and ($resulfav->rowCount() != 0)) {         
+          $icon = '<i class="fa-solid fa-heart"></i>';    
+       
+      }else{
+        $icon = '<i class="fa-regular fa-heart"></i>';
+      }     
+    
+  }
+  ?> 
+    <a <?php echo "href='../favorite?id=$prod_id'"?>><?php echo $icon ?> </a>            
         <input type="submit" class="btn btn-primary" name="carrinho" value="Comprar">
         </form>
         </div>

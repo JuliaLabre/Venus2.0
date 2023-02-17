@@ -14,10 +14,20 @@ $busca= "SELECT *
 
 ?>
 <!-- Conteudo -->
-
+<div class="wrap">
 <h2 class='text-center'>Favoritos de <?php echo $_SESSION['user_name'];?></h2>
 
-<div class="row">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Imagem do produto</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Valor</th>  
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
 <?php
 
 if(($resultado) AND ($resultado->rowCount()!= 0)){
@@ -25,31 +35,29 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
 
   extract($resposta);
 
-?>
-    <div class="col-md-2 text-center">
-      <div class="card bg-light mb-2">
-        <img class="card-img-top" src="<?php echo $prod_photo ?>" alt="Imagem de capa do card">
-        <div class="card-body">
-        <h5 class="card-title"><?php echo $prod_name ?></h5>
-        <p class="card-text"> <?php echo $prod_desc?> - R$<?php echo $prod_price ?>,00</p> 
-        <form method="post" action="carrinho.php">
-        <h6>   
-        <label>Quant</label>
-        <input type="number" name="quantcompra" value="1" style=width:45px;>
-        </h6> 
-        <input type="hidden" value="<?php echo $prod_id ?>" name="codigoproduto">
-        <a <?php echo "href='../favorite?id=$prod_id'" ?>><i class="fa-regular fa-heart"></i></a>            
-        <input type="submit" class="btn btn-primary" name="carrinho" value="Comprar">
-        </form>
-        </div>
-      </div>
-  </div> 
+?>  
+<td scope="row">
+  <img src="<?php echo $prod_photo ?>" width="150" height="150">
+</td>
+<td> <?php echo $prod_name ?> </td>
+<td>$<?php echo $prod_price ?></td>
+<td>
+<?php echo "<a href='../cart?id=$prod_id'>"; ?>
+<input type="submit" class="btn btn-success" name="cart" value="Adicionar ao carrinho">
+</td>
+<td>
+<?php echo "<a href='../favorite?id=$prod_id'>" ?>
+<input type="submit" class="btn btn-danger" name="delete" value="Remover dos favoritos">
+</td>
+</tr>    
 
   <?php
   }
 
 }
 ?>
+  </tbody>
+ </table>
  </div>
 
 <?php

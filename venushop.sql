@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16-Fev-2023 às 20:56
--- Versão do servidor: 10.4.24-MariaDB
--- versão do PHP: 8.1.6
+-- Tempo de geração: 17-Fev-2023 às 20:10
+-- Versão do servidor: 10.4.27-MariaDB
+-- versão do PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,7 +34,7 @@ CREATE TABLE `cart` (
   `id_prod` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `quant` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -45,7 +45,7 @@ CREATE TABLE `cart` (
 CREATE TABLE `category` (
   `cat_name` varchar(255) NOT NULL,
   `cat_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `category`
@@ -70,7 +70,7 @@ CREATE TABLE `comments` (
   `com_deli` int(11) NOT NULL,
   `comment` text NOT NULL,
   `com_status` enum('online','offline','banned','deleted') NOT NULL DEFAULT 'online'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -83,11 +83,40 @@ CREATE TABLE `contacts` (
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `address` int(11) NOT NULL,
   `subject` varchar(255) NOT NULL,
   `message` text NOT NULL,
-  `status` enum('sended','readed','responded','deleted') DEFAULT 'sended'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `status` enum('sended','readed','responded','deleted') DEFAULT 'sended',
+  `receiver` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `date`, `name`, `email`, `subject`, `message`, `status`, `receiver`) VALUES
+(1, '2023-02-17 18:41:00', 'Teste', 'teste@teste.com', 'Não aguento mais', 'Não estou disposto a tanto erro', 'sended', 6);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `contactshop`
+--
+
+CREATE TABLE `contactshop` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `message` varchar(255) NOT NULL,
+  `address` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `contactshop`
+--
+
+INSERT INTO `contactshop` (`id`, `name`, `email`, `subject`, `message`, `address`) VALUES
+(1, 'Teste', 'teste@teste.com', 'teste', 'Mais um teste', 1);
 
 -- --------------------------------------------------------
 
@@ -100,7 +129,7 @@ CREATE TABLE `delivery` (
   `deli_sale` int(11) NOT NULL,
   `deli_status` enum('in separation','in transit','delivered','canceled') NOT NULL DEFAULT 'in separation',
   `deli_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -112,7 +141,7 @@ CREATE TABLE `favorite` (
   `fav_id` int(11) NOT NULL,
   `fav_user` int(11) NOT NULL,
   `fav_prod` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `favorite`
@@ -124,7 +153,6 @@ INSERT INTO `favorite` (`fav_id`, `fav_user`, `fav_prod`) VALUES
 (5, 4, 8),
 (11, 4, 13),
 (21, 4, 4),
-(25, 4, 5),
 (30, 4, 12);
 
 -- --------------------------------------------------------
@@ -139,7 +167,7 @@ CREATE TABLE `order` (
   `order_prod` int(11) NOT NULL,
   `order_quant` int(11) NOT NULL,
   `order_value` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -160,7 +188,7 @@ CREATE TABLE `products` (
   `prod_cat` int(11) NOT NULL,
   `prod_status` enum('online','offline','banned','deleted') DEFAULT 'online',
   `views` int(11) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `products`
@@ -189,7 +217,7 @@ CREATE TABLE `sale` (
   `sale_client` int(11) NOT NULL,
   `sale_value` double NOT NULL,
   `sale_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -208,7 +236,7 @@ CREATE TABLE `shop` (
   `shop_photo` varchar(255) NOT NULL,
   `shop_lastlogin` datetime NOT NULL,
   `shop_status` enum('online','offline','banned','deleted') NOT NULL DEFAULT 'online'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `shop`
@@ -244,7 +272,7 @@ CREATE TABLE `users` (
   `last_login` datetime DEFAULT NULL,
   `user_status` enum('online','offline','banned','deleted') DEFAULT 'online',
   `user_type` enum('user','admin') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `users`
@@ -276,6 +304,13 @@ ALTER TABLE `comments`
 -- Índices para tabela `contacts`
 --
 ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `receiver` (`receiver`);
+
+--
+-- Índices para tabela `contactshop`
+--
+ALTER TABLE `contactshop`
   ADD PRIMARY KEY (`id`),
   ADD KEY `address` (`address`);
 
@@ -349,7 +384,13 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT de tabela `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `contactshop`
+--
+ALTER TABLE `contactshop`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `delivery`
@@ -407,8 +448,13 @@ ALTER TABLE `comments`
 -- Limitadores para a tabela `contacts`
 --
 ALTER TABLE `contacts`
-  ADD CONSTRAINT `contacts_ibfk_1` FOREIGN KEY (`address`) REFERENCES `users` (`user_id`),
-  ADD CONSTRAINT `contacts_ibfk_2` FOREIGN KEY (`address`) REFERENCES `shop` (`shop_id`);
+  ADD CONSTRAINT `contacts_ibfk_1` FOREIGN KEY (`receiver`) REFERENCES `users` (`user_id`);
+
+--
+-- Limitadores para a tabela `contactshop`
+--
+ALTER TABLE `contactshop`
+  ADD CONSTRAINT `contactshop_ibfk_1` FOREIGN KEY (`address`) REFERENCES `shop` (`shop_id`);
 
 --
 -- Limitadores para a tabela `delivery`

@@ -1,12 +1,15 @@
-Acrescentar o favorito a tabela de favoritos, lincando o id e depois mostrar os itens favoritos
-
 <?php
 include_once '../../includes/config.php';
 
 session_start();
 ob_start();
 
+
+//ideias para depois - adicionar lojas favotitas também;
+
 $pag = $_SERVER['HTTP_REFERER'] ;
+//Acrescentar o favorito a tabela de favoritos, lincando o id e depois mostrar os itens favoritos
+
 
 // Se a pessoa não tiver logada mandar pra pagina de login e precisa voltar pra página em que estava antes assim que realizar o login
 if (!isset($_SESSION['user_name'])) {
@@ -22,41 +25,34 @@ if (!isset($_SESSION['user_name'])) {
 
 $fav = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
 
-//Se o produto já estiver no favoritado tem que excluir da tabela
-$busca= "SELECT * FROM favorite WHERE fav_user = $user_id ";
+//Se o produto já estiver favoritado exclui o item dos favoritos
 
+$busca= "SELECT * FROM favorite WHERE fav_prod = $fav AND fav_user = $user_id LIMIT 1";
 $resultado = $conn->prepare($busca);
 $resultado->execute(); 
 
-if(($resultado) AND ($resultado->rowCount()!= 0)){
-    while($resposta = $resultado->fetch(PDO::FETCH_ASSOC)){
-    extract($resposta);
 
-        if($fav == $fav_prod){
-        //não está fazendo o delete    
+if(($resultado) AND ($resultado->rowCount()!= 0)){          
         $delete = "DELETE FROM favorite WHERE fav_prod = $fav AND fav_user = $user_id LIMIT 1";
         $save = $conn->prepare($delete);
         $save->execute();
+        
         echo "<script>
-        alert('Produto retirado dos favoritos');     
+        alert('Produto retirado dos favoritos'); 
+        parent.location = '$pag'; 
         </script>";
-
-        }
-    }
-
+}else{ 
     $sql= "INSERT INTO favorite (fav_user,fav_prod)
     VALUES($user_id,$fav)";
 
     $salvar = $conn->prepare($sql);
     $salvar->execute();
+
+    echo "<script>
+    alert('Produto adicionado aos favoritos'); 
+    parent.location = '$pag'; 
+    </script>";
+
 }
-       
-
-        
-//agora precisa retornar pra página que estava
-header("Location:$pag");
-
-
-
 
 ?>

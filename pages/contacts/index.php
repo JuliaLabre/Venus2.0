@@ -3,6 +3,9 @@ require '../../includes/header.php';
 include_once '../../includes/config.php';
 
 $contacts = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+//Preciso de um jeito de identificar o tipo de usuario que vai receber qui precisa ser o admin
+
+
 
 // Se o formulário foi enviado:
 if (isset($_POST['send'])) :
@@ -12,7 +15,7 @@ if (isset($_POST['send'])) :
 
     if (!$vazio) {
      // Monta SQL para salvar contato no banco de dados:
-    $sql = "INSERT INTO contacts (name, email, subject, message)VALUES(:name,:email,:subject,:message)";
+    $sql = "INSERT INTO contacts (name, email, subject, message,receiver)VALUES(:name,:email,:subject,:message,6)";
 
   $salvar= $conn ->prepare($sql);
   $salvar -> bindParam(':name', $contacts['name'],PDO::PARAM_STR);
@@ -92,7 +95,7 @@ endif;
           
             <div class="form-row">
                   <div class="col-md-6 mb-3">
-                    <input class="btn btn-primary btn-lg btn-block-cad" type="submit" value='Cadastrar' name='send' >
+                    <input class="btn btn-primary btn-lg btn-block-cad" type="submit" value='enviar' name='send' >
                   </div>
         </form>
     </div>

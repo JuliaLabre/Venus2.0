@@ -70,13 +70,19 @@ ob_start();
           </div>
         </form>
         <!--Sacola de compras-->
-        <ul class="nav navbar-nav navbar-inline" id="iuserm">
-          <li class="nav-item">
-            <a class="nav-link" href="#" id="notifications"><i class="fa-solid fa-inbox" title="mensagens" alt="Mensagens"></i></a>
-          </li>
+        <ul class="nav navbar-nav navbar-inline nav-item" id="iuserm">
+          
           <li class="nav-item">
             <a class="nav-link" href="#" id="shopicon"><i class="fa-solid fa-bag-shopping" title="continue comprando" alt="Minha sacola"></i>
-              <span class="badge">10</span>
+            <!-- Só mostra o numero se tiver algum item adicionado -->
+            <?php 
+            if(isset ($_SESSION['cart'])){
+              $cart = $_SESSION['cart'];
+                            
+              echo "<span class='badge'>$cart</span>";
+            }
+              ?> 
+              
             </a>
           </li>
           
@@ -88,12 +94,12 @@ ob_start();
 
      ?>
             <!--Perfil do usuário logado e tiver foto-->
-            <li class="dropdown-user navbar-inline nav-profile">
+            <li class="nav-profile nav-item">
               <a href="#" data-toggle="dropdown" class="dropdown-toggle user-action">
               <?php
                 if (!empty($_SESSION['user_photo'])):
                   ?>
-              <img src="../../pages/photousers/<?php echo $_SESSION['user_photo']?>">
+              <img  src="../../pages/photousers/<?php echo $_SESSION['user_photo']?>">
               </a>
               <?php 
                 else:
@@ -104,11 +110,11 @@ ob_start();
                endif;
                ?>
               <ul class="dropdown-menu">
-                <li class="nav-profile">
+                <li class="nav-profile nav-item">
                   <?php
                 if (!empty($_SESSION['user_photo'])):
                   ?>                
-                <li class="nav-profile"><a href="../../pages/profile"><img src="../../pages/photousers/<?php echo $_SESSION['user_photo'] ?>">meu perfil</a></li>
+                <li class="nav-profile"><a href="../../pages/profile"><img src="../../pages/photousers/<?php echo $_SESSION['user_photo'] ?>"> meu perfil</a></li>
                 <?php 
                 else:
                   ?>
@@ -142,7 +148,7 @@ ob_start();
       ?>
 
         </ul>
-        <form class="form-inline my-2 my-lg-0" id="btnvender">
+        <form class="nav-item form-inline my-2 my-lg-0" id="btnvender">
           <a href="../../pages/frmshop"><button type="button" class="btn btn-dark">quero vender</button></a>
         </form>
       </nav>

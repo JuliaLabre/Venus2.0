@@ -3,12 +3,12 @@
 include_once '../../includes/header.php';
 include_once '../../includes/config.php';
 
-//fazer busca dos favoritos para mudar os icones
+
 
 $pagatual = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
 $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
 $pag = (!empty($pagatual)) ? $pagatual : 1;
-$icon = '<i class="fa-regular fa-heart"></i>';
+
 
 $sql = "SELECT * FROM shop WHERE shop_id = $id";
 $resultado = $conn->prepare($sql);
@@ -34,10 +34,87 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
     $resultado = $conn->prepare($busca);
     $resultado->execute(); 
 
+
+    $contacts = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+//precisa ser a loja o address 
+// Se o formulário foi enviado:
+if (isset($_POST['send'])) :
+    $vazio = false;
+    $contacts = array_map('trim', $contacts);
+    //var_dump($contacts);
+
+    if (!$vazio) {
+     // Monta SQL para salvar contato no banco de dados:
+    $sql = "INSERT INTO contactshop (name, email, subject, message,address)VALUES(:name,:email,:subject,:message,:address)";
+
+  $salvar= $conn ->prepare($sql);
+  $salvar -> bindParam(':name', $contacts['name'],PDO::PARAM_STR);
+  $salvar -> bindParam(':email', $contacts['email'],PDO::PARAM_STR);
+  $salvar -> bindParam(':subject', $contacts['subject'], PDO::PARAM_STR);
+  $salvar -> bindParam(':message', $contacts['message'], PDO::PARAM_STR);
+  $salvar -> bindParam(':address', $contacts['address'], PDO::PARAM_INT);
+  $salvar -> execute();
+
+
+  if ($salvar->rowCount()) {
+      
+      echo "<script>
+      alert('Seu contato foi enviado com sucesso. Obrigado...');
+      </script>";
+
+      unset($contacts);
+  } else {
+      echo "<script>
+      alert('Erro: Tente novamente');   
+      </script>";
+      
+  }
+
+}
+
+// if (isset($_POST['send'])) :
+endif;
+
 ?>
 <!-- Conteudo -->
+<div class="container">
+  <div class="col-md-6">
+<h2><img src="<?php echo $shop_photo ?>" style=width:150px;> <?php echo $shop_name?></h2>
+</div>
 
-<h2 class='text-center'><img src="<?php echo $shop_photo ?>" style=width:150px;> <?php echo $shop_name?></h2>
+<div class="col-md-6">
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+   Faça contato com <?php echo $shop_name?>
+  </button>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    
+  <form method="post" action="" >
+        <label for="validationDefault01">Nome</label>
+        <input name="name" type="text" class="form-control" id="validationDefault01" placeholder="Nome" required>
+ 
+        <label for="validationDefaultUsername">Email</label>
+        <input name="email" type="email" class="form-control" id="validationDefaultUsername" placeholder="Email"  aria-describedby="inputGroupPrepend2" required>
+        
+
+         <label for="validationDefault01">Assunto</label>
+        <input name="subject" type="text" class="form-control" id="validationDefault01" placeholder="Assunto" required >
+ 
+        <label for="validationDefault01">Mensagem</label>
+        <input name="message" type="text" class="form-control" id="validationDefault01" placeholder="Sua mensagem aqui..." required>  
+        
+        <input type="hidden" name="address" value="<?php echo $id?>">
+        <br>
+
+        <input class="btn btn-primary" type="submit" value='Enviar' name='send' >
+         
+</form>
+
+</div>
+</div>
+</div>
+</div>
+
 
 <div class="wrap">
 <div class="row">
@@ -67,31 +144,23 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
   if (isset($_SESSION['user_name'])) {
     $iduser = $_SESSION['user_id'];
 
-    $buscafav= "SELECT *
-      FROM favorite  WHERE 
-      fav_user = $iduser ";
-  
+    $buscafav= "SELECT * FROM favorite WHERE fav_prod = $prod_id AND fav_user = $iduser LIMIT 1";  
       $resulfav = $conn->prepare($buscafav);
-      $resulfav->execute();
+      $resulfav->execute();      
 
-      if (($resulfav) and ($resulfav->rowCount() != 0)) { 
-        while ($linha = $resulfav->fetch(PDO::FETCH_ASSOC)) {
-            extract($linha);
-            if($fav_prod == $prod_id){
-
-              $icon = '<i class="fa-solid fa-heart"></i>';    
-        }
-        }
-      }
-      ?>
-      <a <?php echo "href='../favorite?id=$prod_id'" ?>><?php echo $icon ?> </a>
-      <?php
-  }else{
-    ?>
-      <a <?php echo "href='../favorite?id=$prod_id'" ?>><?php echo $icon ?> </a>
-      <?php
-  }
-  ?>
+      if (($resulfav) and ($resulfav->rowCount() != 0)) {         
+          $icon = '<i class="fa-solid fa-heart"></i>';    
+       
+      }else{
+        $icon = '<i class="fa-regular fa-heart"></i>';
+      } 
+      
+    }else{
+        $icon = '<i class="fa-regular fa-heart"></i>';
+      }         
+  
+  ?> 
+    <a <?php echo "href='../favorite?id=$prod_id'"?>><?php echo $icon ?> </a>
                
         <input type="submit" class="btn btn-primary" name="carrinho" value="Comprar">
         </form>
@@ -105,6 +174,16 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
 }
 ?>
  </div>
+
+
+
+
+
+
+
+
+
+
  
  <?php
 //Contar os registros no banco
