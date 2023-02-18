@@ -14,20 +14,15 @@ $busca= "SELECT *
 
 ?>
 <!-- Conteudo -->
-<div class="wrap">
 <h2 class='text-center'>Favoritos de <?php echo $_SESSION['user_name'];?></h2>
+<div class="wrap">
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Imagem do produto</th>
-      <th scope="col">Nome</th>
-      <th scope="col">Valor</th>  
-      <th scope="col"></th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="container">
+<div class="col-md-4">
+ Conteudo legal pra colocar aqui
+</div>
+<div class="col-md-8">
+<ul class="list-unstyled">
 <?php
 
 if(($resultado) AND ($resultado->rowCount()!= 0)){
@@ -35,29 +30,35 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
 
   extract($resposta);
 
-?>  
-<td scope="row">
-  <img src="<?php echo $prod_photo ?>" width="150" height="150">
-</td>
-<td> <?php echo $prod_name ?> </td>
-<td>$<?php echo $prod_price ?></td>
-<td>
-<?php echo "<a href='../cart?id=$prod_id'>"; ?>
-<input type="submit" class="btn btn-success" name="cart" value="Adicionar ao carrinho">
-</td>
-<td>
-<?php echo "<a href='../favorite?id=$prod_id'>" ?>
-<input type="submit" class="btn btn-danger" name="delete" value="Remover dos favoritos">
-</td>
-</tr>    
+?>
+
+<li class="media">
+    <img class="mr-3" src="<?php echo $prod_photo ?>" alt="Imagem de <?php echo $prod_photo ?>" style=width:15rem;height:10rem;>
+    <div class="media-body">
+      <h5 class="mt-0 mb-1"> <?php echo $prod_name ?></h5>
+      $<?php echo $prod_price ?>
+      <div>
+      <?php echo $prod_desc ?>
+  </div>
+      <?php echo "<a href='../cart?id=$prod_id'>"; ?>
+      <input type="submit" class="btn btn-success" name="cart" value="Adicionar ao carrinho">
+  </a>
+      <?php echo "<a href='../favorite?id=$prod_id'>" ?>
+      <input type="submit" class="btn btn-danger" name="delete" value="Remover dos favoritos">
+  </a>
+    </div>
+  </li>
+
+  
 
   <?php
   }
 
 }
 ?>
-  </tbody>
- </table>
+</ul>
+ </div>
+ </div>
  </div>
 
 <?php

@@ -94,12 +94,12 @@ ob_start();
 
      ?>
             <!--Perfil do usuário logado e tiver foto-->
-            <li class="nav-profile nav-item">
-              <a href="#" data-toggle="dropdown" class="dropdown-toggle user-action">
+            <li class="nav-item">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle user-action ">
               <?php
                 if (!empty($_SESSION['user_photo'])):
                   ?>
-              <img  src="../../pages/photousers/<?php echo $_SESSION['user_photo']?>">
+              <img  src="../../pages/photousers/<?php echo $_SESSION['user_photo']?>"  class="mr-3 rounded-circle" style=width:75%;height:3rem;>
               </a>
               <?php 
                 else:

@@ -2,6 +2,12 @@
 require '../../includes/header.php';
 include_once '../../includes/config.php';
 
+if(!isset($_SESSION['user_name'])){
+  $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">
+  Erro: Necessário realizar login
+ </div>';
+  header("Location: ../login");
+}
 $user_id = $_SESSION['user_id'];
 // Precisa continuar o login para navegação das páginas
 ?>
@@ -34,14 +40,8 @@ if (!empty($_SESSION['user_photo'])) :
 </ul>
 </div>
 
-<?php
-if(!isset($_SESSION['user_name'])){
-  $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">
-  Erro: Necessário realizar login
- </div>';
-  header("Location: ../login");
-}
-?>
+Seus pedidos / Seus Favoritos / Suas mensagens ?? /
+
 
 <a <?php echo "href='../edituser?id=$user_id'"?>><button type="submit" class="btn">Editar Perfil</button></a>
 

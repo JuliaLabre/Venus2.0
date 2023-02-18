@@ -13,7 +13,7 @@ $resultado->execute();
 <div class="wrap">
 <h2 class='text-center'>Lojas na Venus</h2>
 
-<div class="row">
+<div class="card-deck text-center">
 
 <?php
 
@@ -24,9 +24,9 @@ extract($resposta);
 //não está aparecendo a foto
 ?>
 
-<div class="col-md-2 text-center">
+<div class="card bg-secondary w-25 p-3 col-md-2">
   <div class="card bg-light mb-2">
-    <img class="card-img-top" src="../../pages/photoshop/<?php echo $shop_photo ?>" alt="Logo da <?php echo $shop_name ?>">
+    <img class="card-img-top" style=width:100%;height:25rem; src="../../pages/photoshop/<?php echo $shop_photo ?>" alt="Logo da <?php echo $shop_name ?>">
     <div class="card-body">
         <h4 class="card-title"><strong><?php echo $shop_name ?></strong></h4>
         <p class="card-text"> <?php echo $shop_desc?>

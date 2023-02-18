@@ -32,8 +32,8 @@ $resulshop->execute();
 <!-- Conteudo -->
 
 <h2 class='text-center'><i class="fa-solid fa-wand-magic-sparkles"></i><?php echo $search?></h2>
-
-<div class="row">
+<div class="wrap">
+<div class="card-deck text-center">
 <?php
 
 if(($resulprod) AND ($resulprod->rowCount()!= 0)){
@@ -43,9 +43,9 @@ extract($resprod);
 
 ?>
 
-<div class="col-md-2 text-center">
-  <div class="card bg-light mb-2">
-    <img class="card-img-top" src="<?php echo $prod_photo ?>" alt="Imagem de capa do card">
+
+  <div class="card bg-light w-25 p-3 col-md-2">
+    <img class="card-img-top" src="<?php echo $prod_photo ?>" alt="Imagem de <?php echo $prod_name ?>" style=width:100%;height:25rem;>
     <div class="card-body">
     <h5 class="card-title"><?php echo $prod_name ?></h5>
     <p class="card-text"> <?php echo $prod_desc?> - R$<?php echo $prod_price ?>,00</p> 
@@ -82,7 +82,7 @@ extract($resprod);
         </form>
         </div>
       </div>
-  </div>           
+          
     
 
 <?php
@@ -97,9 +97,9 @@ extract($resshop);
 
 ?>
 
-<div class="col-md-2 text-center">
-  <div class="card bg-light mb-2">
-    <img class="card-img-top" src="../../pages/photoshop/<?php echo $shop_photo ?>" alt="Logo da <?php echo $shop_name ?>">
+<div class="card bg-light w-25 p-3 col-md-2">
+  <div class="card bg-secundary mb-2">
+    <img class="card-img-top" src="../../pages/photoshop/<?php echo $shop_photo ?>" alt="Logo da <?php echo $shop_name ?>" style=width:100%;height:25rem;>
     <div class="card-body">
         <h4 class="card-title"><strong><?php echo $shop_name ?></strong></h4>
         <p class="card-text"> <?php echo $shop_desc?>
@@ -114,7 +114,7 @@ extract($resshop);
 }
 ?>
 </div>
-
+</div>
 
 
 <?php

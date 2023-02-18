@@ -20,8 +20,8 @@
 
 }
 .about img {
-    width: 50%;
-    height: 350px;
+    max-width:30rem;
+    height:20rem;
     
 }
 .negrito {

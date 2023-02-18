@@ -9,6 +9,7 @@
     text-align:left;
    
 }
+
 .primeiro {
     font-size: 26px;
     text-align:left;
@@ -20,8 +21,8 @@
 
 }
 .about img {
-    width: 50%;
-    height: 350px;
+    max-width:40rem;
+    height:30rem;
     
 }
 .negrito {

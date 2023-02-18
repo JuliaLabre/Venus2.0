@@ -8,7 +8,7 @@ require '../../includes/header.php';
 <div class="about">
     <div class="row">
       <div class="col-md-12 text-center">
-        <img src="../../img/logo-principal.png"class="img-fluid">
+        <img src="../../img/logo-principal.png" class="img-fluid">
       </div>
     </div>
   </div>
