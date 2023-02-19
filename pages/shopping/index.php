@@ -53,7 +53,7 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
         <div class="card-body">
         <h5 class="card-title"><?php echo $prod_name ?></h5>
         <p class="card-text"> <?php echo $prod_desc?> - R$<?php echo $prod_price ?>,00</p> 
-        <form method="post" action="carrinho.php">
+        <form method="post" action="../cart">
         <h6>   
         <label>Quant</label>
         <input type="number" name="quantcompra" value="1" style=width:45px;>

@@ -78,10 +78,15 @@ ob_start();
             <a class="nav-link" href="#" id="notifications"><i class="fa-solid fa-inbox" title="mensagens" alt="Mensagens"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" id="shopicon"><i class="fa-solid fa-bag-shopping" title="continue comprando" alt="Minha sacola"></i>
-              <span class="badge">10</span>
-              <a href="formcarrinho.php">
-            <img src="../img/carrinho.png" style=width:50px;height:50px;></a>
+            <a class="nav-link" href="../pages/frmcart" id="shopicon"><i class="fa-solid fa-bag-shopping" title="continue comprando" alt="Minha sacola"></i>
+              <!-- Só mostra o numero se tiver algum item adicionado -->
+            <?php 
+            if(isset ($_SESSION['cart'])){
+              $cart = $_SESSION['cart'];
+                            
+              echo "<span class='badge'>$cart</span>";
+            }
+              ?> 
             </a>
           </li>
           
