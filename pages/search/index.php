@@ -2,7 +2,6 @@
 require '../../includes/header.php';
 include_once '../../includes/config.php';
 
-
 $postsearch = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 $search = $postsearch['search'];
 
@@ -10,7 +9,14 @@ $search = $postsearch['search'];
 //Colocar a pesquisa com o nome de categoria, nome de produto e nome de loja - tentar fazer separado as pesquisas e imprimir separado tbm
 //Colocar alguma coisa se não retornar produtos
 
+if(!isset ($search)){
 
+  echo "<script>
+  alert('Oooooooooooops!Tente pesquisar novamente ...');
+  parent.location = '/'
+
+  </script>";
+}
 $products= "SELECT *
 FROM products  WHERE 
 prod_name like '%$search%' AND
@@ -45,7 +51,7 @@ extract($resprod);
 
 
   <div class="card bg-light w-25 p-3 col-md-2">
-    <img class="card-img-top" src="<?php echo $prod_photo ?>" alt="Imagem de <?php echo $prod_name ?>" style=width:100%;height:25rem;>
+  <a <?php echo "href='../viewprod?id=$prod_id'"?>><img class="card-img-top" src="<?php echo $prod_photo ?>" alt="Imagem de <?php echo $prod_name ?>" style=width:100%;height:25rem;></a>
     <div class="card-body">
     <h5 class="card-title"><?php echo $prod_name ?></h5>
     <p class="card-text"> <?php echo $prod_desc?> - R$<?php echo $prod_price ?>,00</p> 
@@ -112,9 +118,17 @@ extract($resshop);
 }
 
 }
+
+if(isset($resulprod) AND ($resulshop)){
+  echo '<div class="alert alert-warning" role="alert">
+  <strong>Oooooooooooops!</strong> Não encontramos nada com esse nome...
+ </div>';
+}
 ?>
 </div>
 </div>
+
+
 
 
 <?php

@@ -2,7 +2,7 @@
 include_once '../../includes/header.php';
 include_once '../../includes/config.php';
 
-
+//pra ficar respondivo e bonito tem que entrar a class col-md-2 no card quando atinge uma determinada largura.
 
 $pagatual = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
 $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
@@ -28,11 +28,11 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
 
 ?>
 <!-- Conteudo -->
-
-<div class="wrap">
 <h2 class='text-center'><?php echo $cat_name?></h2>
-
-<div class="card-deck text-center">
+<div class="wrap">
+<div class="container-fluid">
+    <div class="col-md-12 "> 
+<div class="card-deck ">
 <?php
 
 if(($resultado) AND ($resultado->rowCount()!= 0)){
@@ -42,11 +42,11 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
 
 ?>
     
-      <div class="card bg-light w-25 p-3 col-md-2">
-        <img class="card-img-top" src="<?php echo $prod_photo ?>" alt="Imagem de <?php echo $prod_name ?>" style=width:100%;height:25rem;>
+      <div class="card bg-light text-center max-width:20rem;">
+        <a <?php echo "href='../viewprod?id=$prod_id'"?>><img class="card-img-top" src="<?php echo $prod_photo ?>" alt="Imagem de <?php echo $prod_name ?>" style=width:100%;height:25rem;max-width:20rem;></a>
         <div class="card-body">
         <h5 class="card-title"><?php echo $prod_name ?></h5>
-        <p class="card-text"> <?php echo $prod_desc?> - R$<?php echo $prod_price ?>,00</p> 
+        <p class="card-text">R$<?php echo $prod_price ?>,00</p> 
         <form method="post" action="carrinho.php">
         <h6>   
         <label>Quant</label>
@@ -90,6 +90,8 @@ echo '<div class="alert alert-warning" role="alert">
 }
 ?>
  </div>
+ </div>
+  </div>
   
 <!-- Footer -->
 <?php

@@ -1,4 +1,3 @@
-<!-- Cabeçalho -->
 <?php
 include_once '../../includes/header.php';
 include_once '../../includes/config.php';
@@ -129,7 +128,7 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
 ?>
 <!-- a classe col-md-2 funciona muito bem para telas grandes, mas em telas menores está uma porcaria -->
       <div class="card bg-light w-25 p-3 col-md-2">
-        <img class="card-img-top" src="<?php echo $prod_photo ?>" alt="Imagem de <?php echo $prod_name ?>" style=width:100%;height:25rem; >
+      <a <?php echo "href='../viewprod?id=$prod_id'"?>><img class="card-img-top" src="<?php echo $prod_photo ?>" alt="Imagem de <?php echo $prod_name ?>" style=width:100%;height:25rem; ></a>
         <div class="card-body">
         <h5 class="card-title"><?php echo $prod_name ?></h5>
         <p class="card-text"> <?php echo $prod_desc?> - R$<?php echo $prod_price ?>,00</p> 

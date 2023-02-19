@@ -11,8 +11,9 @@ $resultado->execute();
 ?>
 <!-- Colocar produtos mais comprados -->
 <h2 class='text-center'>Lojas na Venus</h2>
-  <div class="container">
-    <div class="col-md-10 ">
+<div class="wrap">
+  <div class="container-fluid">
+    <div class="col-md-10 "> 
     <div class="card-deck">
 
 <?php
@@ -24,11 +25,10 @@ extract($resposta);
 //não está aparecendo a foto
 ?>
   <div class="card bg-light text-center">
-    <img class="card-img-top" style=width:100%;height:25rem; src="../../pages/photoshop/<?php echo $shop_photo ?>" alt="Logo da <?php echo $shop_name ?>">
+  <a <?php echo "href='../../pages/shopping?id=$shop_id'"?>><img class="card-img-top" style=width:100%;height:25rem; src="../../pages/photoshop/<?php echo $shop_photo ?>" alt="Logo da <?php echo $shop_name ?>"></a>
     <div class="card-body">
         <h4 class="card-title"><strong><?php echo $shop_name ?></strong></h4>
-        <p class="card-text"> <?php echo $shop_desc?>
-        <a <?php echo "href='../../pages/shopping?id=$shop_id'"?>><button type="submit" class="btn">Conheça essa loja</button></a>    
+        <p class="card-text"> <?php echo $shop_desc?>           
     </div>
   </div>
 
@@ -67,7 +67,7 @@ if(($result)&&($result->rowCount()!=0)) {
 </ul>
   </div>
   </div>
-
+  </div>
 
 
 
