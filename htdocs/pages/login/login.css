@@ -1,0 +1,49 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/********
+* Reset *
+********/
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 16px;
+  outline: none;
+}
+
+html, body {
+  background: white;
+}
+
+a{
+  text-decoration: none;
+}
+.btn-block{
+  height: 30px;
+}
+
+/*Gradiente*/
+.gradient-custom-2 { 
+  /* fallback for old browsers */
+  background: white;
+  
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to left, #a01616, #bb1919, #d8363a, #e74444);
+  
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #a01616, #bb1919, #d8363a, #e74444);
+  }
+  
+  @media (min-width: 768px) {
+  .gradient-form {
+  height: 100vh !important;
+  }
+  }
+  @media (min-width: 769px) {
+  .gradient-custom-2 {
+  border-top-right-radius: .3rem;
+  border-bottom-right-radius: .3rem;
+  }
+  }
