@@ -78,7 +78,7 @@ ob_start();
             <a class="nav-link" href="#" id="notifications"><i class="fa-solid fa-inbox" title="mensagens" alt="Mensagens"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../pages/frmcart" id="shopicon"><i class="fa-solid fa-bag-shopping" title="continue comprando" alt="Minha sacola"></i>
+            <a class="nav-link" href="../../pages/frmcart" id="shopicon"><i class="fa-solid fa-bag-shopping" title="continue comprando" alt="Minha sacola"></i>
               <!-- Só mostra o numero se tiver algum item adicionado -->
             <?php 
             if(isset ($_SESSION['cart'])){

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 15-Fev-2023 às 15:26
+-- Tempo de geração: 17-Fev-2023 às 20:10
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.2.0
 
@@ -75,6 +75,52 @@ CREATE TABLE `comments` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` int(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `status` enum('sended','readed','responded','deleted') DEFAULT 'sended',
+  `receiver` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `date`, `name`, `email`, `subject`, `message`, `status`, `receiver`) VALUES
+(1, '2023-02-17 18:41:00', 'Teste', 'teste@teste.com', 'Não aguento mais', 'Não estou disposto a tanto erro', 'sended', 6);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `contactshop`
+--
+
+CREATE TABLE `contactshop` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `message` varchar(255) NOT NULL,
+  `address` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `contactshop`
+--
+
+INSERT INTO `contactshop` (`id`, `name`, `email`, `subject`, `message`, `address`) VALUES
+(1, 'Teste', 'teste@teste.com', 'teste', 'Mais um teste', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `delivery`
 --
 
@@ -96,6 +142,18 @@ CREATE TABLE `favorite` (
   `fav_user` int(11) NOT NULL,
   `fav_prod` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `favorite`
+--
+
+INSERT INTO `favorite` (`fav_id`, `fav_user`, `fav_prod`) VALUES
+(2, 4, 11),
+(4, 4, 9),
+(5, 4, 8),
+(11, 4, 13),
+(21, 4, 4),
+(30, 4, 12);
 
 -- --------------------------------------------------------
 
@@ -221,7 +279,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_date`, `user_name`, `user_tel`, `user_gen`, `user_birth`, `user_CPF`, `user_email`, `user_password`, `user_CEPadress`, `user_comp`, `user_num`, `user_CEPbilling`, `user_photo`, `last_login`, `user_status`, `user_type`) VALUES
-(4, '2023-02-09 17:18:06', 'Josefina Silva', '', 'F', '1995-02-17', '12345678910', 'jose@fina.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '23059020', 'Fundos', 55, '23059020', '../photousers/63e54472daf0b.avif', NULL, 'online', 'user'),
+(4, '2023-02-09 17:18:06', ' Josefina Silva', ' 2197577012', 'F', '1995-02-17', '12345678910', 'jose@fina.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '23059020', '0', 55, '23059020', '../photousers/63e54472daf0b.avif', NULL, 'online', 'user'),
 (5, '2023-02-09 17:18:06', 'Cicrano Souza', '', 'M', '1995-06-25', '12345665412', 'ci@crano.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '23059020', 'Casa 1', 55, '23059020', NULL, NULL, 'online', 'user'),
 (6, '2023-02-14 17:32:03', 'Admin', '', 'F', '1995-02-17', '111111111111', 'admin@admin.com', '$2y$10$.C1e.8NZxDbJxixH9UvMpe.pQncwmrxYBuFzERu/Wf0Ees.yzres.', '11111111', '11', 0, '11111111', NULL, NULL, 'online', 'admin');
 
@@ -241,6 +299,20 @@ ALTER TABLE `category`
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`com_id`),
   ADD KEY `comments_ibfk_1` (`com_deli`);
+
+--
+-- Índices para tabela `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `receiver` (`receiver`);
+
+--
+-- Índices para tabela `contactshop`
+--
+ALTER TABLE `contactshop`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `address` (`address`);
 
 --
 -- Índices para tabela `delivery`
@@ -309,6 +381,18 @@ ALTER TABLE `comments`
   MODIFY `com_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de tabela `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `contactshop`
+--
+ALTER TABLE `contactshop`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de tabela `delivery`
 --
 ALTER TABLE `delivery`
@@ -318,7 +402,7 @@ ALTER TABLE `delivery`
 -- AUTO_INCREMENT de tabela `favorite`
 --
 ALTER TABLE `favorite`
-  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de tabela `order`
@@ -359,6 +443,18 @@ ALTER TABLE `users`
 --
 ALTER TABLE `comments`
   ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`com_deli`) REFERENCES `delivery` (`deli_id`);
+
+--
+-- Limitadores para a tabela `contacts`
+--
+ALTER TABLE `contacts`
+  ADD CONSTRAINT `contacts_ibfk_1` FOREIGN KEY (`receiver`) REFERENCES `users` (`user_id`);
+
+--
+-- Limitadores para a tabela `contactshop`
+--
+ALTER TABLE `contactshop`
+  ADD CONSTRAINT `contactshop_ibfk_1` FOREIGN KEY (`address`) REFERENCES `shop` (`shop_id`);
 
 --
 -- Limitadores para a tabela `delivery`

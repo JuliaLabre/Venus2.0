@@ -53,13 +53,13 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
         <div class="card-body">
         <h5 class="card-title"><?php echo $prod_name ?></h5>
         <p class="card-text"> <?php echo $prod_desc?> - R$<?php echo $prod_price ?>,00</p> 
-        <form method="post" action="../cart">
+        <form method="post" action="../cart/index.php">
         <h6>   
         <label>Quant</label>
-        <input type="number" name="quantcompra" value="1" style=width:45px;>
+        <input type="number" name="quant" value="1" style=width:45px;>
         </h6> 
-        <input type="hidden" value="<?php echo $prod_id ?>" name="codigoproduto">            
-        <input type="submit" class="btn btn-primary" name="carrinho" value="Comprar">
+        <input type="hidden" value="<?php echo $prod_id ?>" name="prod_id">            
+        <input type="submit" class="btn btn-primary" name="cart" value="Comprar">
         </form>
         </div>
       </div>

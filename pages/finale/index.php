@@ -9,7 +9,7 @@
 
         $prod_id = $_POST["excluir"];
 
-        $sqlexcluir = "DELETE from cart where prod_id = $prod_id";
+        $sqlexcluir = "DELETE from cart where id_prod = $prod_id";
         $resulexcluir=$conn->prepare($sqlexcluir);
         $resulexcluir->execute();
         $_SESSION["cart"]-=1;
@@ -23,7 +23,7 @@
         }
         else{
             //acessar pagamento;
-            $date = date('y-m-d');
+            $data = date('y-m-d');
             $value = $_SESSION['totalbuy'];
             //echo $value;
             $user_id = $_SESSION['user_id'];
@@ -31,16 +31,17 @@
 
             
 
-            $sqlsale = "INSERT into sale(sale_date,sale_value,sale_client)values(:sale_date,:sale_value,:sale_client)";
+            $sqlsale = "INSERT into sale(sale_id,sale_client,sale_value,sale_date)values(:sale_id,:sale_client,:sale_value, :sale_date)";
             $salvarsale= $conn->prepare($sqlsale);
-            $salvarsale->bindParam(':sale_date', $sale_date, PDO::PARAM_STR);
-            $salvarsale->bindParam(':sale_value', $sale_value, PDO::PARAM_STR);
+            $salvarsale->bindParam(':sale_id', $sale_id, PDO::PARAM_STR);
             $salvarsale->bindParam(':sale_client', $sale_client, PDO::PARAM_STR);
+            $salvarsale->bindParam(':sale_value', $sale_value, PDO::PARAM_STR);
+            $salvarsale->bindParam(':sale_date', $sale_date, PDO::PARAM_STR);
             $salvarsale->execute();
 
             //busca o codigo da ultima venda pra inserir com o select
             $sale = "Select LAST_INSERT_ID()";
-            $resulvenda=$conn->prepare($sale);
+            $resulsale=$conn->prepare($sale);
             $resulsale->execute();
 
             $linhasale = $resulsale->fetch(PDO::FETCH_ASSOC);
@@ -53,16 +54,17 @@
             $busca ="select * from cart";
             $resulbusca=$conn->prepare($busca);
             $resulbusca->execute();
+            
 
             if(($resulbusca) && ($resulbusca->rowCount()!=0)){
                 while ($linha = $resulbusca->fetch(PDO::FETCH_ASSOC)){
                     extract($linha);
 
-                    $sqlorder = "insert into item(order_prod,order_sale,order_quant,order_value)
-                    values(:order_prod,:order_sale,:order_quant,:order_value)";
-                    $salvarorder= $conn->prepare($sqlitem);
-                    $salvarorder->bindParam(':order_prod', $order_prod, PDO::PARAM_INT);
+                    $sqlorder = "insert into order(order_id,order_sale,order_prod,order_quant, order_value)values(:order_id,:order_sale,:order_prod,:order_quant,:order_value)";
+                    $salvarorder= $conn->prepare($sqlorder);
+                    $salvarorder->bindParam(':order_id', $order_id, PDO::PARAM_INT);
                     $salvarorder->bindParam(':order_sale', $order_sale, PDO::PARAM_INT);
+                    $salvarorder->bindParam(':order_prod', $order_prod, PDO::PARAM_INT);
                     $salvarorder->bindParam(':order_quant', $order_quant, PDO::PARAM_INT);
                     $salvarorder->bindParam(':order_value', $order_value, PDO::PARAM_STR);
                     $salvarorder->execute();
