@@ -60,7 +60,34 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
                
         <input type="submit" class="btn btn-primary" name="carrinho" value="Adicionar ao carrinho">
         </form>
-        
+
+      <div class="list-group">
+<?php
+        $SQL = "SELECT *, DATE_FORMAT(com_date, '%d/%m/%Y') AS datebr FROM comments WHERE produto = $prod_id";
+        $comments = $conn->prepare($SQL);
+        $comments->execute();
+
+        if(($comments) and ($comments->rowCount()!= 0)){
+          while($resp = $comments->fetch(PDO::FETCH_ASSOC)){
+          extract($resp);
+
+?>
+
+O que dizem desse produto :
+
+    <div class="d-flex w-100 justify-content-between">
+          <small><?php echo $datebr ?></small>
+    </div>
+    <p class="mb-1"><?php echo $comment ?></p>
+    <small><?php echo $com_name ?></small>
+
+
+
+<?php
+        }
+      }
+?>   
+</div>
     </div>
 </div>
 

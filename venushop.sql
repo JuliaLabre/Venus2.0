@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 17-Fev-2023 às 20:10
+-- Tempo de geração: 20-Fev-2023 às 20:05
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.2.0
 
@@ -33,7 +33,8 @@ CREATE TABLE `cart` (
   `id_cart` int(11) NOT NULL,
   `id_prod` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `quant` int(11) NOT NULL
+  `quant` int(11) NOT NULL,
+  `price` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -67,10 +68,19 @@ INSERT INTO `category` (`cat_name`, `cat_id`) VALUES
 CREATE TABLE `comments` (
   `com_id` int(11) NOT NULL,
   `com_date` date NOT NULL,
-  `com_deli` int(11) NOT NULL,
+  `produto` int(11) NOT NULL,
+  `com_name` varchar(100) NOT NULL,
   `comment` text NOT NULL,
   `com_status` enum('online','offline','banned','deleted') NOT NULL DEFAULT 'online'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `comments`
+--
+
+INSERT INTO `comments` (`com_id`, `com_date`, `produto`, `com_name`, `comment`, `com_status`) VALUES
+(3, '2023-02-20', 9, 'Cicrano Souza', 'Linda bolsa, qualidade impecavél.', 'online'),
+(4, '2023-02-20', 13, 'Cicrano Souza', 'Mesa linda demais!', 'online');
 
 -- --------------------------------------------------------
 
@@ -131,6 +141,13 @@ CREATE TABLE `delivery` (
   `deli_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Extraindo dados da tabela `delivery`
+--
+
+INSERT INTO `delivery` (`deli_id`, `deli_sale`, `deli_status`, `deli_date`) VALUES
+(1, 3, 'in separation', '0000-00-00');
+
 -- --------------------------------------------------------
 
 --
@@ -158,20 +175,6 @@ INSERT INTO `favorite` (`fav_id`, `fav_user`, `fav_prod`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `order`
---
-
-CREATE TABLE `order` (
-  `order_id` int(11) NOT NULL,
-  `order_sale` int(11) NOT NULL,
-  `order_prod` int(11) NOT NULL,
-  `order_quant` int(11) NOT NULL,
-  `order_value` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `products`
 --
 
@@ -195,16 +198,40 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`prod_id`, `shop`, `prod_date`, `prod_name`, `prod_photo`, `prod_size`, `prod_price`, `prod_stock`, `prod_desc`, `prod_cat`, `prod_status`, `views`) VALUES
-(4, 1, '2023-02-10 18:55:55', 'Anjinho em croche', '../photos/63e6933b41cb8.jpg', 'P', 50, 2, 'Lindo anjinho para enfeitar, bricar e funciona também como naninha', 5, 'online', 0),
+(4, 1, '2023-02-10 18:55:55', 'Anjinho em croche', '../photos/63e6933b41cb8.jpg', 'P', 50, 1, 'Lindo anjinho para enfeitar, bricar e funciona também como naninha', 5, 'online', 0),
 (5, 1, '2023-02-10 18:57:16', 'Bolsa Marrom', '../photos/63e6938c73dea.jpg', 'M', 150, 2, 'Linda Bolsa colorida, ideal para qualquer passeio.', 5, 'online', 0),
 (6, 3, '2023-02-10 19:01:26', 'Picolés tropicais', '../photos/63e69486bbad5.avif', '', 5, 50, 'Pricolés tropicais maravilhosos', 1, 'deleted', 0),
-(7, 3, '2023-02-10 19:02:02', 'Tapete Branco', '../photos/63ecdb4641e3c.avif', 'G', 150, 5, 'Lindo e facil de limpar', 4, 'online', 0),
+(7, 3, '2023-02-10 19:02:02', 'Tapete Branco', '../photos/63ecdb4641e3c.avif', 'G', 150, 4, 'Lindo e facil de limpar', 4, 'online', 0),
 (8, 2, '2023-02-10 19:05:58', 'Ecobag', '../photos/63e695962bbe7.avif', '', 15, 10, 'Ultimas unidades em promoção', 1, 'online', 0),
-(9, 2, '2023-02-10 19:06:46', 'Ecobag Personalizada', '../photos/63e695c6ed9b1.avif', '', 25, 25, 'Linda Ecobag, fazemos também personalizada', 1, 'online', 0),
+(9, 2, '2023-02-10 19:06:46', 'Ecobag Personalizada', '../photos/63e695c6ed9b1.avif', '', 25, 23, 'Linda Ecobag, fazemos também personalizada', 1, 'online', 0),
 (10, 4, '2023-02-10 19:08:01', 'Kit Brinquedos', '../photos/63ecdc359e2fe.avif', 'G', 55, 10, '2 bolinhas e 3 ossos', 2, 'online', 0),
 (11, 4, '2023-02-10 19:08:38', 'Case para saco de recolher', '../photos/63ecdc446fb25.avif', 'P', 49, 5, 'Case para levar as suas sacolinhas de forma deslumbrante', 2, 'online', 0),
 (12, 1, '2023-02-15 12:28:33', 'Cama em Croche', '../photos/63eccff146deb.avif', 'G', 100, 2, 'Aconchegante, lindo e sustentavel.', 2, 'online', 0),
-(13, 3, '2023-02-15 13:18:03', 'Mesa de Madeira', '../photos/63ecdb8bced93.avif', '', 99, 6, 'Linda Mesinha de madeira', 4, 'online', 0);
+(13, 3, '2023-02-15 13:18:03', 'Mesa de Madeira', '../photos/63ecdb8bced93.avif', '', 99, 5, 'Linda Mesinha de madeira', 4, 'online', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `request`
+--
+
+CREATE TABLE `request` (
+  `req_id` int(11) NOT NULL,
+  `req_prod` int(11) NOT NULL,
+  `req_sale` int(11) NOT NULL,
+  `req_quant` int(11) NOT NULL,
+  `req_value` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `request`
+--
+
+INSERT INTO `request` (`req_id`, `req_prod`, `req_sale`, `req_quant`, `req_value`) VALUES
+(1, 9, 1, 2, 25),
+(2, 13, 2, 1, 99),
+(3, 7, 2, 1, 150),
+(4, 4, 3, 1, 50);
 
 -- --------------------------------------------------------
 
@@ -218,6 +245,15 @@ CREATE TABLE `sale` (
   `sale_value` double NOT NULL,
   `sale_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `sale`
+--
+
+INSERT INTO `sale` (`sale_id`, `sale_client`, `sale_value`, `sale_date`) VALUES
+(1, 5, 50, '2023-02-20'),
+(2, 5, 249, '2023-02-20'),
+(3, 5, 50, '2023-02-20');
 
 -- --------------------------------------------------------
 
@@ -298,7 +334,7 @@ ALTER TABLE `category`
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`com_id`),
-  ADD KEY `comments_ibfk_1` (`com_deli`);
+  ADD KEY `comments_ibfk_1` (`produto`);
 
 --
 -- Índices para tabela `contacts`
@@ -330,20 +366,18 @@ ALTER TABLE `favorite`
   ADD KEY `fav_user` (`fav_user`);
 
 --
--- Índices para tabela `order`
---
-ALTER TABLE `order`
-  ADD PRIMARY KEY (`order_id`),
-  ADD KEY `order_sale` (`order_sale`),
-  ADD KEY `order_prod` (`order_prod`);
-
---
 -- Índices para tabela `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`prod_id`),
   ADD KEY `prod_cat` (`prod_cat`),
   ADD KEY `shop` (`shop`);
+
+--
+-- Índices para tabela `request`
+--
+ALTER TABLE `request`
+  ADD PRIMARY KEY (`req_id`);
 
 --
 -- Índices para tabela `sale`
@@ -378,7 +412,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT de tabela `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `com_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `com_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `contacts`
@@ -396,7 +430,7 @@ ALTER TABLE `contactshop`
 -- AUTO_INCREMENT de tabela `delivery`
 --
 ALTER TABLE `delivery`
-  MODIFY `deli_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `deli_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `favorite`
@@ -405,22 +439,22 @@ ALTER TABLE `favorite`
   MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT de tabela `order`
---
-ALTER TABLE `order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de tabela `products`
 --
 ALTER TABLE `products`
   MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
+-- AUTO_INCREMENT de tabela `request`
+--
+ALTER TABLE `request`
+  MODIFY `req_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT de tabela `sale`
 --
 ALTER TABLE `sale`
-  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `shop`
@@ -442,7 +476,7 @@ ALTER TABLE `users`
 -- Limitadores para a tabela `comments`
 --
 ALTER TABLE `comments`
-  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`com_deli`) REFERENCES `delivery` (`deli_id`);
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`produto`) REFERENCES `products` (`prod_id`);
 
 --
 -- Limitadores para a tabela `contacts`
@@ -468,13 +502,6 @@ ALTER TABLE `delivery`
 ALTER TABLE `favorite`
   ADD CONSTRAINT `favorite_ibfk_1` FOREIGN KEY (`fav_prod`) REFERENCES `products` (`prod_id`),
   ADD CONSTRAINT `favorite_ibfk_2` FOREIGN KEY (`fav_user`) REFERENCES `users` (`user_id`);
-
---
--- Limitadores para a tabela `order`
---
-ALTER TABLE `order`
-  ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`order_sale`) REFERENCES `sale` (`sale_id`),
-  ADD CONSTRAINT `order_ibfk_2` FOREIGN KEY (`order_prod`) REFERENCES `products` (`prod_id`);
 
 --
 -- Limitadores para a tabela `products`

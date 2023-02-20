@@ -73,11 +73,11 @@ ob_start();
         <ul class="nav navbar-nav navbar-inline nav-item" id="iuserm">
           
           <li class="nav-item">
-            <a class="nav-link" href="#" id="shopicon"><i class="fa-solid fa-bag-shopping" title="continue comprando" alt="Minha sacola"></i>
+            <a class="nav-link" href="../../pages/frmcart" id="shopicon"><i class="fa-solid fa-bag-shopping" title="continue comprando" alt="Minha sacola"></i>
             <!-- Só mostra o numero se tiver algum item adicionado -->
             <?php 
-            if(isset ($_SESSION['cart'])){
-              $cart = $_SESSION['cart'];
+            if(isset ($_SESSION['qntcart'])){
+              $cart = $_SESSION['qntcart'];
                             
               echo "<span class='badge'>$cart</span>";
             }
@@ -125,7 +125,7 @@ ob_start();
                ?>
                 <li><a href="#"><i class="fa-solid fa-bag-shopping"></i> continue comprando</a></li>
                 <li><a href="../../pages/frmfavorite"><i class="fa-solid fa-heart"></i> favoritos</a></li>
-                <li><a href="#"><i class="fa-solid fa-cart-shopping"></i> minhas compras</a></li>
+                <li><a href="../../pages/sale"><i class="fa-solid fa-cart-shopping"></i> minhas compras</a></li>
                 <li class="divider"></li>
                 <li><a href="#"><i class="fa-solid fa-circle-question"></i> ajuda</a></li>
                 <li><a href="#"><i class="fa-solid fa-gear"></i> configurações</a></li>

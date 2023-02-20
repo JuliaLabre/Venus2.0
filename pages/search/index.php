@@ -51,16 +51,16 @@ extract($resprod);
 
 
   <div class="card bg-light w-25 p-3 col-md-2">
-  <a <?php echo "href='../viewprod?id=$prod_id'"?>><img class="card-img-top" src="<?php echo $prod_photo ?>" alt="Imagem de <?php echo $prod_name ?>" style=width:100%;height:25rem;></a>
+  <a target="_blank" <?php echo "href='../viewprod?id=$prod_id'"?>><img class="card-img-top" src="<?php echo $prod_photo ?>" alt="Imagem de <?php echo $prod_name ?>" style=width:100%;height:25rem;></a>
     <div class="card-body">
     <h5 class="card-title"><?php echo $prod_name ?></h5>
     <p class="card-text"> <?php echo $prod_desc?> - R$<?php echo $prod_price ?>,00</p> 
-    <form method="post" action="carrinho.php">
+    <form method="post" action="../../pages/cart/index.php">
     <h6>   
     <label>Quant</label>
-    <input type="number" name="quantcompra" value="1" style=width:45px;>
+    <input type="number" name="quant" value="1" style=width:45px;>
     </h6> 
-    <input type="hidden" value="<?php echo $prod_id ?>" name="codigoproduto">
+    <input type="hidden" value="<?php echo $prod_id ?>" name="prod_id">
     
     <?php
   // Se o usuario tiver logado e tiver esse produto como favorito:
@@ -84,7 +84,7 @@ extract($resprod);
   ?> 
     <a <?php echo "href='../favorite?id=$prod_id'"?>><?php echo $icon ?> </a>
                
-        <input type="submit" class="btn btn-primary" name="carrinho" value="Comprar">
+        <input type="submit" class="btn btn-primary" name="cart" value="Comprar">
         </form>
         </div>
       </div>

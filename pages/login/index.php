@@ -37,7 +37,11 @@ $resultado->execute();
               $pag = $_SESSION['pagfav'];
             header("Location: $pag ");
             
-            }else{  
+            } 
+            if($_SESSION["cart"]==true){
+              header("location:../frmcart");
+            }
+              else{  
             header("location:../profile");
             }
         }else{
