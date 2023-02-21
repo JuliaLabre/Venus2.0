@@ -2,6 +2,16 @@
 session_start();
 ob_start();
 ?>
+
+<?php
+if(count($_COOKIE) > 0) {
+    echo "Cookies estão ativos.";
+} else {
+    echo "Cookies não estão ativos.";
+}
+      
+    ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -154,3 +164,5 @@ ob_start();
       </nav>
 
     </header>
+
+    

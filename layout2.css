@@ -260,3 +260,62 @@ height: 45px;
     color: white;
   }
 }
+
+/*********
+* COOKIES *
+*********/
+
+#acCookies {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.cookieBody {
+  background-color: rgba(0, 0, 0, .5);
+  padding: 1rem;
+}
+
+.cookieBox {
+  background-color: rgb(255, 224, 255);
+  padding: .6rem;
+  border-radius: .5rem;
+  max-width: 988px;
+  margin: auto;
+}
+.cookieImg {
+  
+  margin: auto;
+  display: block;
+}
+
+.cookieBox button {
+  display: block;
+  margin: auto;
+  margin-top: .5rem;
+  background: linear-gradient(rgb(224, 15, 2), rgb(224, 43, 4));   
+  color: white;
+  border: none;
+  box-shadow: 5px 5px 10px 0px rgba(138, 138, 138, 1);
+  cursor: pointer;
+  padding: .25rem .5rem;
+  border-radius: .3rem;
+}
+
+.cookieBox button:hover {
+  background: linear-gradient(rgb(250, 159, 117), rgb(245, 98, 75));   
+   
+}
+
+@media (min-width: 575px) {
+  .cookieBox {
+    display: flex;
+    align-items: center;
+  }
+
+  .cookieBox button {
+    margin: 0;
+    margin-left: 1rem;
+  }
+}
