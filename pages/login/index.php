@@ -19,36 +19,43 @@ $resultado= $conn->prepare($buscalogin);
 $resultado->bindParam(':user', $dadoslogin['user'],PDO::PARAM_STR);
 $resultado->execute();
 
-if(($resultado) AND ($resultado->rowCount()!= 0)){
+    if(($resultado) AND ($resultado->rowCount()!= 0)){
     $resposta = $resultado->fetch(PDO::FETCH_ASSOC);
     //var_dump($resposta);
 
-// salvando dados na variavel
+    // salvando dados na variavel
 
-    if(password_verify($dadoslogin['pass'],$resposta['user_password'])){
-      $_SESSION['user_name'] = $resposta['user_name'];
-      $_SESSION['user_email'] = $resposta['user_email'];
-      $_SESSION['user_photo'] = $resposta['user_photo'];
-      $_SESSION['user_CEPadress'] = $resposta['user_CEPadress'];
-      $_SESSION['user_id'] = $resposta['user_id'];
-      $_SESSION['datebr'] = $resposta['datebr'];
-    
-      //echo  $_SESSION['user_email'];
-      
-     
-       header("location:../profile");
-     
-    }else{
-      $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">
+        if(password_verify($dadoslogin['pass'],$resposta['user_password'])){
+        $_SESSION['user_name'] = $resposta['user_name'];
+        $_SESSION['user_email'] = $resposta['user_email'];
+        $_SESSION['user_photo'] = $resposta['user_photo'];
+        $_SESSION['user_CEPadress'] = $resposta['user_CEPadress'];
+        $_SESSION['user_id'] = $resposta['user_id'];
+        $_SESSION['datebr'] = $resposta['datebr'];   
+        
+            if($_SESSION["favorite"]==true){
+              $pag = $_SESSION['pagfav'];
+            header("Location: $pag ");
+            
+            } 
+            if($_SESSION["cart"]==true){
+              header("location:../frmcart");
+            }
+              else{  
+            header("location:../profile");
+            }
+        }else{
+        $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">
                           Error: Usuário ou senha inválidos!
                          </div>';
-    }
-}   else{
-  $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">
+        }
+    }   else{
+        $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">
                         Error: Usuário ou senha inválidos!
                       </div>';
+    }
 }
-}
+
 if(isset($_SESSION['msg'])){
   echo $_SESSION['msg'];
   unset($_SESSION['msg']);
@@ -111,7 +118,7 @@ if(isset($_SESSION['msg'])){
   
                     <div class="d-flex align-items-center justify-content-center pb-4">
                       <p class="mb-0 me-2">Ainda não possui conta?</p>
-                      <a href="../frmuser"><button type="button" class="btn btn-dark">Registre-se</button></a>
+                      <a href="frmuser"><button type="button" class="btn btn-dark">Registre-se</button></a>
                     </div>
   
                   </form>

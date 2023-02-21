@@ -6,7 +6,7 @@
       <div class="row text-center footersup">
         <div class="col-md-2">
           <p>
-            <a href="#" title="Venus Shop"><img src="../../img/variacao.png" width="190px" alt="Venus Shop - O sistema delas"></a>
+            <a href="/" title="Venus Shop"><img src="../../img/variacao.png" width="190px" alt="Venus Shop - O sistema delas"></a>
           </p>
           <p>
             <a href="#" title="Facebook Venus Shop"><i class="fa-brands fa-facebook-f"></i></a>
@@ -24,9 +24,9 @@
         </div>
         <div class="col-md-3">
           <h4 id="titlef">Ajuda</h4>
-          <p><a href="#">Dúvidas frequentes</a></p>
+          <p><a href="../../pages/faq">Dúvidas frequentes</a></p>
           <p><a href="#">Fale com a gente</a></p>
-          <p><a href="../../aboutshop">Como vender</a></p>
+          <p><a href="../../pages/aboutshop">Como vender</a></p>
           
         </div>
         <div class="col-md-4">

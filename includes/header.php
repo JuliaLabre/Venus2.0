@@ -2,8 +2,6 @@
 session_start();
 ob_start();
 ?>
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -19,7 +17,6 @@ ob_start();
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
     <link rel="stylesheet" href="../../layout2.css">
-     
   </head>
 
   <body>
@@ -48,45 +45,44 @@ ob_start();
             <li class="nav-item dropdown active">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>categorias</b></a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">					
-                <a class="dropdown-item" href="#">moças</a>
-                <a class="dropdown-item" href="#">pets</a>
-                <a class="dropdown-item" href="#">beleza</a>
-                <a class="dropdown-item" href="#">deco&casa</a>
-                <a class="dropdown-item" href="#">escritório</a>
+                <a class="dropdown-item" href="../../pages/category?id=1">moças</a>
+                <a class="dropdown-item" href="../../pages/category?id=2">pets</a>
+                <a class="dropdown-item" href="../../pages/category?id=3">beleza</a>
+                <a class="dropdown-item" href="../../pages/category?id=4">deco&casa</a>
+                <a class="dropdown-item" href="../../pages/category?id=5">artesanato</a>
               </div>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#"><b>lojas</b></a>
+              <a class="nav-link" href="../../pages/navshops"><b>lojas</b></a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#"><b>contato</b></a>
+              <a class="nav-link" href="../../pages/contacts"><b>contato</b></a>
             </li>
           </ul>
         </div>
         <!--Barra de pesquisa-->
-        <form id="search-box">
+        <form id="search-box" method="post" action="../../pages/search/index.php">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="pesquise em venus" name="search">
+            <input type="text" class="form-control" placeholder="pesquise em venus" name="search" required >
             <div class="input-group-btn">
               <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search" title="pesquisar"></i></button>
             </div>
           </div>
         </form>
         <!--Sacola de compras-->
-        <ul class="nav navbar-nav navbar-inline" id="iuserm">
-          <li class="nav-item">
-            <a class="nav-link" href="#" id="notifications"><i class="fa-solid fa-inbox" title="mensagens" alt="Mensagens"></i></a>
-          </li>
+        <ul class="nav navbar-nav navbar-inline nav-item" id="iuserm">
+          
           <li class="nav-item">
             <a class="nav-link" href="../../pages/frmcart" id="shopicon"><i class="fa-solid fa-bag-shopping" title="continue comprando" alt="Minha sacola"></i>
-              <!-- Só mostra o numero se tiver algum item adicionado -->
+            <!-- Só mostra o numero se tiver algum item adicionado -->
             <?php 
-            if(isset ($_SESSION['cart'])){
-              $cart = $_SESSION['cart'];
+            if(isset ($_SESSION['qntcart'])){
+              $cart = $_SESSION['qntcart'];
                             
               echo "<span class='badge'>$cart</span>";
             }
               ?> 
+              
             </a>
           </li>
           
@@ -98,12 +94,12 @@ ob_start();
 
      ?>
             <!--Perfil do usuário logado e tiver foto-->
-            <li class="dropdown-user navbar-inline nav-profile">
-              <a href="#" data-toggle="dropdown" class="dropdown-toggle user-action">
+            <li class="nav-item">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle user-action ">
               <?php
                 if (!empty($_SESSION['user_photo'])):
                   ?>
-              <img src="../../pages/photousers/<?php echo $_SESSION['user_photo']?>">
+              <img src="../../pages/photousers/<?php echo $_SESSION['user_photo']?>"  class="mr-3 rounded-circle" style=width:75%;height:3rem;>
               </a>
               <?php 
                 else:
@@ -114,11 +110,11 @@ ob_start();
                endif;
                ?>
               <ul class="dropdown-menu">
-                <li class="nav-profile">
+                <li class="nav-profile nav-item">
                   <?php
                 if (!empty($_SESSION['user_photo'])):
                   ?>                
-                <li class="nav-profile"><a href="../../pages/profile"><img src="../../pages/photousers/<?php echo $_SESSION['user_photo'] ?>">meu perfil</a></li>
+                <li class="nav-profile"><a href="../../pages/profile"><img src="../../pages/photousers/<?php echo $_SESSION['user_photo'] ?>"> meu perfil</a></li>
                 <?php 
                 else:
                   ?>
@@ -128,8 +124,8 @@ ob_start();
                endif;
                ?>
                 <li><a href="#"><i class="fa-solid fa-bag-shopping"></i> continue comprando</a></li>
-                <li><a href="#"><i class="fa-solid fa-heart"></i> favoritos</a></li>
-                <li><a href="#"><i class="fa-solid fa-cart-shopping"></i> minhas compras</a></li>
+                <li><a href="../../pages/frmfavorite"><i class="fa-solid fa-heart"></i> favoritos</a></li>
+                <li><a href="../../pages/sale"><i class="fa-solid fa-cart-shopping"></i> minhas compras</a></li>
                 <li class="divider"></li>
                 <li><a href="#"><i class="fa-solid fa-circle-question"></i> ajuda</a></li>
                 <li><a href="#"><i class="fa-solid fa-gear"></i> configurações</a></li>
@@ -152,7 +148,7 @@ ob_start();
       ?>
 
         </ul>
-        <form class="form-inline my-2 my-lg-0" id="btnvender">
+        <form class="nav-item form-inline my-2 my-lg-0" id="btnvender">
           <a href="../../pages/frmshop"><button type="button" class="btn btn-dark">quero vender</button></a>
         </form>
       </nav>
