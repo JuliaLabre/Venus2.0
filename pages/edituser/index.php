@@ -62,34 +62,10 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
             
             <label>Genero</label>
             <select name="gen" class="custom-select" required>
-            <?php 
-    
-    $gen = $user_gen;
-
-    $sql = "SELECT user_gen FROM users";
-
-    $resultado= $conn->prepare($sql); 
-    $resultado->execute();
-
-    if(($resultado)&&($resultado->rowCount()!=0)) { 
-            while ($linha = $resultado->fetch(PDO::FETCH_ASSOC)){
-                extract($linha);
-
-    ?>                
-            <option value="<?php echo $user_gen ?>"
-                
-                <?php
-                if($gen == $user_gen){
-                    echo "selected";
-                }
-
-                ?>                
-                >
-                <?php echo $user_gen ?></option>
-    <?php
-            }
-        }
-    ?>
+            
+            <option value="Feminino" <?php if('Feminino' == $user_gen){ echo "selected";}?>>Feminino</option>
+            <option value="Masculino" <?php if('Masculino' == $user_gen){ echo "selected";}?>>Masculino</option>
+            <option value="Outro" <?php if('Outro' == $user_gen){ echo "selected";}?>>Outro</option>
                  </select>
         </div>
         <div class="col-md-3 mb-3">

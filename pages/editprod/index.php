@@ -100,8 +100,8 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
                 <div class="col-md-4 mb-3">
                     <label>Status</label>
                     <select name="status" class="custom-select" required>
-                        <option selected type="radio" value="online">Online</option>
-                        <option type="radio" value="offline">Offline</option>
+                        <option <?php if('online' == $prod_status){ echo "selected";}?> type="radio" value="online">Online</option>
+                        <option <?php if('offline' == $prod_status){ echo "selected";}?> type="radio" value="offline">Offline</option>
                     </select>                    
                 </div>                
             </div>

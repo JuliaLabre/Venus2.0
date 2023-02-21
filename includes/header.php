@@ -76,9 +76,10 @@ ob_start();
             <a class="nav-link" href="../../pages/frmcart" id="shopicon"><i class="fa-solid fa-bag-shopping" title="continue comprando" alt="Minha sacola"></i>
             <!-- Só mostra o numero se tiver algum item adicionado -->
             <?php 
-            if(isset ($_SESSION['qntcart'])){
+            if(isset($_SESSION['qntcart'])){
               $cart = $_SESSION['qntcart'];
-                            
+            }
+            if($cart > 0){              
               echo "<span class='badge'>$cart</span>";
             }
               ?> 

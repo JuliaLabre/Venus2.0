@@ -74,10 +74,10 @@ $busca= "SELECT *
 
 <input type="submit" class="btn btn-success btn-lg btn-block" name="checkout" value="Finalizar Compra">
 <br>
-<input type="submit" class="btn btn-danger" name="deleteall" value="Esvaziar carrinho">
+<input type="submit" class="btn btn-danger " name="deleteall" value="Esvaziar carrinho">
 </form>
 <br>
-<a href="../navshops"><button type="button" class="btn btn-primary  btn-lg">Continuar Comprando</button></a>
+<a href="../navshops"><button type="button" class="btn btn-primary float-right btn-lg">Continuar Comprando</button></a>
 </div>
 
 <?php
