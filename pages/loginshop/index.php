@@ -23,7 +23,7 @@ $resultado->execute();
 
 if(($resultado) AND ($resultado->rowCount()!= 0)){
     $resposta = $resultado->fetch(PDO::FETCH_ASSOC);
-    //var_dump($resposta);
+    
 
 // salvando dados na variavel
 
@@ -33,9 +33,19 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
       $_SESSION['shop_photo'] = $resposta['shop_photo'];
       $_SESSION['shop_id'] = $resposta['shop_id'];
       $_SESSION['datebr'] = $resposta['datebr'];
-    
-         
+      
+      //ta dando erro no horario
+      $sid = $resposta['shop_id'];
+      date_default_timezone_set('America/Sao_Paulo');
+      $date = date('y-m-d H:i:s');
+
+      $SQL = "UPDATE shop SET shop_lastlogin = :date WHERE shop_id = $sid";
+      $resul=$conn->prepare($SQL);
+      $resul->bindParam(':date', $date,PDO::PARAM_STR);
+      $resul->execute();
+
      
+       //header("location:../../shopdashboard");
        header("location:../shop");
      
     }else{

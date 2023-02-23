@@ -25,7 +25,7 @@
         <div class="col-md-3">
           <h4 id="titlef">Ajuda</h4>
           <p><a href="../../pages/faq">Dúvidas frequentes</a></p>
-          <p><a href="#">Fale com a gente</a></p>
+          <p><a href="../../pages/contacts">Fale com a gente</a></p>
           <p><a href="../../pages/aboutshop">Como vender</a></p>
           
         </div>

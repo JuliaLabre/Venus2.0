@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 23-Fev-2023 às 14:58
--- Versão do servidor: 10.4.27-MariaDB
--- versão do PHP: 8.2.0
+-- Tempo de geração: 23-Fev-2023 às 20:48
+-- Versão do servidor: 10.4.24-MariaDB
+-- versão do PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,7 +35,14 @@ CREATE TABLE `cart` (
   `id_user` int(11) NOT NULL,
   `quant` int(11) NOT NULL,
   `price` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `cart`
+--
+
+INSERT INTO `cart` (`id_cart`, `id_prod`, `id_user`, `quant`, `price`) VALUES
+(0, 15, 0, 1, 66);
 
 -- --------------------------------------------------------
 
@@ -46,7 +53,7 @@ CREATE TABLE `cart` (
 CREATE TABLE `category` (
   `cat_name` varchar(255) NOT NULL,
   `cat_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `category`
@@ -72,7 +79,7 @@ CREATE TABLE `comments` (
   `com_name` varchar(100) NOT NULL,
   `comment` text NOT NULL,
   `com_status` enum('online','offline','banned','deleted') NOT NULL DEFAULT 'online'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `comments`
@@ -98,7 +105,7 @@ CREATE TABLE `contacts` (
   `message` text NOT NULL,
   `status` enum('sended','readed','responded','deleted') DEFAULT 'sended',
   `receiver` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `contacts`
@@ -120,7 +127,7 @@ CREATE TABLE `contactshop` (
   `subject` varchar(255) NOT NULL,
   `message` varchar(255) NOT NULL,
   `address` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `contactshop`
@@ -140,7 +147,7 @@ CREATE TABLE `delivery` (
   `deli_sale` int(11) NOT NULL,
   `deli_status` enum('Em Separação','Em Trânsito','Entregue','Cancelado') NOT NULL DEFAULT 'Em Separação',
   `deli_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `delivery`
@@ -162,7 +169,7 @@ CREATE TABLE `favorite` (
   `fav_id` int(11) NOT NULL,
   `fav_user` int(11) NOT NULL,
   `fav_prod` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `favorite`
@@ -195,7 +202,7 @@ CREATE TABLE `products` (
   `prod_cat` int(11) NOT NULL,
   `prod_status` enum('online','offline','banned','deleted') DEFAULT 'online',
   `views` int(11) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `products`
@@ -211,7 +218,9 @@ INSERT INTO `products` (`prod_id`, `shop`, `prod_date`, `prod_name`, `prod_photo
 (10, 4, '2023-02-10 19:08:01', 'Kit Brinquedos', '../photos/63ecdc359e2fe.avif', 'G', 55, 7, '2 bolinhas e 3 ossos', 2, 'online', 0),
 (11, 4, '2023-02-10 19:08:38', 'Case para saco de recolher', '../photos/63ecdc446fb25.avif', 'P', 49, 5, 'Case para levar as suas sacolinhas de forma deslumbrante', 2, 'online', 0),
 (12, 1, '2023-02-15 12:28:33', 'Cama em Croche', '../photos/63eccff146deb.avif', 'G', 100, 2, 'Aconchegante, lindo e sustentavel.', 2, 'online', 0),
-(13, 3, '2023-02-15 13:18:03', 'Mesa de Madeira', '../photos/63ecdb8bced93.avif', '', 99, 5, 'Linda Mesinha de madeira', 4, 'online', 0);
+(13, 3, '2023-02-15 13:18:03', 'Mesa de Madeira', '../photos/63ecdb8bced93.avif', '', 99, 5, 'Linda Mesinha de madeira', 4, 'online', 0),
+(14, 5, '2023-02-23 17:43:53', 'Kit Esmalte e creme de mãos', '../photos/63f7a5d9e6e22.avif', '', 78, 40, 'Kit com 1 esmalte rosa e um creme de mãos da linha Brand ', 3, 'online', 0),
+(15, 5, '2023-02-23 17:47:55', 'Brand Skin Care', '../photos/63f7a6cb7cce1.avif', '', 66, 20, 'Indispensável para sua Skin Care ', 3, 'online', 0);
 
 -- --------------------------------------------------------
 
@@ -225,7 +234,7 @@ CREATE TABLE `request` (
   `req_sale` int(11) NOT NULL,
   `req_quant` int(11) NOT NULL,
   `req_value` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `request`
@@ -253,7 +262,7 @@ CREATE TABLE `sale` (
   `sale_client` int(11) NOT NULL,
   `sale_value` double NOT NULL,
   `sale_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `sale`
@@ -286,7 +295,7 @@ CREATE TABLE `shop` (
   `shop_photo` varchar(255) NOT NULL,
   `shop_lastlogin` datetime NOT NULL,
   `shop_status` enum('online','offline','banned','deleted') NOT NULL DEFAULT 'online'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `shop`
@@ -295,8 +304,9 @@ CREATE TABLE `shop` (
 INSERT INTO `shop` (`shop_id`, `shop_date`, `shop_name`, `shop_desc`, `shop_CNPJ`, `shop_email`, `shop_password`, `shop_photo`, `shop_lastlogin`, `shop_status`) VALUES
 (1, '2023-02-10 19:14:00', 'Crocheteria', 'Trabalho com Croches de forma em geral.', '12345678912345', 'croche@teria.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '../photoshop/63e690a350dd6.avif', '2023-02-09 18:18:15', 'online'),
 (2, '2023-02-10 19:14:16', 'Costurices da Lu', 'Trabalho com personalizados.', '01472589630258', 'costu@rices.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '../photoshop/63e6957529a88.avif', '2023-02-09 18:18:15', 'online'),
-(3, '2023-02-15 13:14:20', 'DecoRê', 'Sua casa mais bonita!', '78945612307894', 'deco@re.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '../photoshop/63ecdaace9dc1.avif', '2023-02-09 18:19:52', 'online'),
-(4, '2023-02-15 13:19:47', 'PetLandia', 'o mundo do seu pet', '12345678912355', 'pet@landia.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '../photoshop/63ecdbf33dcf5.avif', '2023-02-09 18:19:52', 'online');
+(3, '2023-02-23 19:03:12', 'DecoRê', 'Sua casa mais bonita!', '78945612307894', 'deco@re.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '../photoshop/63ecdaace9dc1.avif', '2023-02-23 20:03:12', 'online'),
+(4, '2023-02-15 13:19:47', 'PetLandia', 'o mundo do seu pet', '12345678912355', 'pet@landia.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '../photoshop/63ecdbf33dcf5.avif', '2023-02-09 18:19:52', 'online'),
+(5, '2023-02-23 19:24:05', ' Nature', ' Sua loja de beleza vegana', '11111111111111', 'na@ture.com', '$2y$10$X2SAyPrV0LL8hEXkGnJ86.9sVH5xyktmiBQ8KSUeRiQEmSrILxFKa', '../photoshop/63f7a58221ea1.avif', '2023-02-23 16:22:11', 'online');
 
 -- --------------------------------------------------------
 
@@ -322,7 +332,7 @@ CREATE TABLE `users` (
   `last_login` datetime DEFAULT NULL,
   `user_status` enum('online','offline','banned','deleted') DEFAULT 'online',
   `user_type` enum('user','admin') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `users`
@@ -331,7 +341,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `user_date`, `user_name`, `user_tel`, `user_gen`, `user_birth`, `user_CPF`, `user_email`, `user_password`, `user_CEPadress`, `user_comp`, `user_num`, `user_CEPbilling`, `user_photo`, `last_login`, `user_status`, `user_type`) VALUES
 (4, '2023-02-09 17:18:06', ' Josefina Silva', ' 2197577012', 'Feminino', '1995-02-17', '12345678910', 'jose@fina.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '23059020', '0', 55, '23059020', '../photousers/63e54472daf0b.avif', NULL, 'online', 'user'),
 (5, '2023-02-09 17:18:06', 'Cicrano Souza', '', 'Masculino', '1995-06-25', '12345665412', 'ci@crano.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '23059020', 'Casa 1', 55, '23059020', NULL, NULL, 'online', 'user'),
-(6, '2023-02-14 17:32:03', 'Admin', '', 'Feminino', '1995-02-17', '111111111111', 'admin@admin.com', '$2y$10$.C1e.8NZxDbJxixH9UvMpe.pQncwmrxYBuFzERu/Wf0Ees.yzres.', '11111111', '11', 0, '11111111', NULL, NULL, 'online', 'admin');
+(6, '2023-02-14 17:32:03', 'Admin', '', 'Feminino', '1995-02-17', '111111111111', 'admin@admin.com', '$2y$10$.C1e.8NZxDbJxixH9UvMpe.pQncwmrxYBuFzERu/Wf0Ees.yzres.', '11111111', '11', 0, '11111111', NULL, NULL, 'online', 'admin'),
+(7, '2023-02-23 17:34:02', 'Helionda', '', 'Feminino', NULL, '', 'heli@onda.com', '$2y$10$yMwqDVk46tkjmoqZYPiDaeAZiRv/f6iawGXXYMayXr10MRYHn8j1m', '', '', 0, '', NULL, NULL, 'online', 'user'),
+(8, '2023-02-23 17:38:11', 'Nature', '', 'Feminino', NULL, '', 'na@ture.com', '$2y$10$l9ynDqUkE3eV0c3MBF0bQuPFjfrgKGrn5uh7yvlf1GE2uTTFMChnm', '', '', 0, '', NULL, NULL, 'online', 'user');
 
 --
 -- Índices para tabelas despejadas
@@ -458,7 +470,7 @@ ALTER TABLE `favorite`
 -- AUTO_INCREMENT de tabela `products`
 --
 ALTER TABLE `products`
-  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de tabela `request`
@@ -476,13 +488,13 @@ ALTER TABLE `sale`
 -- AUTO_INCREMENT de tabela `shop`
 --
 ALTER TABLE `shop`
-  MODIFY `shop_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `shop_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restrições para despejos de tabelas

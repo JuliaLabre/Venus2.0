@@ -23,7 +23,7 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
 //o passwordverify so funcionou com 123,tentei a senha admin e ele não conseguiu verificar
     if(password_verify($dadoslogin['passw'],$resposta['user_password'])){     
      
-       header("location:../admin");
+       header("location:../../admdashboard");
      
     }else{
 

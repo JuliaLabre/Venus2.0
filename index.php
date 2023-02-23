@@ -4,7 +4,8 @@ require 'includes/header.php';
 include_once 'includes/config.php';
 
 //Buscando as lojas que existem no banco
-$produtos = "SELECT * FROM shop WHERE shop_status = 'online' ";
+$produtos = "SELECT *
+FROM products WHERE prod_status = 'online' AND prod_stock > 0 ";
 $resultado = $conn->prepare($produtos);
 $resultado->execute(); 
 
@@ -14,30 +15,68 @@ $resultado->execute();
 <div class="wrap">
   <div class="container-fluid">
     <div class="col-md-10 "> 
+      <div class="row">
     <div class="card-deck">
+
 
 <?php
 
 if(($resultado) AND ($resultado->rowCount()!= 0)){
 while($resposta = $resultado->fetch(PDO::FETCH_ASSOC)){
-
 extract($resposta);
-//não está aparecendo a foto
 ?>
-  <div class="card bg-light text-center">
-  <a <?php echo "href='../../pages/shopping?id=$shop_id'"?>><img class="card-img-top" style=width:100%;height:25rem; src="../../pages/photoshop/<?php echo $shop_photo ?>" alt="Logo da <?php echo $shop_name ?>"></a>
-    <div class="card-body">
-        <h4 class="card-title"><strong><?php echo $shop_name ?></strong></h4>
-        <p class="card-text"> <?php echo $shop_desc?>           
-    </div>
-  </div>
+  
+  <div class="card bg-light">
+      <a target="_blank" <?php echo "href='../viewprod?id=$prod_id'"?>>
+      <img class="card-img-top" src="../../pages/photos/<?php echo $prod_photo ?>" alt="Imagem de <?php echo $prod_name ?>" style=width:100%;height:25rem; >
+    </a>
+        <div class="card-body">
+        <h5 class="card-title"><?php echo $prod_name ?></h5>
+        <p class="card-text"> <?php echo $prod_desc?> - R$<?php echo $prod_price ?>,00</p> 
+        <form method="post" action="../..pages/cart/index.php">
+        <h6>   
+        <label>Quant</label>
+        <input type="number" name="quant" value="1" style=width:45px;>
+        </h6> 
+        <input type="hidden" value="<?php echo $prod_id ?>" name="prod_id">
+  
+  <?php
+  // Se o usuario tiver logado e tiver esse produto como favorito:
+  if (isset($_SESSION['user_name'])) {
+    $iduser = $_SESSION['user_id'];
 
+    $buscafav= "SELECT * FROM favorite WHERE fav_prod = $prod_id AND fav_user = $iduser LIMIT 1";  
+      $resulfav = $conn->prepare($buscafav);
+      $resulfav->execute();      
+
+      if (($resulfav) and ($resulfav->rowCount() != 0)) {         
+          $icon = '<i class="fa-solid fa-heart"></i>';    
+       
+      }else{
+        $icon = '<i class="fa-regular fa-heart"></i>';
+      } 
+      
+    }else{
+        $icon = '<i class="fa-regular fa-heart"></i>';
+      }         
+  
+  ?> 
+    <a <?php echo "href='../favorite?id=$prod_id'"?>><?php echo $icon ?> </a>
+               
+        <input type="submit" class="btn btn-primary" name="cart" value="Comprar">
+        </form>
+        </div>
+    
+  </div> 
+
+ 
 <?php
 }
 
 }
 ?>
-    </div>
+  </div>
+  </div>
   </div>
     <div class="col-md-2">
       <h5>Categorias</h5>

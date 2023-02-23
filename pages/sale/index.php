@@ -10,7 +10,8 @@ $id = $_SESSION['user_id'];
 
 //Pega o ID da compra do usuario
 $sale= "SELECT * 
-FROM sale s INNER JOIN request r ON s.sale_id= r.req_sale
+FROM sale s 
+INNER JOIN request r ON s.sale_id= r.req_sale
 INNER JOIN delivery d ON s.sale_id=d.deli_sale
 INNER JOIN products p ON r.req_prod=p.prod_id WHERE sale_client = $id ";
     $resulsale = $conn->prepare($sale);

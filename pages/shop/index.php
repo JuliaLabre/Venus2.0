@@ -2,6 +2,7 @@
 session_start();
 ob_start();
 
+
 //require '../../includes/header.php';
 include_once '../../includes/config.php';
 
@@ -46,6 +47,9 @@ $resultado->execute();
       </ul>
     </div>
 </div>
+<a <?php echo "href='../editshop?id=$shop_id'" ?>>
+<input type="submit" class="btn btn-primary" name="editar" value="Editar Perfil da loja">
+</a>
 <a href='../cadprod'>
 <input type="submit" class="btn btn-primary" name="editar" value="Cadastrar Produto">
 </a>
