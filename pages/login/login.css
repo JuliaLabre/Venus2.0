@@ -44,4 +44,12 @@ a{
   border-bottom-right-radius: .3rem;
   }
   }
- 
+  
+input.btn-block {
+  height: 25px;
+}
+.btn {
+  width: 100px;
+  background: -webkit-linear-gradient(to left, #a01616, #bb1919, #d8363a, #e74444);
+  background: linear-gradient(to right, #a01616, #bb1919, #d8363a, #e74444);
+}

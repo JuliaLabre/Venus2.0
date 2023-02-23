@@ -1,3 +1,5 @@
+
+
 <?php
 
 require '../../includes/header.php';
@@ -32,6 +34,7 @@ $busca= "SELECT *
     ?>
 
 <div class="tabcart">
+<div class="table-responsive-lg">
    <form action="../checkout/index.php" method="post"> 
     <table class="table">
     <thead>
@@ -41,8 +44,7 @@ $busca= "SELECT *
         <th class="align" scope="col">Preço</th>
         <th class="align" scope="col">Quantidade</th>
         <th scope="col">Total</th>       
-
-     </tr>
+      </tr>
     </thead>
  <tbody>
 
@@ -84,7 +86,9 @@ $busca= "SELECT *
 
 
 <input type="submit" class="btnesvaziar" name="deleteall" value="Esvaziar carrinho">
+
 </form>
+</div>
 </div>
 
 <?php
@@ -95,4 +99,4 @@ $busca= "SELECT *
 
 <?php
 require '../../includes/footer.php'
-?>rgb(116, 241, 123)
+?>

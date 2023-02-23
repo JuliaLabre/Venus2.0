@@ -48,49 +48,6 @@ if(isset($_FILES['photo'])){
 
 }
 
-//*****************************************************EDITAR CONFORME DADOS DA TABELA FORM USER */
-if (!empty($upgrade['btncad'])) {
-
-    $vazio = false;
-
-    if (!$vazio) {
-
-    $pass = password_hash($upgrade['pass'], PASSWORD_DEFAULT);    
-
-        
-    $sql = "INSERT INTO shop (shop_name, shop_email, shop_password)
-    values(:name, :email, :pass)";
-
-    $salvar= $conn ->prepare($sql);
-    $salvar -> bindParam(':name', $upgrade['name'],PDO::PARAM_STR);
-    $salvar -> bindParam(':email', $upgrade['email'],PDO::PARAM_STR);
-    $salvar -> bindParam(':pass', $pass,PDO::PARAM_STR);
-    $salvar -> execute();
-
-
-    if ($salvar->rowCount()) {
-        
-        echo "<script>
-        alert('Loja cadastrada com sucesso!!');
-        parent.location = '../loginshop';
-        </script>";
-
-        unset($upgrade);
-    } else {
-
-        echo "<script>
-        alert('Usuário não cadastrado, tente novamente!!');
-        parent.location = '../frmshop';
-        </script>";
-        
-    }
-
-}
-
-}
-
-
-
 //recebe a foto
 
 if (!empty($upgrade['edshopft'])) {

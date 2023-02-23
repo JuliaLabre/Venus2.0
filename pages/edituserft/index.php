@@ -46,7 +46,7 @@ Foto atual:
         </form>
 
 
-                <!-- Footer -->
+        <!-- Footer -->
 <?php
 require '../../includes/footer.php'
 ?>

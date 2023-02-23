@@ -27,7 +27,7 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
      
     }else{
 
-     var_dump($dadoslogin);
+     //var_dump($dadoslogin);
       $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">
                           Error: Usuário ou senha inválidos!
                          </div>';

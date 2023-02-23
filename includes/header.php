@@ -87,11 +87,13 @@ ob_start();
             <a class="nav-link" href="../../pages/frmcart" id="shopicon"><i class="fa-solid fa-bag-shopping" title="continue comprando" alt="Minha sacola"></i>
             <!-- Só mostra o numero se tiver algum item adicionado -->
             <?php 
-            if(isset ($_SESSION['qntcart'])){
+            if(isset($_SESSION['qntcart'])){
               $cart = $_SESSION['qntcart'];
-                            
+            
+            if($cart > 0){              
               echo "<span class='badge'>$cart</span>";
             }
+          }
               ?> 
               
             </a>
@@ -110,7 +112,7 @@ ob_start();
               <?php
                 if (!empty($_SESSION['user_photo'])):
                   ?>
-              <img src="../../pages/photousers/<?php echo $_SESSION['user_photo']?>"  class="mr-3 rounded-circle" style=width:75%;height:3rem;>
+              <img  src="../../pages/photousers/<?php echo $_SESSION['user_photo']?>"  class="mr-3 rounded-circle" style=width:75%;height:3rem;>
               </a>
               <?php 
                 else:
@@ -147,7 +149,7 @@ ob_start();
             <?php
 
       // Se não está logado...
-    else :
+      else :
 
       ?>
       <li>
@@ -165,5 +167,3 @@ ob_start();
       </nav>
 
     </header>
-
-    

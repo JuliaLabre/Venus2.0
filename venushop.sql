@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 20-Fev-2023 às 20:05
+-- Tempo de geração: 23-Fev-2023 às 14:58
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.2.0
 
@@ -80,7 +80,8 @@ CREATE TABLE `comments` (
 
 INSERT INTO `comments` (`com_id`, `com_date`, `produto`, `com_name`, `comment`, `com_status`) VALUES
 (3, '2023-02-20', 9, 'Cicrano Souza', 'Linda bolsa, qualidade impecavél.', 'online'),
-(4, '2023-02-20', 13, 'Cicrano Souza', 'Mesa linda demais!', 'online');
+(4, '2023-02-20', 13, 'Cicrano Souza', 'Mesa linda demais!', 'online'),
+(5, '2023-02-21', 7, ' Josefina Silva', 'Muito lindo, vale a pena!!', 'online');
 
 -- --------------------------------------------------------
 
@@ -137,7 +138,7 @@ INSERT INTO `contactshop` (`id`, `name`, `email`, `subject`, `message`, `address
 CREATE TABLE `delivery` (
   `deli_id` int(11) NOT NULL,
   `deli_sale` int(11) NOT NULL,
-  `deli_status` enum('in separation','in transit','delivered','canceled') NOT NULL DEFAULT 'in separation',
+  `deli_status` enum('Em Separação','Em Trânsito','Entregue','Cancelado') NOT NULL DEFAULT 'Em Separação',
   `deli_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -146,7 +147,10 @@ CREATE TABLE `delivery` (
 --
 
 INSERT INTO `delivery` (`deli_id`, `deli_sale`, `deli_status`, `deli_date`) VALUES
-(1, 3, 'in separation', '0000-00-00');
+(1, 3, 'Em Separação', '0000-00-00'),
+(2, 4, 'Em Separação', '0000-00-00'),
+(3, 5, 'Em Separação', '0000-00-00'),
+(4, 8, 'Em Separação', '2023-02-23');
 
 -- --------------------------------------------------------
 
@@ -198,13 +202,13 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`prod_id`, `shop`, `prod_date`, `prod_name`, `prod_photo`, `prod_size`, `prod_price`, `prod_stock`, `prod_desc`, `prod_cat`, `prod_status`, `views`) VALUES
-(4, 1, '2023-02-10 18:55:55', 'Anjinho em croche', '../photos/63e6933b41cb8.jpg', 'P', 50, 1, 'Lindo anjinho para enfeitar, bricar e funciona também como naninha', 5, 'online', 0),
+(4, 1, '2023-02-10 18:55:55', 'Anjinho em croche', '../photos/63e6933b41cb8.jpg', 'P', 50, 0, 'Lindo anjinho para enfeitar, bricar e funciona também como naninha', 5, 'online', 0),
 (5, 1, '2023-02-10 18:57:16', 'Bolsa Marrom', '../photos/63e6938c73dea.jpg', 'M', 150, 2, 'Linda Bolsa colorida, ideal para qualquer passeio.', 5, 'online', 0),
 (6, 3, '2023-02-10 19:01:26', 'Picolés tropicais', '../photos/63e69486bbad5.avif', '', 5, 50, 'Pricolés tropicais maravilhosos', 1, 'deleted', 0),
-(7, 3, '2023-02-10 19:02:02', 'Tapete Branco', '../photos/63ecdb4641e3c.avif', 'G', 150, 4, 'Lindo e facil de limpar', 4, 'online', 0),
-(8, 2, '2023-02-10 19:05:58', 'Ecobag', '../photos/63e695962bbe7.avif', '', 15, 10, 'Ultimas unidades em promoção', 1, 'online', 0),
-(9, 2, '2023-02-10 19:06:46', 'Ecobag Personalizada', '../photos/63e695c6ed9b1.avif', '', 25, 23, 'Linda Ecobag, fazemos também personalizada', 1, 'online', 0),
-(10, 4, '2023-02-10 19:08:01', 'Kit Brinquedos', '../photos/63ecdc359e2fe.avif', 'G', 55, 10, '2 bolinhas e 3 ossos', 2, 'online', 0),
+(7, 3, '2023-02-10 19:02:02', 'Tapete Branco', '../photos/63ecdb4641e3c.avif', 'G', 150, 3, 'Lindo e facil de limpar', 4, 'online', 0),
+(8, 2, '2023-02-10 19:05:58', 'Ecobag', '../photos/63e695962bbe7.avif', '', 15, 9, 'Ultimas unidades em promoção', 1, 'online', 0),
+(9, 2, '2023-02-10 19:06:46', 'Ecobag Personalizada', '../photos/63e695c6ed9b1.avif', '', 25, 22, 'Linda Ecobag, fazemos também personalizada', 1, 'online', 0),
+(10, 4, '2023-02-10 19:08:01', 'Kit Brinquedos', '../photos/63ecdc359e2fe.avif', 'G', 55, 7, '2 bolinhas e 3 ossos', 2, 'online', 0),
 (11, 4, '2023-02-10 19:08:38', 'Case para saco de recolher', '../photos/63ecdc446fb25.avif', 'P', 49, 5, 'Case para levar as suas sacolinhas de forma deslumbrante', 2, 'online', 0),
 (12, 1, '2023-02-15 12:28:33', 'Cama em Croche', '../photos/63eccff146deb.avif', 'G', 100, 2, 'Aconchegante, lindo e sustentavel.', 2, 'online', 0),
 (13, 3, '2023-02-15 13:18:03', 'Mesa de Madeira', '../photos/63ecdb8bced93.avif', '', 99, 5, 'Linda Mesinha de madeira', 4, 'online', 0);
@@ -231,7 +235,12 @@ INSERT INTO `request` (`req_id`, `req_prod`, `req_sale`, `req_quant`, `req_value
 (1, 9, 1, 2, 25),
 (2, 13, 2, 1, 99),
 (3, 7, 2, 1, 150),
-(4, 4, 3, 1, 50);
+(4, 4, 3, 1, 50),
+(5, 7, 4, 1, 150),
+(6, 9, 5, 1, 25),
+(7, 8, 5, 1, 15),
+(8, 10, 5, 3, 55),
+(9, 4, 8, 1, 50);
 
 -- --------------------------------------------------------
 
@@ -253,7 +262,12 @@ CREATE TABLE `sale` (
 INSERT INTO `sale` (`sale_id`, `sale_client`, `sale_value`, `sale_date`) VALUES
 (1, 5, 50, '2023-02-20'),
 (2, 5, 249, '2023-02-20'),
-(3, 5, 50, '2023-02-20');
+(3, 5, 50, '2023-02-20'),
+(4, 4, 150, '2023-02-21'),
+(5, 4, 205, '2023-02-23'),
+(6, 4, 50, '2023-02-23'),
+(7, 4, 50, '2023-02-23'),
+(8, 4, 50, '2023-02-23');
 
 -- --------------------------------------------------------
 
@@ -295,7 +309,7 @@ CREATE TABLE `users` (
   `user_date` timestamp NOT NULL DEFAULT current_timestamp(),
   `user_name` varchar(255) NOT NULL,
   `user_tel` varchar(11) NOT NULL,
-  `user_gen` varchar(1) NOT NULL,
+  `user_gen` enum('Feminino','Masculino','Outro') NOT NULL,
   `user_birth` date DEFAULT NULL,
   `user_CPF` char(14) NOT NULL,
   `user_email` varchar(255) NOT NULL,
@@ -315,9 +329,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_date`, `user_name`, `user_tel`, `user_gen`, `user_birth`, `user_CPF`, `user_email`, `user_password`, `user_CEPadress`, `user_comp`, `user_num`, `user_CEPbilling`, `user_photo`, `last_login`, `user_status`, `user_type`) VALUES
-(4, '2023-02-09 17:18:06', ' Josefina Silva', ' 2197577012', 'F', '1995-02-17', '12345678910', 'jose@fina.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '23059020', '0', 55, '23059020', '../photousers/63e54472daf0b.avif', NULL, 'online', 'user'),
-(5, '2023-02-09 17:18:06', 'Cicrano Souza', '', 'M', '1995-06-25', '12345665412', 'ci@crano.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '23059020', 'Casa 1', 55, '23059020', NULL, NULL, 'online', 'user'),
-(6, '2023-02-14 17:32:03', 'Admin', '', 'F', '1995-02-17', '111111111111', 'admin@admin.com', '$2y$10$.C1e.8NZxDbJxixH9UvMpe.pQncwmrxYBuFzERu/Wf0Ees.yzres.', '11111111', '11', 0, '11111111', NULL, NULL, 'online', 'admin');
+(4, '2023-02-09 17:18:06', ' Josefina Silva', ' 2197577012', 'Feminino', '1995-02-17', '12345678910', 'jose@fina.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '23059020', '0', 55, '23059020', '../photousers/63e54472daf0b.avif', NULL, 'online', 'user'),
+(5, '2023-02-09 17:18:06', 'Cicrano Souza', '', 'Masculino', '1995-06-25', '12345665412', 'ci@crano.com', '$2y$10$l0XLl25pV5GUSXq5OeYkQuWpHvybVbPAdOH1aDsXxnbGsaDP1YWuW', '23059020', 'Casa 1', 55, '23059020', NULL, NULL, 'online', 'user'),
+(6, '2023-02-14 17:32:03', 'Admin', '', 'Feminino', '1995-02-17', '111111111111', 'admin@admin.com', '$2y$10$.C1e.8NZxDbJxixH9UvMpe.pQncwmrxYBuFzERu/Wf0Ees.yzres.', '11111111', '11', 0, '11111111', NULL, NULL, 'online', 'admin');
 
 --
 -- Índices para tabelas despejadas
@@ -377,7 +391,9 @@ ALTER TABLE `products`
 -- Índices para tabela `request`
 --
 ALTER TABLE `request`
-  ADD PRIMARY KEY (`req_id`);
+  ADD PRIMARY KEY (`req_id`),
+  ADD KEY `req_prod` (`req_prod`),
+  ADD KEY `req_sale` (`req_sale`);
 
 --
 -- Índices para tabela `sale`
@@ -412,7 +428,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT de tabela `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `com_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `com_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `contacts`
@@ -430,7 +446,7 @@ ALTER TABLE `contactshop`
 -- AUTO_INCREMENT de tabela `delivery`
 --
 ALTER TABLE `delivery`
-  MODIFY `deli_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `deli_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `favorite`
@@ -448,13 +464,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT de tabela `request`
 --
 ALTER TABLE `request`
-  MODIFY `req_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `req_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `sale`
 --
 ALTER TABLE `sale`
-  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `shop`
@@ -509,6 +525,13 @@ ALTER TABLE `favorite`
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`prod_cat`) REFERENCES `category` (`cat_id`),
   ADD CONSTRAINT `products_ibfk_3` FOREIGN KEY (`shop`) REFERENCES `shop` (`shop_id`);
+
+--
+-- Limitadores para a tabela `request`
+--
+ALTER TABLE `request`
+  ADD CONSTRAINT `request_ibfk_1` FOREIGN KEY (`req_prod`) REFERENCES `products` (`prod_id`),
+  ADD CONSTRAINT `request_ibfk_2` FOREIGN KEY (`req_sale`) REFERENCES `sale` (`sale_id`);
 
 --
 -- Limitadores para a tabela `sale`
