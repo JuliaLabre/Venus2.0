@@ -10,7 +10,7 @@ $dadoslogin = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 if (!empty($dadoslogin['btnlogin'])) {
 
-$buscalogin = "SELECT *, DATE_FORMAT(user_birth, '%d/%m/%Y') AS datebr
+$buscalogin = "SELECT *, DATE_FORMAT(user_date, '%d/%m/%Y') AS datebr
                         FROM users
                         WHERE user_email = :user AND user_status = 'online' AND user_type = 'user'
                         LIMIT 1";

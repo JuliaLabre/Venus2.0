@@ -81,8 +81,9 @@
             $idsale = ($linhasale["LAST_INSERT_ID()"]);
 
             //Coloca o pedido para entrega
-            $delivery = "INSERT INTO delivery(deli_sale,deli_date)VALUES($idsale,$date)";
+            $delivery = "INSERT INTO delivery(deli_date,deli_sale)VALUES(:sale_date,$idsale)";
             $resuldeli = $conn->prepare($delivery);
+            $resuldeli->bindParam(':sale_date', $date, PDO::PARAM_STR);
             $resuldeli->execute();
 
 

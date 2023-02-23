@@ -78,10 +78,11 @@ ob_start();
             <?php 
             if(isset($_SESSION['qntcart'])){
               $cart = $_SESSION['qntcart'];
-            }
+            
             if($cart > 0){              
               echo "<span class='badge'>$cart</span>";
             }
+          }
               ?> 
               
             </a>
