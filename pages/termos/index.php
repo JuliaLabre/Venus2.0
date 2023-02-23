@@ -3,21 +3,19 @@
 require '../../includes/header.php';
 ?>
 
-<link rel="stylesheet" href="termos.css"> 
-<div>
-<h2>TERMOS DE USO — Vênus Shop</h2>
+<article class="borda-termos">
+<h2 class="termos-title">TERMOS DE USO</h2><br>
 
-
-<p>Vênus Shop, pessoa jurídica de direito privado descreve, através deste documento, sua política de uso do https://www.venusshop.com.br e qualquer outro site, loja ou aplicativo operado pelo proprietário.</p>
+<p class="termos">Vênus Shop, pessoa jurídica de direito privado descreve, através deste documento, sua política de uso do https://www.venusshop.com.br e qualquer outro site, loja ou aplicativo operado pelo proprietário.</p>
 
 <p>Ao navegar neste website, você está automaticamente de acordo com nossa política. Do contrário, orientamos a que suspenda a navegação no website e evite concluir o seu cadastro.</p>
 <p>A política  poderá ser editada a qualquer momento, mas, caso isso aconteça, publicaremos no website, com a data de revisão atualizada. Por outro lado, se as alterações forem substanciais, nós teremos o cuidado, além de divulgar no website, de informá-lo por meio das informações de contato que tivermos em nosso cadastro, ou por meio de notificações.</p>
 <p>A utilização deste website após as alterações significa que você aceitou a política revisada. Caso, após a leitura da nova versão, você não esteja de acordo com seus termos, favor encerrar o seu acesso.</p>
 
-<h3>Usuário</h3>
+<h3 class="termos">Usuário</h3>
 <p>A utilização deste website atribui de forma automática a condição de usuário e implica a plena aceitação de todas as diretrizes e condições incluídas nestes Termos.</p>
 
-<strong>Adesão em conjunto com a Política de Privacidade</strong>
+<strong class="termos">Adesão em conjunto com a Política de Privacidade</strong>
 <p>A utilização deste website acarreta a adesão à presente Política de Uso e à versão mais atualizada da Política de Privacidade de Vênus Shop.</p>
 
 <strong>Condições de acesso</strong><br>
@@ -47,7 +45,7 @@ O website, no todo ou em cada uma das suas seções, pode ser encerrado, suspens
 <strong>Contato</strong><br>
 <p>Caso você tenha qualquer dúvida sobre esta Política de Uso, por favor, entre em contato pelo e-mail contato@venusshop.com.br</p>
 
-</div>
+</article>
 
 
 <?php

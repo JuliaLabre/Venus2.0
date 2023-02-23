@@ -1,6 +1,24 @@
-h2, h3, h4, p, strong, li {
+/****************************************************************************************
+coloquei no layout2 pois estava dando conflito - ver se vamos usar um css pra cada página
+*****************************************************************************************/
+ 
+article {
+    margin: 30px 30px 30px;
+    padding: 20px 20px 0px;
+    border: 2px solid rgba(0,0,0,0.08);
+    padding-top: 25px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0px 4px 10px rgb(0 0 0 / 3%);
+    margin-bottom: 40px;
+}
+.policies, strong, li {
     text-align:left;
     margin-left: 20px;
+}
+.policies-title{
+    text-align: center;
+    
 }
 .cookies li {
     list-style-type: none;

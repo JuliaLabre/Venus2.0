@@ -38,7 +38,7 @@ $user_id = $_SESSION['user_id'];
 
 <div class="row">
 
-<i class="fa-solid fa-question fa-fw"></i> <a href="" > Perguntas frequentes</a>
+<i class="fa-solid fa-question fa-fw"></i> <a href="../faq" > Perguntas frequentes</a>
 
 </div>
 <div class="row">

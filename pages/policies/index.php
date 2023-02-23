@@ -1,13 +1,13 @@
 <?php
-
+ 
 require '../../includes/header.php';
-?>
+?> 
 
-<link rel="stylesheet" href="policies.css"> 
+<!--<link rel="stylesheet" href="policies.css"> -->
 
-<div>
-<h2>Políticas de Privacidade</h2>
-<p><strong>A sua privacidade é importante para nós. É política da <em>Vênus Shop</em> respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site <em>Vênus Shop</em>, e outros sites que possuímos e operamos.</strong></p>
+<article class="borda-policies">
+<h2 class="policies-title">Políticas de Privacidade</h2><br>
+<p class="policies">A sua privacidade é importante para nós. É política da <em>Vênus Shop</em> respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site <em>Vênus Shop</em>, e outros sites que possuímos e operamos.</p>
     <p>Solicitamos informações pessoais apenas quando realmente precisamos delas para lhe fornecer um serviço. Fazemo-lo por meios justos e legais, com o seu conhecimento e consentimento. Também informamos por que estamos coletando e como será usado.</p>
     <p>Apenas retemos as informações coletadas pelo tempo necessário para fornecer o serviço solicitado. Quando armazenamos dados, protegemos dentro de meios comercialmente aceitáveis ​​para evitar perdas e roubos, bem como acesso, divulgação, cópia, uso ou modificação não autorizados.</p>
     <p>Não compartilhamos informações de identificação pessoal publicamente ou com terceiros, exceto quando exigido por lei.</p>
@@ -15,8 +15,8 @@ require '../../includes/header.php';
     <p>Você é livre para recusar a nossa solicitação de informações pessoais, entendendo que talvez não possamos fornecer alguns dos serviços desejados.</p>
     <p>O uso continuado de nosso site será considerado como aceitação de nossas práticas em torno de privacidade e informações pessoais. Se você tiver alguma dúvida sobre como lidamos com dados do usuário e informações pessoais, entre em contacto connosco.</p>
  
-    <h3>Política de Cookies Vênus Shop</h3>
-    <h4>O que são cookies?</h4>
+    <h3 class="policies">Política de Cookies Vênus Shop</h3>
+    <h4 class="policies">O que são cookies?</h4>
     <p>Como é prática comum em quase todos os sites profissionais, este site usa cookies, que são pequenos arquivos baixados no seu computador, para melhorar sua experiência. Esta página descreve quais informações eles coletam, como as usamos e por que às vezes precisamos armazenar esses cookies. Também compartilharemos como você pode impedir que esses cookies sejam armazenados, no entanto, isso pode fazer o downgrade ou 'quebrar' certos elementos da funcionalidade do site.</p>
     <h4>Como usamos os cookies?</h4>
     <p>Utilizamos cookies por vários motivos, detalhados abaixo. Infelizmente, na maioria dos casos, não existem opções padrão do setor para desativar os cookies sem desativar completamente a funcionalidade e os recursos que eles adicionam a este site. É recomendável que você deixe todos os cookies se não tiver certeza se precisa ou não deles, caso sejam usados ​​para fornecer um serviço que você usa.</p>
@@ -75,7 +75,7 @@ require '../../includes/header.php';
     <h4>Mais informações</h4>
     <p>Esperamos que esteja esclarecido e, como mencionado anteriormente, se houver algo que você não tem certeza se precisa ou não, geralmente é mais seguro deixar os cookies ativados, caso interaja com um dos recursos que você usa em nosso site.</p>
     <p><em>Esta política é efetiva a partir de 03 de fevereiro de 2023 às 15:40.</em></p>
-</div>
+</article>
 
     
     <?php
