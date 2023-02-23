@@ -118,7 +118,7 @@ if(isset($_SESSION['msg'])){
   
                     <div class="d-flex align-items-center justify-content-center pb-4">
                       <p class="mb-0 me-2">Ainda não possui conta?</p>
-                      <a href="frmuser"><button type="button" class="btn btn-dark">Registre-se</button></a>
+                      <a href="../frmuser"><button type="button" class="btn btn-dark">Registre-se</button></a>
                     </div>
   
                   </form>

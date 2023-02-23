@@ -4,7 +4,7 @@ require '../../includes/header.php';
 ?>
 
 <article class="borda-termos">
-<h2 class="termos-title">TERMOS DE USO — Vênus Shop</h2><br>
+<h2 class="termos-title">TERMOS DE USO</h2><br>
 
 <p class="termos">Vênus Shop, pessoa jurídica de direito privado descreve, através deste documento, sua política de uso do https://www.venusshop.com.br e qualquer outro site, loja ou aplicativo operado pelo proprietário.</p>
 

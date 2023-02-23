@@ -20,7 +20,7 @@ require '../../includes/header.php';
 <div class="container-fluid">
 <p>Idealizada durante um projeto para mulheres programadoras, a <strong>Vênus shop</strong> é a realização de algo que surgiu após o período de isolamento social em que as lojas virtuais cresceram de forma exponencial.</p>
 <p>Pensando nisso, nos perguntamos qual forma de suporte poderíamos dar a pequenas empreendedoras que estejam começando agora e que querem conquistar o seu espaço no ambiente virtual? </p>
-<p><strong class="negrito">Um marketplace!</strong> Sim! Um marktplace voltado exclusivamente para empreendedoras mulheres, sem restrição de produtos.</p>
+<p><strong class="negrito">Um marketplace!</strong> Sim! Um marketplace voltado exclusivamente para empreendedoras mulheres, sem restrição de produtos.</p>
 <p>A Vênus Shop é uma plataforma de suporte encarregada de divulgar a sua loja, e por pagamentos e logística da mesma.</p>
 </div>
 

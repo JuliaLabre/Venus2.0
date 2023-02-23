@@ -18,7 +18,7 @@ include_once '../../includes/config.php';
   <link rel="stylesheet" href="frmuser.css">
 </head>
 <body>
-  <header>
+  <header> 
  
 
 
