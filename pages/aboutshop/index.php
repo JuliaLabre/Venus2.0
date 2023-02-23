@@ -4,11 +4,12 @@ require '../../includes/header.php';
 ?>
 
 <link rel="stylesheet" href="aboutloja.css">
-
+<!-- Conteudo -->
+<div class="wrap">
 <div class="about">
     <div class="row">
       <div class="col-md-12 text-center">
-        <img src="../../img/logo-principal.png"class="img-fluid">
+        <img src="../../img/logo-principal.png" class="img-fluid">
       </div>
     </div>
   </div>
@@ -64,13 +65,6 @@ Ou seja, sem conhecimento de programação e design e sem custos iniciais, você
 <p>Descreva com precisão os produtos. Tenha muito cuidado para preencher as fichas técnicas. As informações devem ser inseridas com bastante clareza.</p>
 <p>Por isso, a recomendação é evitar erros de português e a inserção equivocada de dados.</p>
 
-<h3>Quanto eu pago para anunciar no marketplace?</h3>
-<h3>Vendi um produto, quando vou receber o valor?</h3>
-<h3>Posso negociar com várias contas?</h3>
-<h3>E se eu descumprir o compromisso venda?</h3>
-<h3>Como solicito o cancelamento da minha conta?</h3>
-
-
 <div class="row d-flex justify-content-center">
 <a class="botao" href="../frmshop" type="submit">Criar minha loja</a> <!--Direcionar para página criar loja-->
 </div>
@@ -78,10 +72,8 @@ Ou seja, sem conhecimento de programação e design e sem custos iniciais, você
 <div class="row d-flex justify-content-center">
 <a class="botao" href="../loginshop" type="submit">Acessar minha loja</a> <!--Direcionar para perfil da loja-->
 </div>
-
-
-
-    
+</div>
+ 
     
 
 

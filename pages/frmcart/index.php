@@ -17,24 +17,29 @@ $busca= "SELECT *
 
   //Mensagem de não tem compras adicionadas no carrinho
   if(($resultado) AND ($resultado->rowCount() == 0)){
-  echo '<div class="alert alert-warning" role="alert">
-  <strong>Oooooooooooops!</strong> Você ainda não tem produtos adicionados no carrinho...
+  echo '<div class="alertCart" role="alert">
+  <i class="fa-sharp fa-regular fa-face-frown" id="ialert"></i>
+  <strong> Ooooooooooooops!</strong><br>
+  Você ainda não tem produtos adicionados no carrinho...
+  <a href="../navshops" class="nounderline"><button type="button" class="btnAlert">Adicionar produtos!</button></a>
  </div>';
   } else{
+    /*tira o text-decoration dos botoes do bootstrap, coloca essa classe "nounderline" depois do a href e estliza no CSS*/
+
 
     $totalbuy=0;  /*total compra é acumulador então temos que criar a variável antes */
 
     ?>
 
-<div class="wrap">
+<div class="tabcart">
    <form action="../checkout/index.php" method="post"> 
     <table class="table">
     <thead>
      <tr>
         <th scope="col">Imagem</th>
-        <th scope="col">Nome</th>
-        <th scope="col">Preço</th>
-        <th scope="col">Quantidade</th>
+        <th class="align" scope="col">Nome</th>
+        <th class="align" scope="col">Preço</th>
+        <th class="align" scope="col">Quantidade</th>
         <th scope="col">Total</th>       
 
      </tr>
@@ -49,10 +54,10 @@ $busca= "SELECT *
 ?>        
         <tr>
           <td scope="row"><img src="<?php echo $prod_photo ?>"style=widht:100px;height:100px;></td>
-          <td><?php echo $prod_name ?></td>
-          <td><?php echo $prod_price ?></td>
-          <td><?php echo $quant ?></td>
-          <td><?php echo $total = $quant * $prod_price; $totalbuy += $total; ?></td>
+          <td class="align"><?php echo $prod_name ?></td>
+          <td class="align"><?php echo $prod_price ?></td>
+          <td class="align"><?php echo $quant ?></td>
+          <td ><?php echo $total = $quant * $prod_price; $totalbuy += $total; ?></td>
           <!--total compra é acumulador entao temos que criar a variavel antes-->
          
         <td>
@@ -66,18 +71,20 @@ $busca= "SELECT *
 } ?>
 
 <!--depois que fizer while é que mostro total da compra-->
-<tr><td><?php echo "Total da compra - R$ ".$totalbuy; ?></td></tr>
+<tr><td><?php echo "<strong>Total da compra - R$ </strong>".$totalbuy; ?></td></tr>
 </tbody>
 </table>
 
  <input type="hidden" name="totalbuy" value ="<?php echo $totalbuy?>">
 
-<input type="submit" class="btn btn-success btn-lg btn-block" name="checkout" value="Finalizar Compra">
-<br>
-<input type="submit" class="btn btn-danger" name="deleteall" value="Esvaziar carrinho">
+<a href="../navshops"><button type="button" class="btncontcompra btn-custom">Continuar Comprando</button></a>
+
+
+<input  type="submit" class="btnfinal btn-custom" name="checkout"  value="Finalizar Compra" >
+
+
+<input type="submit" class="btnesvaziar" name="deleteall" value="Esvaziar carrinho">
 </form>
-<br>
-<a href="../navshops"><button type="button" class="btn btn-primary  btn-lg">Continuar Comprando</button></a>
 </div>
 
 <?php
@@ -88,4 +95,4 @@ $busca= "SELECT *
 
 <?php
 require '../../includes/footer.php'
-?>
+?>rgb(116, 241, 123)

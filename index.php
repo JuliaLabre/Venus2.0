@@ -5,16 +5,16 @@ include_once 'includes/config.php';
 
 
 $produtos = "SELECT * FROM shop WHERE shop_status = 'online' ";
-
-
 $resultado = $conn->prepare($produtos);
 $resultado->execute(); 
 
 ?>
 <!-- Conteudo -->
 <h2 class='text-center'>Lojas na Venus</h2>
-
-<div class="row">
+<div class="wrap">
+  <div class="container-fluid">
+    <div class="col-md-10 "> 
+    <div class="card-deck">
 
 <?php
 
@@ -25,16 +25,13 @@ extract($resposta);
 //não está aparecendo a foto
 ?>
 
-<div class="col-md-2 text-center">
-  <div class="card bg-light mb-2">
-    <img class="card-img-top" src="../pages/photoshop/<?php echo $shop_photo ?>" alt="Logo da <?php echo $shop_name ?>">
+<div class="card bg-light text-center">
+  <a <?php echo "href='../../pages/shopping?id=$shop_id'"?>><img class="card-img-top" style=width:100%;height:25rem; src="../../pages/photoshop/<?php echo $shop_photo ?>" alt="Logo da <?php echo $shop_name ?>"></a>
     <div class="card-body">
         <h4 class="card-title"><strong><?php echo $shop_name ?></strong></h4>
-        <p class="card-text"> <?php echo $shop_desc?>
-        <a <?php echo "href='pages/shopping?id=$shop_id'"?>><button type="submit" class="btn">Conheça essa loja</button></a>
+        <p class="card-text"> <?php echo $shop_desc?>           
     </div>
   </div>
-</div> 
 
 <?php
 }
@@ -42,13 +39,17 @@ extract($resposta);
 }
 ?>
 </div>
+  </div>
+    <div class="col-md-2">
+      <h5>Categorias</h5>
+      <ul>
 
 <!-- E se as categorias entrassem como barras complementar tem que colocar numa div bonitinha ?? -->
 
 <?php
 
-$sql = "SELECT * FROM category";
-
+//BUSCA DAS CATEGORIAS POR ORDEM ALFABETICA (CRESCENTE)
+$sql = "SELECT * FROM category ORDER BY cat_name ASC";
 $result= $conn->prepare($sql); 
 $result->execute();
 
@@ -64,7 +65,10 @@ if(($result)&&($result->rowCount()!=0)) {
 ?>
 
 
-
+</ul>
+  </div>
+  </div>
+  </div>
 
 
 

@@ -4,11 +4,11 @@ ob_start();
 ?>
 
 <?php
-if(count($_COOKIE) > 0) {
+/*if(count($_COOKIE) > 0) {
     echo "Cookies estão ativos.";
 } else {
     echo "Cookies não estão ativos.";
-}
+}*/
       
     ?>
 
@@ -146,7 +146,7 @@ if(count($_COOKIE) > 0) {
             <?php
 
       // Se não está logado...
-      else :
+    else :
 
       ?>
       <li>

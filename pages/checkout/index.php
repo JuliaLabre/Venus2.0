@@ -42,12 +42,12 @@
             $_SESSION["cart"] = true;
             
             //Ele não está aceitando o redirecionamento de página
-            /*echo "<script>
+            echo "<script>
             alert('Faça login para finalizar sua compra!');
-            parent.location = '../pages/login' ';
-            </script>";*/
+            parent.location = '../login' ;
+            </script>";
 
-            echo "<a href = '../login'> Faça login para finalizar sua compra</a>";
+            //echo "<a href = '../login'> Faça login para finalizar sua compra</a>";
             
             exit();
             

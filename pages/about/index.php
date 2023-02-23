@@ -4,17 +4,14 @@ require '../../includes/header.php';
 ?>
 
 <link rel="stylesheet" href="about.css">
-
-<article>
+<div class="wrap">
 <div class="about">
     <div class="row">
       <div class="col-md-12 text-center">
-        <img src="../../img/logo-principal.png"class="img-fluid">
+        <img src="../../img/logo-principal.png" class="img-fluid">
       </div>
     </div>
   </div>
-
-  
 
 <div class="alert alert-light text-left" role="alert">
   O sistema delas!
@@ -46,7 +43,8 @@ require '../../includes/header.php';
 <div class="row d-flex justify-content-center">
 <a class="botao" href="/" type="submit">Conheça Venus Shop</a>
 </div>
-</article>
+</div>
+
 
     
     

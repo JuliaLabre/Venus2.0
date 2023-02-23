@@ -54,7 +54,7 @@ height: 45px;
   background: none;
 }
 
-/*Icon da VS*/
+/*Icon da Venus Shop*/
 .navbar .navbar-brand {
   padding-left: 0;
   position: absolute;
@@ -318,4 +318,101 @@ height: 45px;
     margin: 0;
     margin-left: 1rem;
   }
+}
+/*********
+FORMULÁRIO DO CART
+Alert para frmcart quando está vazio *
+*********/
+div.alertCart {
+    padding: 15px;
+    margin: 0px 500px 0px 500px;
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: rgba(245, 183, 168, 0.973);
+    box-shadow: 0px 4px 10px rgba(99, 2, 2, 0.05);
+    width: 300px;
+    height: 300px;
+    text-align: justify;
+}
+.btnAlert {
+  display: block;
+  margin: 70px 70px;
+  margin-top: 100px;
+  background: linear-gradient(rgb(145, 58, 51), rgb(236, 122, 97));   
+  color: white;
+  border: none;
+  box-shadow: 5px 5px 10px 0px rgba(138, 138, 138, 1);
+  cursor: pointer;
+  padding: .25rem .5rem;
+  border-radius: 1.2rem;
+  font-size: 15px;
+}
+
+.btnAlert:hover {
+  background: linear-gradient(rgb(236, 122, 97), rgb(145, 58, 51));
+}
+
+/*tira o text-decoration dos botoes do bootstrap, coloca essa classe depois do a href*/
+.nounderline {
+  text-decoration: none !important
+}
+#ialert{
+  font-size: 25px;
+}
+/*********
+Carrinho
+*********/
+.tabcart {
+  margin: 0px 30px 0px 30px; /*estrutura da tabela*/
+}
+.align {
+  text-align: center; /*alinhamento das informações*/
+}
+.btnfinal { 
+  display: inline-block;  /*botão finalizar*/
+  margin: 60px 40px 70px;
+  background: linear-gradient(rgb(1, 82, 16), rgb(41, 161, 47));   
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: .10rem .2rem;
+  border-radius: 10px;
+  font-size: 20px;
+  width: 250px;
+  height: 40px;
+}
+.btnfinal:hover {
+  background: linear-gradient(rgb(41, 161, 47), rgb(1, 82, 16));
+}
+.btnesvaziar {   
+  display: inline-block;  /*botão esvaziar carrinho*/
+  margin: 60px 30px 70px;
+  background: linear-gradient(rgb(189, 26, 26), rgb(221, 95, 91));   
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: .10rem .2rem;
+  border-radius: 10px;
+  font-size: 20px;
+  width: 250px;
+  height: 40px;
+}
+.btnesvaziar:hover {
+  background: linear-gradient(rgb(221, 95, 91), rgb(189, 26, 26));
+}
+.btncontcompra {
+  display: inline-block;  /*botão cntinuar comprando*/
+  margin: 60px 30px 70px;
+  background: linear-gradient(rgb(27, 120, 207), rgb(83, 174, 235));   
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: .10rem .2rem;
+  border-radius: 10px;
+  font-size: 20px;
+  width: 250px;
+  height: 40px;
+}
+.btncontcompra:hover{
+  background: linear-gradient(rgb(83, 174, 235), rgb(27, 120, 207));
 }

@@ -1,8 +1,6 @@
 <?php
+require '../../includes/header.php';
 include_once '../../includes/config.php';
-
-session_start();
-ob_start();
 
 $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
 
@@ -46,3 +44,9 @@ Foto atual:
         <br>
         <input class="btn btn-primary btn-lg btn-block" type="submit" value="Editar" name="eduserft" >
         </form>
+
+
+                <!-- Footer -->
+<?php
+require '../../includes/footer.php'
+?>
