@@ -11,22 +11,28 @@ $resultado->execute();
 
 ?>
 <!-- Colocar produtos mais comprados -->
-<h2 class='text-center'>Lojas na Venus</h2>
 <div class="wrap">
   <div class="container-fluid">
     <div class="col-md-10 "> 
-      <div class="row">
     <div class="card-deck">
+      <div class="row mb-4">
+    
 
 
 <?php
+$max=5;
+$card=0;
 
 if(($resultado) AND ($resultado->rowCount()!= 0)){
 while($resposta = $resultado->fetch(PDO::FETCH_ASSOC)){
 extract($resposta);
+$card++;
+if(($card - 1)% $max == 0){
+  echo '</div><div class="row mb-4">';
+}
 ?>
   
-  <div class="card bg-light">
+  <div class="card bg-light text-center">
       <a target="_blank" <?php echo "href='../viewprod?id=$prod_id'"?>>
       <img class="card-img-top" src="../../pages/photos/<?php echo $prod_photo ?>" alt="Imagem de <?php echo $prod_name ?>" style=width:100%;height:25rem; >
     </a>
@@ -79,8 +85,9 @@ extract($resposta);
   </div>
   </div>
     <div class="col-md-2">
-      <h5>Categorias</h5>
-      <ul>
+      <h5 class="text-center">Categorias</h5>
+      <ul class="list-group">
+        
 
 
 <!-- E se as categorias entrassem como barras complementar tem que colocar numa div bonitinha ?? -->
@@ -97,7 +104,7 @@ if(($result)&&($result->rowCount()!=0)) {
             extract($linha);
 
 ?>                
-       <li><a <?php echo "href='../../pages/category?id=$cat_id'"?>><?php echo $cat_name?></a></li>
+       <a class="list-group-item"<?php echo "href='../../pages/category?id=$cat_id'"?>><?php echo $cat_name?></a>
 <?php
         }
     }
