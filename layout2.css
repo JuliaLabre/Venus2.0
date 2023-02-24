@@ -267,11 +267,18 @@ width: 4rem;
     color: white;
   }
 }
-
+/****
+Cards
+*****/
+.card{
+  max-width: 200px;
+  max-height: 200px;
+  overflow: hidden;
+}
 
 /* wrap */
 .wrap{
-padding: 5rem;
+padding: 6rem;
 
 }
 
