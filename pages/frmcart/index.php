@@ -1,5 +1,3 @@
-
-
 <?php
 
 require '../../includes/header.php';
@@ -31,20 +29,30 @@ $busca= "SELECT *
 
     $totalbuy=0;  /*total compra é acumulador então temos que criar a variável antes */
 
+    if(!isset($_SESSION['user_name'])){
+      $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">
+      Erro: Necessário realizar login
+     </div>';
+      header("Location: ../login");
+    }
+    $user_id = $_SESSION['user_id'];
     ?>
+    <h3 class='cartname'>Olá, <?php echo $_SESSION['user_name']?>! Esse é o seu carrinho!</h3>
+    <br>
 
-<div class="tabcart">
-<div class="table-responsive-lg">
+
+<div class="wrap">
    <form action="../checkout/index.php" method="post"> 
-    <table class="table">
-    <thead>
+    <table class="table"> <!--table-responsive COLOCAR ESSA CLASSE E ESTILIZAR PRA TENTAR DEIXAR TABLE RESPONSIVE-->
+            <thead>
      <tr>
-        <th scope="col">Imagem</th>
-        <th class="align" scope="col">Nome</th>
-        <th class="align" scope="col">Preço</th>
-        <th class="align" scope="col">Quantidade</th>
+        <th scope="col">Produto</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Preço</th>
+        <th scope="col">Quant</th>
         <th scope="col">Total</th>       
-      </tr>
+
+     </tr>
     </thead>
  <tbody>
 
@@ -56,14 +64,14 @@ $busca= "SELECT *
 ?>        
         <tr>
           <td scope="row"><img src="<?php echo $prod_photo ?>"style=widht:100px;height:100px;></td>
-          <td class="align"><?php echo $prod_name ?></td>
-          <td class="align"><?php echo $prod_price ?></td>
-          <td class="align"><?php echo $quant ?></td>
-          <td ><?php echo $total = $quant * $prod_price; $totalbuy += $total; ?></td>
+          <td><?php echo $prod_name ?></td>
+          <td><?php echo "R$ ".$prod_price ?></td>
+          <td><?php echo $quant ?></td>
+          <td ><?php echo "R$ ".$total = $quant * $prod_price; $totalbuy += $total; ?></td>
           <!--total compra é acumulador entao temos que criar a variavel antes-->
          
         <td>
-        <a href="../../finalecart"><button type="submit" class="btn btn-danger" name="delete" value="<?php echo $prod_id; ?>">Excluir</button></a> 
+        <a href="../../finalecart"><button type="submit" class="btn-cartExcluir" data-toggle="tooltip" data-placement="bottom" title="Excluir" name="delete" value="<?php echo $prod_id; ?>"><i class="fa-regular fa-square-minus"></i></button></a> 
 <!--o while é repetição vai pegar todos os dados e ir colocando um botão de acordo com o produto, mudando para button e colocando a variável do codigo produto pra excluir exatamente o produto que estou clicando-->
           </td>
         </tr>        
@@ -77,20 +85,17 @@ $busca= "SELECT *
 </tbody>
 </table>
 
- <input type="hidden" name="totalbuy" value ="<?php echo $totalbuy?>">
-
-<a href="../navshops"><button type="button" class="btncontcompra btn-custom">Continuar Comprando</button></a>
-
+<input type="hidden" name="totalbuy" value ="<?php echo $totalbuy?>">
 
 <input  type="submit" class="btnfinal btn-custom" name="checkout"  value="Finalizar Compra" >
 
+<a href="../navshops"><button type="button" class="btncontcompra btn-custom"><i class="fa-solid fa-cart-shopping"></i> Continuar Comprando</button></a>
 
-<input type="submit" class="btnesvaziar" name="deleteall" value="Esvaziar carrinho">
+<button type="submit" class="btnesvaziar" name="deleteall" value="Esvaziar carrinho"><i class="fa-regular fa-trash-can"></i> Esvaziar carrinho</button>
 
 </form>
 </div>
 </div>
-
 <?php
   }
 

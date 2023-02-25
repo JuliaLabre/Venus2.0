@@ -3,7 +3,7 @@
 
 /********
 * Reset * 
-********/
+********/ 
 * {
   margin: 0px;
   padding: 0px;
@@ -376,65 +376,209 @@ div.alertCart {
 /*********
 Carrinho
 *********/
-.tabcart {
-  margin: 0px 30px 0px 30px; /*estrutura da tabela*/
+.cartname {
+  text-align: left;
+  margin-left: 60px;
 }
-.align {
-  text-align: center; /*alinhamento das informações*/
+.table {
+  margin: 0px 25px; /*estrutura da tabela*/
 }
+.btn-cartExcluir {
+  background-color: transparent;
+  border: none;
+}
+.btn-cartExcluir:hover {
+  background-color: transparent;
+}
+.fa-square-minus{ /*menos*/
+  color: rgb(235, 52, 52);
+  font-size: 22px;
+}
+
 .btnfinal { 
-  display: inline-block;  /*botão finalizar*/
-  margin: 20px 150px 50px 150px;
-  background: linear-gradient(rgb(1, 82, 16), rgb(41, 161, 47));   
+  display: block;
+  margin: 10px 5px 0px 10px;  /*botão finalizar*/
+  background: linear-gradient(rgb(14, 143, 38), rgb(8, 170, 16));   
   color: white;
   border: none;
   cursor: pointer;
   padding: .10rem .2rem;
   border-radius: 10px;
-  font-size: 15px;
-  width: 200px;
+  font-size: 20px;
+  width: 100%;
   height: 40px;
 }
 .btnfinal:hover {
-  background: linear-gradient(rgb(41, 161, 47), rgb(1, 82, 16));
+  background: linear-gradient(rgb(21, 235, 31), rgb(7, 167, 36));
+  color: #474747;
 }
+@media (max-width: 475px) {
+  .btnfinal {
+    display: block;
+    align-items: center;
+    margin-top: 40px;
+    margin-left: 1rem;
+    font-size: 18px;
+    width: 200px;
+  }
+}
+  .btncontcompra {
+    display: inline-block;
+    margin: 30px 0px 0px 10px;
+    background: linear-gradient(rgb(27, 120, 207), rgb(83, 174, 235));
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0.1rem 0.2rem;
+    border-radius: 10px;
+    font-size: 20px;
+    width: 270px;
+    height: 45px;
+}
+.btncontcompra:hover{
+  background: linear-gradient(rgb(83, 174, 235), rgb(27, 120, 207));
+}
+.fa-cart-shopping{
+  color: rgb(248, 237, 225);
+  font-size: 20px;
+}
+  @media (max-width: 475px) {
+    .btncontcompra {
+      display: block;
+      align-items: center;
+      margin-top: 20px;
+      width: 200px;
+      font-size: 15px;
+    }
+  .fa-cart-shopping{
+    color: rgb(248, 237, 225);
+    font-size: 15px;
+  }
+  }
 .btnesvaziar {   
-  display: inline-block;  /*botão esvaziar carrinho*/
-  margin: 20px 150px 50px 150px;
-  background: linear-gradient(rgb(189, 26, 26), rgb(221, 95, 91));   
+  display: block;
+  justify-content: flex-start;
+  align-items: baseline;
+  margin-left: auto;
+  margin-top: 30px;
+  background: linear-gradient(rgb(189, 26, 26), rgb(221, 95, 91));
   color: white;
   border: none;
   cursor: pointer;
-  padding: .10rem .2rem;
+  padding: 0.2rem 0.3rem;
   border-radius: 10px;
-  font-size: 15px;
-  width: 200px;
+  font-size: 18px;
+  width: 190px;
   height: 40px;
 }
 .btnesvaziar:hover {
   background: linear-gradient(rgb(221, 95, 91), rgb(189, 26, 26));
 }
-.btncontcompra {
-  display: inline-block;  /*botão cntinuar comprando*/
-  margin: 20px 150px 50px 150px;
-  background: linear-gradient(rgb(27, 120, 207), rgb(83, 174, 235));   
-  color: white;
-  border: none;
-  cursor: pointer;
-  padding: .10rem .2rem;
-  border-radius: 10px;
-  font-size: 15px;
-  width: 200px;
-  height: 40px;
+.fa-trash-can {
+color: rgb(248, 237, 225);
+font-size: 18px;
 }
-.btncontcompra:hover{
-  background: linear-gradient(rgb(83, 174, 235), rgb(27, 120, 207));
+@media (max-width: 475px) {
+    .btnesvaziar {
+      display: block;
+      align-items: center;
+      margin-top: 20px;
+      margin-left: 1rem;
+      width: 200px;
+      font-size: 18px;
+    }
+  .fa-trash-can{
+    color: rgb(248, 237, 225);
+    font-size: 17px;
+  }
+  }
+
+/* Table Base -TESTAR PRA VER SE CONSIGO DEIXAR TABELA RESPONSIVA
+
+table {
+  max-width: 100%;
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-family: arial;
 }
 
-@media (max-width: 310px) {
-  
-  .btnfinal {
-    display: block;  /*botão cntinuar comprando*/
-    margin: 60px 30px 70px;
-  }
+.table {
+  border-bottom: #999999 solid 1px;
+  width: 100%;
+  margin-bottom: 20px;
 }
+
+.table th,
+.table td {
+  border-right: #999999 solid 1px;
+  font-size: 12px;
+  padding: 8px;
+  line-height: 20px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.table td:last-child {
+   border-right: 0;
+}
+
+.table thead th {
+  font-weight: normal;
+  background-color: #005dab;
+  color: #fff;
+  font-size: 15px;
+}
+
+.table tbody > tr:nth-child(odd) > td,
+.table tbody > tr:nth-child(odd) > th {
+  background-color: #f8f8f8;
+}
+
+
+/* Small Sizes 
+@media (max-width: 320px) { 
+
+/* Responsive Table 
+.table-responsive {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+.table-responsive thead,
+.table-responsive tbody,
+.table-responsive th,
+.table-responsive td,
+.table-responsive tr {
+  display: block;
+}
+.table-responsive td,
+.table-responsive th {
+  height: 35px;
+}
+
+.table-responsive thead {
+  float: left;
+}
+
+.table-responsive tbody {
+  width: auto;
+  position: relative;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+}
+
+.table-responsive tbody tr {
+  display: inline-block;
+}
+
+
+.table td:last-child {
+   border-right: #999999 solid 1px;
+}
+
+
+}
+*/
