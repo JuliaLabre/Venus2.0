@@ -20,7 +20,7 @@ $resultado->execute();
 
 
 <?php
-$max=5;
+$max=4;
 $card=0;
 
 if(($resultado) AND ($resultado->rowCount()!= 0)){
@@ -32,9 +32,9 @@ if(($card - 1)% $max == 0){
 }
 ?>
   
-  <div class="card bg-light text-center">
-      <a target="_blank" <?php echo "href='../viewprod?id=$prod_id'"?>>
-      <img class="card-img-top img-fluid" src="../../pages/photos/<?php echo $prod_photo ?>" alt="Imagem de <?php echo $prod_name ?>" style=width:100%;height:25rem; >
+  <div class="card bg-light text-center teste">
+      <a target="_blank" <?php echo "href='../../pages/viewprod?id=$prod_id'"?>>
+      <img class="card-img-top" src="../../pages/photos/<?php echo $prod_photo ?>" alt="Imagem de <?php echo $prod_name ?>" style=width:100%;height:25rem; >
     </a>
         <div class="card-body">
         <h5 class="card-title"><?php echo $prod_name ?></h5>

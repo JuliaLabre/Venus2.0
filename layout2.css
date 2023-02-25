@@ -270,9 +270,9 @@ width: 4rem;
 /****
 Cards
 *****/
-.card{
-  max-width: 200px;
-  max-height: 200px;
+.teste{
+  max-width: 400px;
+  max-height: 400px;
   overflow: hidden;
 }
 
