@@ -267,14 +267,6 @@ width: 4rem;
     color: white;
   }
 }
-/****
-Cards
-*****/
-.teste{
-  max-width: 400px;
-  max-height: 400px;
-  overflow: hidden;
-}
 
 /* wrap */
 .wrap{
