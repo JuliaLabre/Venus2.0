@@ -10,17 +10,16 @@ $resultado = $conn->prepare($produtos);
 $resultado->execute(); 
 
 ?>
-<!-- Colocar produtos mais comprados -->
+<!-- Entraria um carrossel legal falando sobre a Venus -->
 <div class="wrap">
   <div class="container-fluid">
-    <div class="col-md-10 "> 
-    <div class="card-deck">
-      <div class="row mb-4">
+    <div class="col-md-9"> 
+      <div class="row mb-4" >
     
 
 
 <?php
-$max=4;
+$max=5;
 $card=0;
 
 if(($resultado) AND ($resultado->rowCount()!= 0)){
@@ -31,8 +30,8 @@ if(($card - 1)% $max == 0){
   echo '</div><div class="row mb-4">';
 }
 ?>
-  
-  <div class="card bg-light text-center teste">
+  <!-- O style dentro da div está limitando o card e dando margem pra não ficar agarrado, já que eu tirei o card-deck -->
+  <div class="card bg-light text-center"  style=max-width:24rem;margin-left:2rem;>
       <a target="_blank" <?php echo "href='../../pages/viewprod?id=$prod_id'"?>>
       <img class="card-img-top" src="../../pages/photos/<?php echo $prod_photo ?>" alt="Imagem de <?php echo $prod_name ?>" style=width:100%;height:25rem; >
     </a>
@@ -81,7 +80,6 @@ if(($card - 1)% $max == 0){
 
 }
 ?>
-  </div>
   </div>
   </div>
     <div class="col-md-2">

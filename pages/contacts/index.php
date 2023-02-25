@@ -48,7 +48,7 @@ endif;
 ?>
 <div class="container">
     <div class="col-md-3"></div>
-    <div class="col-md-6">
+    <div class="col-md-6" >
     <h2 class='text-center'>Faça contato com a Venus Shop</h2>
 
         <form method="post" action="">
