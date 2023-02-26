@@ -53,6 +53,7 @@ if(($card - 1)% $max == 0){
 </div>
 </div>
 </div>
+</div>
 
 
 

@@ -49,7 +49,7 @@ $sale= "SELECT *
 FROM sale s 
 INNER JOIN request r ON s.sale_id= r.req_sale
 INNER JOIN delivery d ON s.sale_id=d.deli_sale
-INNER JOIN products p ON r.req_prod=p.prod_id WHERE sale_client = $id ";
+INNER JOIN products p ON r.req_prod=p.prod_id WHERE sale_client = $id ORDER BY sale_date DESC ";
     $resulsale = $conn->prepare($sale);
     $resulsale->execute();
 

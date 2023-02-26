@@ -96,6 +96,7 @@ echo '<div class="alert alert-warning" role="alert">
  </div>
  </div>
   </div>
+</div>
   
 <!-- Footer -->
 <?php

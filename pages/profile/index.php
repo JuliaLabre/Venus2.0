@@ -222,8 +222,10 @@ WHERE f.fav_user = $user_id ORDER BY fav_id DESC LIMIT 3";
                 </div>
         </div>
     </div>
-
+    
+<br>
     <a href="../exit"><button type="submit" class="btn">Sair</button></a>
+</div>
     <!-- Footer -->
     <?php
 require '../../includes/footer.php'
