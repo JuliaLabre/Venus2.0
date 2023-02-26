@@ -28,12 +28,12 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
 }
 ?>
 <h2 class="text-center">Faça suas alterações</h2>
-<div class="wrap text">
-<form method="post" action="../updateuser/index.php">
+<div class="wrap">
 
-    <div class="form-row">
-        <input name="id" type="hidden" value=" <?php echo $user_id ?>">            
-        <div class="col-md-4 mb-3">
+<form method="post" action="../updateuser/index.php">
+    <input name="id" type="hidden" value=" <?php echo $user_id ?>">   
+    <div class="form-row">         
+        <div class="col-md-3 mb-3">
             <label for="validationDefault01">Nome Completo</label>
             <input value=" <?php echo $user_name ?>" name="name" type="text" class="form-control" id="validationDefault01" placeholder="Nome" required>
         </div>
@@ -41,33 +41,18 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
             <label for="telefone">Telefone</label>
             <input value=" <?php echo $user_tel ?>" name="tel" type="text" placeholder="(99) 99999-9999" class="form-control" onkeypress="$(this).mask('(00)00000-0000')">
         </div>
-        <div class="col-md-4 mb-3">
+        <div class="col-md-3 mb-3">
             <label for="validationDefaultUsername">Email</label>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroupPrepend2">@</span>
-                </div>
-                <input value=" <?php echo $user_email ?>" name="email" type="email" class="form-control" id="validationDefaultUsername" placeholder="Email" aria-describedby="inputGroupPrepend2" required>
-            </div>                
+            <input value=" <?php echo $user_email ?>" name="email" type="email" class="form-control" id="validationDefaultUsername" placeholder="Email" aria-describedby="inputGroupPrepend2" required>                
         </div>
         <div class="col-md-2 mb-3">
             <label for="validationDefault02">Data de Nascimento</label>
             <input value="<?php echo $user_birth ?>" name="birth" type="date" class="form-control" id="validationDefault02" placeholder="Data de Nascimento" required>
-        </div>
-        
+        </div>     
+           
     </div>
 
-    <div class="form-row">
-        <div class="col-md-2 mb-3">
-            
-            <label>Genero</label>
-            <select name="gen" class="custom-select" required>
-            
-            <option value="Feminino" <?php if('Feminino' == $user_gen){ echo "selected";}?>>Feminino</option>
-            <option value="Masculino" <?php if('Masculino' == $user_gen){ echo "selected";}?>>Masculino</option>
-            <option value="Outro" <?php if('Outro' == $user_gen){ echo "selected";}?>>Outro</option>
-                 </select>
-        </div>
+    <div class="form-row">        
         <div class="col-md-3 mb-3">
             <label for="validationDefault03">CPF</label>
             <input value="<?php echo $user_CPF ?>" name="CPF" type="text" class="form-control" onkeypress="$(this).mask('000.000.000-00'); " placeholder="123.456.789-10" required>
@@ -84,8 +69,8 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
             <label for="validationDefault05">Número</label>
             <input value="<?php echo $user_num ?>" name="num" type="number" class="form-control" id="validationDefault05" placeholder="Nº" required>
         </div>
-    </div>
 
+    </div>
     <div class="form-row">
         <div class="col-md-4 mb-3">
             <label for="validationDefault05">Complemento</label>

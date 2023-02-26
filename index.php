@@ -10,6 +10,12 @@ $resultado = $conn->prepare($produtos);
 $resultado->execute(); 
 
 ?>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Venus Shop</h1>
+    <p class="lead">O sistema delas</p>
+  </div>
+</div>
 <!-- Entraria um carrossel legal falando sobre a Venus -->
 <div class="wrap">
   <div class="container-fluid">
