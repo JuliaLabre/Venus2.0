@@ -12,10 +12,12 @@ $resultado->execute();
 <!-- Conteudo -->
 <h2 class='text-center'>Lojas na Venus</h2>
 <div class="wrap">
-<div class="container-fluid">
+<div class="container">
+  <div class="col-md-10">
+<div class="row mb-4">
 
 <?php
-$max=5;
+$max=3;
 $card=0;
 
 if(($resultado) AND ($resultado->rowCount()!= 0)){
@@ -48,6 +50,7 @@ if(($card - 1)% $max == 0){
 }
 
 ?>
+</div>
 </div>
 </div>
 

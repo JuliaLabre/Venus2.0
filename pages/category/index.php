@@ -31,19 +31,23 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
 <h2 class='text-center'><?php echo $cat_name?></h2>
 <div class="wrap">
 <div class="container-fluid">
-    <div class="col-md-12 "> 
-<div class="card-deck ">
+<div class="col-md-12 "> 
+<div class="row mb-4 ">
 <?php
-
+$max=5;
+$card=0;
 if(($resultado) AND ($resultado->rowCount()!= 0)){
   while($resposta = $resultado->fetch(PDO::FETCH_ASSOC)){
-
   extract($resposta);
+  $card++;
+if(($card - 1)% $max == 0){
+  echo '</div><div class="row mb-4">';
+}
 
 ?>
     
-      <div class="card bg-light text-center" style=max-width:27rem;>
-        <a target="_blank" <?php echo "href='../viewprod?id=$prod_id'"?>><img class="card-img-top img-fluid" src="<?php echo $prod_photo ?>" alt="Imagem de <?php echo $prod_name ?>" style=width:100%;height:25rem;></a>
+      <div class="card bg-light text-center"  style=max-width:24rem;margin-left:2rem;>
+        <a target="_blank" <?php echo "href='../viewprod?id=$prod_id'"?>><img class="card-img-top img-fluid" src="<?php echo $prod_photo ?>" alt="Imagem de <?php echo $prod_name ?>"  style=width:100%;height:25rem;></a>
         <div class="card-body">
         <h5 class="card-title"><?php echo $prod_name ?></h5>
         <p class="card-text">R$<?php echo $prod_price ?>,00</p> 

@@ -5,12 +5,12 @@ include_once 'includes/config.php';
 
 //Buscando as lojas que existem no banco
 $produtos = "SELECT *
-FROM products WHERE prod_status = 'online' AND prod_stock > 0 ORDER BY prod_id DESC";
+FROM products WHERE prod_status = 'online' AND prod_stock > 0 ORDER BY RAND()";
 $resultado = $conn->prepare($produtos);
 $resultado->execute(); 
 
 ?>
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid text-center">
   <div class="container">
     <h1 class="display-4">Venus Shop</h1>
     <p class="lead">O sistema delas</p>
@@ -18,14 +18,14 @@ $resultado->execute();
 </div>
 <!-- Entraria um carrossel legal falando sobre a Venus -->
 <div class="wrap">
-  <div class="container-fluid">
+  <div class="container">
     <div class="col-md-9"> 
       <div class="row mb-4" >
     
 
 
 <?php
-$max=5;
+$max=3;
 $card=0;
 
 if(($resultado) AND ($resultado->rowCount()!= 0)){

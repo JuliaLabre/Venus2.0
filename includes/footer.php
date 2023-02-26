@@ -39,7 +39,7 @@
       <!--Rodapé inferior-->
       <div class="row text-center footerinf">
         <div class="col-md-12" id="copy">
-          venus shop &copy; 2023 - todos os direitos reservados <a href="../../pages/loginadmin"><i class="fa-solid fa-venus"></i></a>
+          venus shop &copy; 2023 - todos os direitos reservados <a style="text-decoration:none; color:#474747; cursor:text;" href="../../pages/loginadmin"><i class="fa-solid fa-venus"></i></a>
           <!-- Pensei em tirar a cor e o ponteiro de clique, pra ficar m,eio que secreto o ling de admin no venus, por questão de segurança-->
         </div>
       </div>

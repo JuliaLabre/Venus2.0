@@ -37,6 +37,11 @@ $user_id = $_SESSION['user_id'];
                         class="fa-solid fa-camera fa-fw"></i> &nbsp; Edite sua foto </a>
 
             </div>
+            <div class="row" style="padding:1rem;">
+
+    <a style="width:100%" <?php echo "href='../frmfavorite'" ?> class="list-group-item"><i class="fa-solid fa-heart fa-fw"></i> &nbsp; Seus Favoritos </a>
+
+</div>
 
             <div class="row" style="padding:1rem;">
 

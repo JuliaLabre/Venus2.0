@@ -16,7 +16,6 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
   extract($resposta);
   
 }
-
   
     $busca= "SELECT *
     FROM products  WHERE 
@@ -69,59 +68,26 @@ endif;
 
 ?>
 <!-- Conteudo -->
-<div class="container">
-  <div class="col-md-6">
-<h2><img src="<?php echo $shop_photo ?>" style=width:150px;> <?php echo $shop_name?></h2>
-</div>
-
-<div class="col-md-6">
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-   Faça contato com <?php echo $shop_name?>
-  </button>
-<div class="collapse" id="collapseExample">
-  <div class="card card-body">
-    
-  <form method="post" action="" >
-        <label for="validationDefault01">Nome</label>
-        <input name="name" type="text" class="form-control" id="validationDefault01" placeholder="Nome" required>
- 
-        <label for="validationDefaultUsername">Email</label>
-        <input name="email" type="email" class="form-control" id="validationDefaultUsername" placeholder="Email"  aria-describedby="inputGroupPrepend2" required>
-        
-
-         <label for="validationDefault01">Assunto</label>
-        <input name="subject" type="text" class="form-control" id="validationDefault01" placeholder="Assunto" required >
- 
-        <label for="validationDefault01">Mensagem</label>
-        <input name="message" type="text" class="form-control" id="validationDefault01" placeholder="Sua mensagem aqui..." required>  
-        
-        <input type="hidden" name="address" value="<?php echo $id?>">
-        <br>
-
-        <input class="btn btn-primary" type="submit" value='Enviar' name='send' >
-         
-</form>
-
-</div>
-</div>
-</div>
-</div>
-
-
+<h2 class="text-center"><img src="<?php echo $shop_photo ?>" style=width:150px;> <?php echo $shop_name?></h2>
 <div class="wrap">
-<div class="card-deck text-center">
-
-
+  <div class="container">
+    <div class="col-md-10"> 
+      <div class="row mb-4" >
 <?php
+$max=3;
+$card=0;
 
 if(($resultado) AND ($resultado->rowCount()!= 0)){
   while($resposta = $resultado->fetch(PDO::FETCH_ASSOC)){
 
   extract($resposta);
-
+  $card++;
+  if(($card - 1)% $max == 0){
+    echo '</div><div class="row mb-4">';
+  }
 ?>
 
-      <div class="card bg-light w-25 p-3 col-md-2">
+      <div class="card bg-light text-center"  style=max-width:24rem;margin-left:2rem;>
       <a target="_blank" <?php echo "href='../viewprod?id=$prod_id'"?>><img class="card-img-top" src="<?php echo $prod_photo ?>" alt="Imagem de <?php echo $prod_name ?>" style=width:100%;height:25rem; ></a>
         <div class="card-body">
         <h5 class="card-title"><?php echo $prod_name ?></h5>
@@ -168,6 +134,42 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
 }
 ?>
  </div>
+</div>
+ 
+<div class="col-md-2">
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+   Faça contato com <?php echo $shop_name?>
+  </button>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    
+  <form method="post" action="" >
+        <label for="validationDefault01">Nome</label>
+        <input name="name" type="text" class="form-control" id="validationDefault01" placeholder="Nome"minlength="5" required>
+ 
+        <label for="validationDefaultUsername">Email</label>
+        <input name="email" type="email" class="form-control" id="validationDefaultUsername" placeholder="Email" minlength="5" aria-describedby="inputGroupPrepend2" required>
+        
+
+         <label for="validationDefault01">Assunto</label>
+        <input name="subject" type="text" class="form-control" id="validationDefault01" placeholder="Assunto" minlength="5" required >
+ 
+        <label for="validationDefault01">Mensagem</label>
+        <textarea name="message" minlength="5" class="form-control" id="validationDefault01" placeholder="Sua mensagem aqui..." required></textarea>
+        
+        <input type="hidden" name="address" value="<?php echo $id?>">
+        <br>
+
+        <input class="btn btn-primary" type="submit" value='Enviar' name='send' >
+         
+</form>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
 
 
 
