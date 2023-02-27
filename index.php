@@ -10,11 +10,26 @@ $resultado = $conn->prepare($produtos);
 $resultado->execute(); 
 
 ?>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="img\venusshop.png" alt="Logotipo Venus Shop" style="width:100%;max-height:60rem;">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="img\venusshop.png" alt="Logotipo Venus Shop" style="width:100%;max-height:60rem;">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="img\venusshop.png" alt="Logotipo Venus Shop" style="width:100%;max-height:60rem;">
+    </div>
+  </div>
+</div>
+
 <div class="jumbotron jumbotron-fluid text-center">
   <div class="container">
     <h1 class="display-4">Venus Shop</h1>
     <p class="lead">O sistema delas</p>
-  </div>
+</div>
+
 </div>
 <!-- Entraria um carrossel legal falando sobre a Venus -->
 <div class="wrap">
