@@ -25,7 +25,7 @@ $resultado->execute();
 
 <!-- Podemos acrescentar um botão pra ver os produtos offline, e a questão do estoque, se ele tiver zerado, ter alguma coisa diferente.  -->
 <!-- Pensei em um menu ao lado com opções do que ele pode fazer, como editar os produtos, cadastrar produtos e na area principal pode ficar os produtos mais vendidos-->
-
+<div class="wrap">
 <main>
 <div class="perfil-bonito">
   <h2 class='text-center'>Olá, <?php echo $_SESSION['shop_name']?>!</h2>
@@ -214,7 +214,8 @@ if(!isset($_SESSION['shop_name'])){
 }
 ?>
 
-<a href="../exit"><button type="submit">Sair</button></a>
+<a href="../exit"><button type="submit" class="btn">Sair</button></a>
+</div>
 
 <?php
 require '../../includes/footer.php';
