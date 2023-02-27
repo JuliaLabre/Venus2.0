@@ -191,3 +191,7 @@ Foto atual:
         <input class="btn btn-primary btn-lg btn-block" type="submit" value="Editar" name="edshopft" >
         </form>
 </main>
+
+<?php
+   require '../../includes/footershop.php';
+?>

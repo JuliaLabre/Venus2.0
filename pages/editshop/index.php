@@ -39,17 +39,18 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
         <input value=" <?php echo $shop_email ?>" name="email" type="email" class="form-control" id="validationDefaultUsername" placeholder="Email" aria-describedby="inputGroupPrepend2" required>  
         <label for="validationDefault02"> CNPJ </label>
         <input value="<?php echo $shop_CNPJ ?>" name="CNPJ" type="text" maxlength="14"class="form-control" id="validationDefault02" placeholder="Data de Nascimento" required>
-        <label for="telefone">Descrição</label>
-        <textarea name="desc" type="text" row="3"><?php echo $shop_desc ?></textarea>   
+        <label for="telefone">Descrição</label><br>
+        <textarea name="desc" type="text" rows="5" cols="100"><?php echo $shop_desc ?></textarea> <br>  
    
         
-    </div>             
+               
 
-    <input class="btn btn-primary btn-lg " type="submit" value='Editar' name="btnedit">
+    <input class="btn" type="submit" value='Editar' name="btnedit">
 </form>
 
-    <a href="../shop"><input class="btn btn-primary btn-lg " type="submit" value="Sair"></a>
+    <a href="../shop"><input class="btn" type="submit" value="Sair" ></a>
 
 </div>
+</div>  
 <?php
-        require '../../includes/footer.php';
+        require '../../includes/footershop.php';

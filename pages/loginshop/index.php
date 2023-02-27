@@ -109,8 +109,8 @@ if(isset($_SESSION['msg'])){
                   <div class="d-flex">
                     <h3 class="font-weight-bold">Entrar na sua loja</h3>
                   </div>
-                  <input type="email" name="admin" placeholder="E-mail">
-                  <input type="password" name="passw" placeholder="Senha">
+                  <input type="email" name="shop" placeholder="E-mail">
+                  <input type="password" name="pass" placeholder="Senha">
 
                   <input type="submit" class="text-white text-weight-bold bt" name="btnlogin" value="entrar">
                 </form>

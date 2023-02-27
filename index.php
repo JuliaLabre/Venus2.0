@@ -48,12 +48,13 @@ extract($resposta);
         <div class="card-body">
         <h5 class="card-title"><?php echo $prod_name ?></h5>
         <p class="card-text"> <?php echo $prod_desc?> - R$<?php echo $prod_price ?>,00</p> 
-        <form method="post" action="../..pages/cart/index.php">
+        <form method="post" action="../../pages/cart/index.php">
         <h6>   
         <label>Quant</label>
         <input type="number" name="quant" value="1" style=width:45px;>
         </h6> 
         <input type="hidden" value="<?php echo $prod_id ?>" name="prod_id">
+        
   
   <?php
   // Se o usuario tiver logado e tiver esse produto como favorito:

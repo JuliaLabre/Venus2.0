@@ -69,7 +69,6 @@ $resultado->execute();
       <th scope="col">Complemento</th>
       <th scope="col">Status</th>
       <th scope="col"></th>
-      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -218,5 +217,5 @@ if(!isset($_SESSION['shop_name'])){
 </div>
 
 <?php
-require '../../includes/footer.php';
+   require '../../includes/footershop.php';
 ?>

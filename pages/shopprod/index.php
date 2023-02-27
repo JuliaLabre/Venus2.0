@@ -20,7 +20,7 @@ $resultado->execute();
 
 ?>
 <h2 class="text-center">Seus Produtos</h2>
-
+<div class="wrap">
 <table class="table">
   <thead>
     <tr>
@@ -89,4 +89,8 @@ if(!isset($_SESSION['shop_name'])){
 }
 ?>
 
-<a href="../shop"><button type="submit">Voltar</button></a>
+<a href="../shop"><button type="submit" class="btn">Voltar</button></a>
+</div>
+<?php
+   require '../../includes/footershop.php';
+?>

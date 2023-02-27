@@ -21,7 +21,7 @@
 
       <nav class="navbar navbar-expand-lg navbar-light">
         <!--Nome + Icon-->
-          <a class="navbar-brand" href="/"><img src="../../img/logo-2.png" alt="Logo da VenusShop" title="Venus Shop"></a>
+          <a class="navbar-brand" href="../shop"><img src="../../img/logo-2.png" alt="Logo da VenusShop" title="Venus Shop"></a>
           <!--Dropdown para telas menores-->  		
           <button type="button" data-target="#conteudoNavbarSuportado" data-toggle="collapse" class="navbar-toggle">
             <span class="navbar-toggler-icon"></span>
