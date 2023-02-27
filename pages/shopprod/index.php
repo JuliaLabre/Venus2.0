@@ -6,6 +6,8 @@ ob_start();
 include_once '../../includes/config.php';
 
 $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
+$shop_id = $id;
+include_once '../../includes/headershop.php';
 
 
 $produtos = "SELECT p.prod_id, p.prod_name,p.prod_photo, p.prod_price, p.prod_size, p.prod_stock, p.prod_desc, p.prod_status, c.cat_name
