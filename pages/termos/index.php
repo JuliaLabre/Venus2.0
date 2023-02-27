@@ -2,7 +2,7 @@
 
 require '../../includes/header.php';
 ?>
-
+<div class="wrap">
 <article class="borda-termos">
 <h2 class="termos-title">TERMOS DE USO</h2><br>
 
@@ -46,7 +46,7 @@ O website, no todo ou em cada uma das suas seções, pode ser encerrado, suspens
 <p>Caso você tenha qualquer dúvida sobre esta Política de Uso, por favor, entre em contato pelo e-mail contato@venusshop.com.br</p>
 
 </article>
-
+</div>
 
 <?php
 require '../../includes/footer.php'

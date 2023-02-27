@@ -20,24 +20,20 @@ $resultado->execute();
 <div class="wrap">
   <div class="container">
     <div class="col-md-9"> 
-      <div class="row mb-4" >
+      <div class="row mb-4 d-flex" >
     
 
 
 <?php
-$max=3;
-$card=0;
+
 
 if(($resultado) AND ($resultado->rowCount()!= 0)){
 while($resposta = $resultado->fetch(PDO::FETCH_ASSOC)){
 extract($resposta);
-$card++;
-if(($card - 1)% $max == 0){
-  echo '</div><div class="row mb-4">';
-}
+
 ?>
   <!-- O style dentro da div está limitando o card e dando margem pra não ficar agarrado, já que eu tirei o card-deck -->
-  <div class="card bg-light text-center"  style=max-width:24rem;margin-left:2rem;>
+  <div class="card bg-light text-center"  style="max-width:20rem;margin:1rem;">
       <a target="_blank" <?php echo "href='../../pages/viewprod?id=$prod_id'"?>>
       <img class="card-img-top" src="../../pages/photos/<?php echo $prod_photo ?>" alt="Imagem de <?php echo $prod_name ?>" style=width:100%;height:25rem; >
     </a>
@@ -88,7 +84,7 @@ if(($card - 1)% $max == 0){
 ?>
   </div>
   </div>
-    <div class="col-md-2">
+    <div class="col-md-3">
       <h5 class="text-center">Categorias</h5>
       <ul class="list-group">
         

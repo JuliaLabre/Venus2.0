@@ -65,7 +65,7 @@ $user_id = $_SESSION['user_id'];
         </div>
 
         <div class="col-md-8" >
-        <div class="row list-group-item" style="padding:1rem; margin-left:.5rem; ">
+        <div class="row list-group-item d-flex" style="padding:1rem; margin-left:.5rem; ">
 
             <p>Último pedido:</p>
 

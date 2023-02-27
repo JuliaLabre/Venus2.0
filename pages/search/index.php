@@ -41,9 +41,9 @@ $resulshop->execute();
     <?php echo $search?>
 </h2>
 <div class="wrap">
-    <div class="container-fluid">
-        <div class="col-md-9">
-            <div class="row mb-4">
+<div class="container">
+    <div class="col-md-9"> 
+      <div class="row mb-4 d-flex" >
                 <?php
 
 if(($resulprod) AND ($resulprod->rowCount()!= 0)){
@@ -54,7 +54,7 @@ extract($resprod);
 ?>
 
 
-                <div class="card bg-light text-center" style=max-width:24rem;margin-left:2rem;>
+                <div class="card bg-light text-center" style=max-width:24rem;margin:1rem;>
                     <a target="_blank" <?php echo "href='../viewprod?id=$prod_id'" ?>><img class="card-img-top"
                             src="<?php echo $prod_photo ?>" alt="Imagem de <?php echo $prod_name ?>"
                             style=width:100%;height:25rem;></a>
@@ -140,7 +140,7 @@ if(($resulprod->rowCount()== 0) AND ($resulshop->rowCount()== 0)){
         </div>
     </div>
 </div>
-
+</div>
 
 
 

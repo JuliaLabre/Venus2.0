@@ -70,24 +70,19 @@ endif;
 <!-- Conteudo -->
 <h2 class="text-center"><img src="<?php echo $shop_photo ?>" style=width:150px;> <?php echo $shop_name?></h2>
 <div class="wrap">
-  <div class="container">
-    <div class="col-md-10"> 
-      <div class="row mb-4" >
+<div class="container">
+    <div class="col-md-9"> 
+      <div class="row mb-4 d-flex" >
 <?php
-$max=3;
-$card=0;
 
 if(($resultado) AND ($resultado->rowCount()!= 0)){
   while($resposta = $resultado->fetch(PDO::FETCH_ASSOC)){
 
   extract($resposta);
-  $card++;
-  if(($card - 1)% $max == 0){
-    echo '</div><div class="row mb-4">';
-  }
+
 ?>
 
-      <div class="card bg-light text-center"  style=max-width:24rem;margin-left:2rem;>
+      <div class="card bg-light text-center"  style=max-width:24rem;margin:1rem;>
       <a target="_blank" <?php echo "href='../viewprod?id=$prod_id'"?>><img class="card-img-top" src="<?php echo $prod_photo ?>" alt="Imagem de <?php echo $prod_name ?>" style=width:100%;height:25rem; ></a>
         <div class="card-body">
         <h5 class="card-title"><?php echo $prod_name ?></h5>
@@ -136,7 +131,7 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
  </div>
 </div>
  
-<div class="col-md-2">
+<div class="col-md-3">
   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
    Faça contato com <?php echo $shop_name?>
   </button>

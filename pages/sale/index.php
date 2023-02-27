@@ -59,13 +59,13 @@ INNER JOIN products p ON r.req_prod=p.prod_id WHERE sale_client = $id ORDER BY s
     <?php echo $_SESSION['user_name'];?>
 </h2>
 <div class="wrap">
-    <div class="container-fluid">
+    <div class="container">
 
-    <div class="col-md-3"> &nbsp; </div>
+    <div class="col-md-2"> &nbsp; </div>
 
 
 
-        <div class="col-md-6">
+        <div class="col-md-8">
                 <?php
 
  if(($resulsale) AND ($resulsale->rowCount()!= 0)){
@@ -151,7 +151,7 @@ INNER JOIN products p ON r.req_prod=p.prod_id WHERE sale_client = $id ORDER BY s
 }
 ?>
     </div>
-    <div class="col-md-3">&nbsp;</div>
+    <div class="col-md-2">&nbsp;</div>
     </div>
 </div>
 
