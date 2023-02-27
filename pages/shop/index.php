@@ -6,7 +6,7 @@ ob_start();
 include_once '../../includes/config.php';
 
 $shop_id = $_SESSION['shop_id'];
-
+$quant=0;
 include_once '../../includes/headershop.php';
 
 
@@ -50,7 +50,6 @@ $resultado->execute();
       <ul>
         <li><?php echo $_SESSION['shop_name'] ?></li>
         <li>Membro desde <?php echo $_SESSION['datebr'] ?></li>
-        <li>Total de itens vendidos : </li>
       </ul>
     </div>
 </div>
@@ -90,7 +89,7 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
         </td>
         <td> <?php echo $prod_name ?> </td>
         <td><?php echo $req_value ?></td>
-        <td><?php echo $req_quant ?></td>
+        <td><?php $quant=$quant+$req_quant; echo $req_quant; ?></td>
         <td><?php echo $user_CEPadress ?></td>
         <td><?php echo $user_num ?></td>
         <td><?php echo $user_comp ?></td>
@@ -130,6 +129,8 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
    
    </tbody>
  </table>
+
+ <p>Total de itens vendidos : <?php echo $quant ?></p>
 
 
 <?php
