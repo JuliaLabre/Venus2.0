@@ -63,15 +63,15 @@ width: 4rem;
   padding-right: 30px;
 }
 .navbar .navbar-brand img {
-  margin-right: 50px;
+  margin-right: 20px;
   margin-left: 2rem;
-  width: 70px;
-  height: 40px;
+  width: 120px;
+  height: 30px;
 }
 
 /*Barra de pesquisa*/
 #search-box{
-  position:sticky;
+  position: relative;
   margin: 0px 98px -22px 0px;
   color:#474747;
   width: 25rem;
@@ -118,10 +118,9 @@ width: 4rem;
   padding-right: 30px;
   border: none;
   background: none;
-  
 }
 
-#navlink a{
+#linknav a{
   color: #474747
 }
 

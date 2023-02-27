@@ -1,36 +1,53 @@
-.alert {
-  color: rgb(122, 120, 120);
-  margin: 40px 40px 40px;
-  padding: 20px 20px 0px;
-  border: 2px solid #f7b78d;
-  padding-top: 25px;
-  border-radius: 3px;
-  background-color: rgb(248, 217, 197);
-  box-shadow: 0px 4px 10px rgba(90, 44, 2, 0.05);
-  margin-bottom: 40px;
+.alert-light {
+  font-size: 30px;
+  margin-top: 20px;
 }
-.venusvoce{
-  text-align: center;
 
+
+.container-fluid {
+    font-size: 26px;
+    text-align:left;
+   
+}
+.primeiro {
+    font-size: 26px;
+    text-align:left;
+}
+
+.segundo {
+    font-size: 26px;
+    text-align:left;
+
+}
+.about img {
+    width: 50%;
+    height: 350px;
+    
+}
+.negrito {
+    font-size: 18px;
+}
+
+.botao {
+    background-color: #bb1919;
+    border-radius: 50px;
+    border: 0px;
+    font-size: 2rem;
+    color: white;
+    margin-top: 20px;
+    padding: 10px;
+    width: 300px;
+    text-align: center;
   }
-  
-  .botao {
-      background-color: #bb1919;
-      border-radius: 50px;
-      border: 0px;
-      font-size: 2rem;
-      color: white;
-      margin-top: 20px;
-      margin-bottom: 20px;
-      padding: 5px;
-      width: 300px;
-      text-align: center;
-    }
-    .botao:hover{
-      background-color: #a01616;
-      color: white;
-      text-decoration: none;
-  
-  }
-  
-  
+  .botao:hover{
+    background-color: #a01616;
+    color: white;
+    text-decoration: none;
+
+}
+
+
+
+
+
+    

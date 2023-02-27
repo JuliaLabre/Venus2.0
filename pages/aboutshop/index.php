@@ -2,7 +2,7 @@
 
 require '../../includes/header.php';
 ?>
-
+<link rel="stylesheet" href="aboutloja.css">
 
 <!-- Conteudo -->
 <div class="wrap">

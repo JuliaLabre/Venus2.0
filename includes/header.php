@@ -2,22 +2,12 @@
 session_start();
 ob_start();
 ?>
-
-<?php
-/*if(count($_COOKIE) > 0) {
-    echo "Cookies estão ativos.";
-} else {
-    echo "Cookies não estão ativos.";
-}*/
-      
-    ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
   <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="../../img/icondosite.png">
+    <link rel="icon" href="../../img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venus Shop - O Sistema Delas</title>
@@ -27,7 +17,6 @@ ob_start();
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
     <link rel="stylesheet" href="../../layout2.css">
-    <!-- <link rel="stylesheet" href="aboutloja.css"> -->
   </head>
 
   <body>
@@ -36,7 +25,7 @@ ob_start();
 
       <nav class="navbar navbar-expand-lg navbar-light">
         <!--Nome + Icon-->
-          <a class="navbar-brand" href="/"><img src="../../img/logo-principal.png" alt="Logo da VenusShop" title="Venus Shop"></a>
+          <a class="navbar-brand" href="/"><img src="../../img/logo-2.png" alt="Logo da VenusShop" title="Venus Shop"></a>
           <!--Dropdown para telas menores-->  		
           <button type="button" data-target="#conteudoNavbarSuportado" data-toggle="collapse" class="navbar-toggle">
             <span class="navbar-toggler-icon"></span>

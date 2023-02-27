@@ -6,7 +6,7 @@
       <div class="row text-center footersup">
         <div class="col-md-2">
           <p>
-            <a href="/" title="Venus Shop"><img src="../../img/variacao.png" width="190px" alt="Venus Shop - O sistema delas"></a>
+            <a href="#" title="Venus Shop"><img src="../../img/logo-principal.png" width="190px" alt="Venus Shop - O sistema delas"></a>
           </p>
           <p>
             <a href="#" title="Facebook Venus Shop"><i class="fa-brands fa-facebook-f"></i></a>

@@ -2,7 +2,6 @@
 session_start();
 ob_start();
 
-
 //require '../../includes/header.php';
 include_once '../../includes/config.php';
 

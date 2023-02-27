@@ -3,7 +3,6 @@ include_once '../../includes/config.php';
 
 session_start();
 ob_start();
-
 $shop_id = $_SESSION['shop_id'];
 /*Resolver problema do preço
 Posso tentar tratar depois que recebo do formulário

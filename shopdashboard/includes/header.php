@@ -7,13 +7,15 @@ ob_start();
 <html lang="pt-br">
  
   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
-      <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
-      <link rel="stylesheet" href="assets/libs/css/style.css">
-      <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
-      <title>Dashboard Lojista - Venus Shop</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../../img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Lojista - Venus Shop</title>
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/libs/css/style.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
   </head>
 
   <body>
@@ -27,7 +29,7 @@ ob_start();
       <div class="dashboard-header">
         <nav class="navbar navbar-expand-lg bg-white fixed-top">
           <!-- Logo Venus Shop -->
-          <a class="navbar-brand" href="index.php"><img src="../img/logo-principal.png" width="100px" heigth="30px" alt="Logo da VenusShop" title="Venus Shop"></a>
+          <a class="navbar-brand" href="index.php"><img src="../img/logo-2.png" width="150px" heigth="30px" alt="Logo da VenusShop" title="Venus Shop"></a>
           <!-- ícone Dropdown -->
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
