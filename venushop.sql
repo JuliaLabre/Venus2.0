@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 23-Fev-2023 às 20:48
--- Versão do servidor: 10.4.24-MariaDB
--- versão do PHP: 8.1.6
+-- Tempo de geração: 27-Fev-2023 às 13:40
+-- Versão do servidor: 10.4.27-MariaDB
+-- versão do PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,14 +35,7 @@ CREATE TABLE `cart` (
   `id_user` int(11) NOT NULL,
   `quant` int(11) NOT NULL,
   `price` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `cart`
---
-
-INSERT INTO `cart` (`id_cart`, `id_prod`, `id_user`, `quant`, `price`) VALUES
-(0, 15, 0, 1, 66);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -53,7 +46,7 @@ INSERT INTO `cart` (`id_cart`, `id_prod`, `id_user`, `quant`, `price`) VALUES
 CREATE TABLE `category` (
   `cat_name` varchar(255) NOT NULL,
   `cat_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `category`
@@ -79,16 +72,17 @@ CREATE TABLE `comments` (
   `com_name` varchar(100) NOT NULL,
   `comment` text NOT NULL,
   `com_status` enum('online','offline','banned','deleted') NOT NULL DEFAULT 'online'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `comments`
 --
 
 INSERT INTO `comments` (`com_id`, `com_date`, `produto`, `com_name`, `comment`, `com_status`) VALUES
-(3, '2023-02-20', 9, 'Cicrano Souza', 'Linda bolsa, qualidade impecavél.', 'online'),
-(4, '2023-02-20', 13, 'Cicrano Souza', 'Mesa linda demais!', 'online'),
-(5, '2023-02-21', 7, ' Josefina Silva', 'Muito lindo, vale a pena!!', 'online');
+(3, '2023-02-20', 9, 'Cicrano  Souza', 'Linda bolsa, qualidade impecavél.', 'online'),
+(4, '2023-02-20', 13, 'Josefina', 'Mesa linda demais!', 'online'),
+(5, '2023-02-21', 7, 'Josefina', 'Muito lindo, vale a pena!!', 'online'),
+(6, '2023-02-27', 10, ' Josefina Silva', 'Meu pet amou, nãode brincar!', 'online');
 
 -- --------------------------------------------------------
 
@@ -103,16 +97,17 @@ CREATE TABLE `contacts` (
   `email` varchar(255) NOT NULL,
   `subject` varchar(255) NOT NULL,
   `message` text NOT NULL,
-  `status` enum('sended','readed','responded','deleted') DEFAULT 'sended',
+  `status` enum('Recebida','Lida','Respondida','Deletada') DEFAULT 'Recebida',
   `receiver` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `contacts`
 --
 
 INSERT INTO `contacts` (`id`, `date`, `name`, `email`, `subject`, `message`, `status`, `receiver`) VALUES
-(1, '2023-02-17 18:41:00', 'Teste', 'teste@teste.com', 'Não aguento mais', 'Não estou disposto a tanto erro', 'sended', 6);
+(1, '2023-02-17 18:41:00', 'Teste', 'teste@teste.com', 'Não aguento mais', 'Não estou disposto a tanto erro', '', 6),
+(2, '2023-02-24 14:07:36', 'Teste', 'te@te.com', 'Olá', 'Olá, mundo !', '', 6);
 
 -- --------------------------------------------------------
 
@@ -127,7 +122,7 @@ CREATE TABLE `contactshop` (
   `subject` varchar(255) NOT NULL,
   `message` varchar(255) NOT NULL,
   `address` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `contactshop`
@@ -147,17 +142,18 @@ CREATE TABLE `delivery` (
   `deli_sale` int(11) NOT NULL,
   `deli_status` enum('Em Separação','Em Trânsito','Entregue','Cancelado') NOT NULL DEFAULT 'Em Separação',
   `deli_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `delivery`
 --
 
 INSERT INTO `delivery` (`deli_id`, `deli_sale`, `deli_status`, `deli_date`) VALUES
-(1, 3, 'Em Separação', '0000-00-00'),
+(1, 3, 'Em Trânsito', '0000-00-00'),
 (2, 4, 'Em Separação', '0000-00-00'),
-(3, 5, 'Em Separação', '0000-00-00'),
-(4, 8, 'Em Separação', '2023-02-23');
+(3, 5, 'Entregue', '0000-00-00'),
+(4, 8, 'Em Trânsito', '2023-02-23'),
+(5, 9, 'Em Separação', '2023-02-26');
 
 -- --------------------------------------------------------
 
@@ -169,19 +165,16 @@ CREATE TABLE `favorite` (
   `fav_id` int(11) NOT NULL,
   `fav_user` int(11) NOT NULL,
   `fav_prod` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `favorite`
 --
 
 INSERT INTO `favorite` (`fav_id`, `fav_user`, `fav_prod`) VALUES
-(2, 4, 11),
-(4, 4, 9),
-(5, 4, 8),
 (11, 4, 13),
 (21, 4, 4),
-(30, 4, 12);
+(31, 4, 7);
 
 -- --------------------------------------------------------
 
@@ -202,14 +195,14 @@ CREATE TABLE `products` (
   `prod_cat` int(11) NOT NULL,
   `prod_status` enum('online','offline','banned','deleted') DEFAULT 'online',
   `views` int(11) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `products`
 --
 
 INSERT INTO `products` (`prod_id`, `shop`, `prod_date`, `prod_name`, `prod_photo`, `prod_size`, `prod_price`, `prod_stock`, `prod_desc`, `prod_cat`, `prod_status`, `views`) VALUES
-(4, 1, '2023-02-10 18:55:55', 'Anjinho em croche', '../photos/63e6933b41cb8.jpg', 'P', 50, 0, 'Lindo anjinho para enfeitar, bricar e funciona também como naninha', 5, 'online', 0),
+(4, 1, '2023-02-10 18:55:55', 'Anjinho em croche', '../photos/63e6933b41cb8.jpg', 'P', 50, 20, 'Lindo anjinho para enfeitar, bricar e funciona também como naninha', 5, 'online', 0),
 (5, 1, '2023-02-10 18:57:16', 'Bolsa Marrom', '../photos/63e6938c73dea.jpg', 'M', 150, 2, 'Linda Bolsa colorida, ideal para qualquer passeio.', 5, 'online', 0),
 (6, 3, '2023-02-10 19:01:26', 'Picolés tropicais', '../photos/63e69486bbad5.avif', '', 5, 50, 'Pricolés tropicais maravilhosos', 1, 'deleted', 0),
 (7, 3, '2023-02-10 19:02:02', 'Tapete Branco', '../photos/63ecdb4641e3c.avif', 'G', 150, 3, 'Lindo e facil de limpar', 4, 'online', 0),
@@ -217,10 +210,10 @@ INSERT INTO `products` (`prod_id`, `shop`, `prod_date`, `prod_name`, `prod_photo
 (9, 2, '2023-02-10 19:06:46', 'Ecobag Personalizada', '../photos/63e695c6ed9b1.avif', '', 25, 22, 'Linda Ecobag, fazemos também personalizada', 1, 'online', 0),
 (10, 4, '2023-02-10 19:08:01', 'Kit Brinquedos', '../photos/63ecdc359e2fe.avif', 'G', 55, 7, '2 bolinhas e 3 ossos', 2, 'online', 0),
 (11, 4, '2023-02-10 19:08:38', 'Case para saco de recolher', '../photos/63ecdc446fb25.avif', 'P', 49, 5, 'Case para levar as suas sacolinhas de forma deslumbrante', 2, 'online', 0),
-(12, 1, '2023-02-15 12:28:33', 'Cama em Croche', '../photos/63eccff146deb.avif', 'G', 100, 2, 'Aconchegante, lindo e sustentavel.', 2, 'online', 0),
-(13, 3, '2023-02-15 13:18:03', 'Mesa de Madeira', '../photos/63ecdb8bced93.avif', '', 99, 5, 'Linda Mesinha de madeira', 4, 'online', 0),
+(12, 1, '2023-02-15 12:28:33', 'Cama em Croche', '../photos/63eccff146deb.avif', 'G', 100, 20, 'Aconchegante, lindo e sustentavel.', 2, 'online', 0),
+(13, 3, '2023-02-15 13:18:03', 'Mesa de Madeira', '../photos/63ecdb8bced93.avif', '', 99, 50, 'Linda Mesinha de madeira', 4, 'online', 0),
 (14, 5, '2023-02-23 17:43:53', 'Kit Esmalte e creme de mãos', '../photos/63f7a5d9e6e22.avif', '', 78, 40, 'Kit com 1 esmalte rosa e um creme de mãos da linha Brand ', 3, 'online', 0),
-(15, 5, '2023-02-23 17:47:55', 'Brand Skin Care', '../photos/63f7a6cb7cce1.avif', '', 66, 20, 'Indispensável para sua Skin Care ', 3, 'online', 0);
+(15, 5, '2023-02-23 17:47:55', 'Brand Skin Care', '../photos/63f7a6cb7cce1.avif', '', 66, 19, 'Indispensável para sua Skin Care ', 3, 'online', 0);
 
 -- --------------------------------------------------------
 
@@ -234,7 +227,7 @@ CREATE TABLE `request` (
   `req_sale` int(11) NOT NULL,
   `req_quant` int(11) NOT NULL,
   `req_value` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `request`
@@ -249,7 +242,8 @@ INSERT INTO `request` (`req_id`, `req_prod`, `req_sale`, `req_quant`, `req_value
 (6, 9, 5, 1, 25),
 (7, 8, 5, 1, 15),
 (8, 10, 5, 3, 55),
-(9, 4, 8, 1, 50);
+(9, 4, 8, 1, 50),
+(10, 15, 9, 1, 66);
 
 -- --------------------------------------------------------
 
@@ -262,7 +256,7 @@ CREATE TABLE `sale` (
   `sale_client` int(11) NOT NULL,
   `sale_value` double NOT NULL,
   `sale_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `sale`
@@ -276,7 +270,8 @@ INSERT INTO `sale` (`sale_id`, `sale_client`, `sale_value`, `sale_date`) VALUES
 (5, 4, 205, '2023-02-23'),
 (6, 4, 50, '2023-02-23'),
 (7, 4, 50, '2023-02-23'),
-(8, 4, 50, '2023-02-23');
+(8, 4, 50, '2023-02-23'),
+(9, 4, 66, '2023-02-26');
 
 -- --------------------------------------------------------
 
@@ -295,7 +290,7 @@ CREATE TABLE `shop` (
   `shop_photo` varchar(255) NOT NULL,
   `shop_lastlogin` datetime NOT NULL,
   `shop_status` enum('online','offline','banned','deleted') NOT NULL DEFAULT 'online'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `shop`
@@ -332,7 +327,7 @@ CREATE TABLE `users` (
   `last_login` datetime DEFAULT NULL,
   `user_status` enum('online','offline','banned','deleted') DEFAULT 'online',
   `user_type` enum('user','admin') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `users`
@@ -440,13 +435,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT de tabela `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `com_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `com_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `contactshop`
@@ -458,13 +453,13 @@ ALTER TABLE `contactshop`
 -- AUTO_INCREMENT de tabela `delivery`
 --
 ALTER TABLE `delivery`
-  MODIFY `deli_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `deli_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `favorite`
 --
 ALTER TABLE `favorite`
-  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de tabela `products`
@@ -476,13 +471,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT de tabela `request`
 --
 ALTER TABLE `request`
-  MODIFY `req_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `req_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `sale`
 --
 ALTER TABLE `sale`
-  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `shop`
