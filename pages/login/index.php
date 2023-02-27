@@ -14,7 +14,7 @@ $buscalogin = "SELECT *, DATE_FORMAT(user_date, '%d/%m/%Y') AS datebr
                         FROM users
                         WHERE user_email = :user AND user_status = 'online' AND user_type = 'user'
                         LIMIT 1";
-            
+           
 $resultado= $conn->prepare($buscalogin); 
 $resultado->bindParam(':user', $dadoslogin['user'],PDO::PARAM_STR);
 $resultado->execute();
@@ -112,7 +112,7 @@ if(isset($_SESSION['msg'])){
                     </div>
   
                     <!-- <div class="text-center pt-1 mb-5 pb-1"> -->
-                    <input type="submit" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" name="btnlogin" value="Log in">                     
+                    <input type="submit" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"  name="btnlogin" value="Log in">                     
                       <a class="text-muted" href="#!">Esqueceu a senha?</a>
                     <!-- </div> -->
   

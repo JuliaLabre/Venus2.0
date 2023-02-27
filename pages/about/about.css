@@ -30,14 +30,15 @@
   
   .botao {
       background-color: #bb1919;
-      border-radius: 50px;
+      border-radius: 15px;
       border: 0px;
       font-size: 2rem;
       color: white;
-      margin-top: 20px;
-      padding: 10px;
-      width: 300px;
+      margin-top: 50px;
+      padding: 5px 5px 5px 5px;
+      width: 250px;
       text-align: center;
+      height: 40px;
     }
     .botao:hover{
       background-color: #a01616;
@@ -45,4 +46,5 @@
       text-decoration: none;
   
   }
+ 
   

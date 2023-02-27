@@ -5,17 +5,18 @@
   border: 2px solid #f7b78d;
   padding-top: 25px;
   border-radius: 3px;
-  background-color: rgb(248, 217, 197);
+  background-color: rgb(248, 197, 197);
   box-shadow: 0px 4px 10px rgba(90, 44, 2, 0.05);
   margin-bottom: 40px;
 }
+
 .venusvoce{
   text-align: center;
 
   }
   
-  .botao {
-      background-color: #bb1919;
+  .botaoshop .botaoloja {
+      background-color: #75d625;
       border-radius: 50px;
       border: 0px;
       font-size: 2rem;
@@ -33,4 +34,6 @@
   
   }
   
-  
+  .link-about-shop a{
+    text-decoration: none;
+  }

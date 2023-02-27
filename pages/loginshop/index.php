@@ -23,7 +23,7 @@ $resultado->execute();
 
 if(($resultado) AND ($resultado->rowCount()!= 0)){
     $resposta = $resultado->fetch(PDO::FETCH_ASSOC);
-    //var_dump($resposta);
+    
 
 // salvando dados na variavel
 
@@ -33,9 +33,19 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
       $_SESSION['shop_photo'] = $resposta['shop_photo'];
       $_SESSION['shop_id'] = $resposta['shop_id'];
       $_SESSION['datebr'] = $resposta['datebr'];
-    
-         
+      
+      //ta dando erro no horario
+      $sid = $resposta['shop_id'];
+      date_default_timezone_set('America/Sao_Paulo');
+      $date = date('y-m-d H:i:s');
+
+      $SQL = "UPDATE shop SET shop_lastlogin = :date WHERE shop_id = $sid";
+      $resul=$conn->prepare($SQL);
+      $resul->bindParam(':date', $date,PDO::PARAM_STR);
+      $resul->execute();
+
      
+       //header("location:../../shopdashboard");
        header("location:../shop");
      
     }else{
@@ -103,7 +113,7 @@ if(isset($_SESSION['msg'])){
                       <input type="password" id="form2Example22" class="form-control"  name="pass" placeholder="........">
                       <label class="form-label" for="form2Example22">senha</label>
                     </div>
-  
+   
                     <!-- <div class="text-center pt-1 mb-5 pb-1"> -->
                     <input type="submit" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" name="btnlogin" value="Log in">                     
                       <a class="text-muted" href="#!">Esqueceu a senha?</a>
@@ -121,9 +131,7 @@ if(isset($_SESSION['msg'])){
               <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
                 <div class="text-white px-3 py-4 p-md-5 mx-md-4">
                   <h4 class="mb-4">Nós somos a Venus Shop</h4>
-                  <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  <p class="small mb-0">Um marktplace voltado exclusivamente para empreendedoras mulheres.</p>
                 </div>
               </div>
             </div>

@@ -3,7 +3,7 @@ include_once '../../includes/config.php';
 
 session_start();
 ob_start();
-//mudar de shop para profile
+
 $shop_id = $_SESSION['shop_id'];
 /*Resolver problema do preço
 Posso tentar tratar depois que recebo do formulário
@@ -72,6 +72,81 @@ if (!empty($upgrade['edshopft'])) {
         parent.location = '../shop';
         </script>";
         $_SESSION['shop_photo'] = $path;
+        unset($upgrade);
+    } else {
+        echo "<script>
+        alert('Erro: Tente novamente!');
+        parent.location = '../shop';
+        </script>";
+        
+    }
+
+}
+
+//cadastro de loja
+if (!empty($upgrade['btncad'])) {
+
+    $vazio = false;
+
+    if (!$vazio) {
+
+        //criptografia da senha
+    $pass = password_hash($upgrade['pass'], PASSWORD_DEFAULT);    
+
+    $sql = "INSERT INTO shop (shop_name, shop_email, shop_password)
+    values(:name, :email, :pass)";
+
+    $salvar= $conn ->prepare($sql);
+    $salvar -> bindParam(':name', $upgrade['name'],PDO::PARAM_STR);
+    $salvar -> bindParam(':email', $upgrade['email'],PDO::PARAM_STR);
+    $salvar -> bindParam(':pass', $pass,PDO::PARAM_STR);
+    $salvar -> execute();
+
+
+    if ($salvar->rowCount()) {
+        
+        echo "<script>
+        alert('Loja cadastrado com sucesso!!');
+        parent.location = '../loginshop';
+        </script>";
+
+        unset($upgrade); 
+    } else {
+
+        echo "<script>
+        alert('Loja não cadastrado, tente novamente!!');
+        parent.location = '../frmshop';
+        </script>"; 
+        
+    }   
+
+}
+
+}
+
+if (!empty($upgrade['btnedit'])){
+    
+    $sql = "UPDATE shop 
+    set shop_name=:name,shop_desc=:desc, shop_email=:email, shop_CNPJ=:CNPJ
+    WHERE shop_id=:id";
+
+$salvar= $conn ->prepare($sql);
+$salvar -> bindParam(':id', $upgrade['id'], PDO::PARAM_INT);
+$salvar -> bindParam(':name', $upgrade['name'],PDO::PARAM_STR);
+$salvar -> bindParam(':desc', $upgrade['desc'],PDO::PARAM_STR);
+$salvar -> bindParam(':email', $upgrade['email'], PDO::PARAM_STR);
+$salvar -> bindParam(':CNPJ', $upgrade['CNPJ'], PDO::PARAM_STR);
+
+$salvar -> execute();
+
+
+    if ($salvar->rowCount()) {
+        
+        echo "<script>
+        alert('Dados atualizados com sucesso!!');
+        parent.location = '../shop';
+        </script>";
+
         unset($upgrade);
     } else {
         echo "<script>

@@ -48,12 +48,12 @@ include_once '../../includes/config.php';
   
                     <div class="form-outline mb-3">
                       <label for="validationDefault01">Nome da Loja</label>
-                      <input name="name" type="text" class="form-control" id="validationDefault01" placeholder="Nome" required>
+                      <input name="name" type="text" class="form-control" id="validationDefault01" placeholder="Nome da Loja" required>
                     </div>
 
                     <div class="form-outline mb-3">
                       <label for="validationDefaultUsername">Email</label>
-                      <input name="email" type="email" class="form-control" id="validationDefaultUsername" placeholder="Email" aria-describedby="inputGroupPrepend2" required>
+                      <input name="email" type="email" class="form-control" id="validationDefaultUsername" placeholder="Email da Loja" aria-describedby="inputGroupPrepend2" required>
                     </div>
   
                     <div class="form-outline mb-3">
@@ -73,12 +73,12 @@ include_once '../../includes/config.php';
               <!--adicional com direcionamento para termos e políticas de privacidade-->
               <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
                 <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                  <p class="small mb-0">Ao criar uma conta você concorda com os <a href="../../pages/termos">Termos de uso </a>da Vênus Shop.</p>
-                    <p class="small mb-0">Por favor verifique as <a href="../../pages/policies">Políticas de privacidade</a>.</p>
+                  <p class="mb-0">Ao criar uma conta você concorda com os <a href="../../pages/termos">Termos de Uso </a>da Vênus Shop.</p>
+                    <p class="mb-0">Por favor verifique as <a href="../../pages/policies">Políticas de Privacidade</a>.</p>
                     
                     <div class="d-flex align-items-center justify-content-center pb-4">
-                      <p class="mb-0 me-2">Já é cliente? </p>
-                      <a href="../../pages/loginshop"><button type="button" name="btncad" class="btn btn-danger">Faça Login</button></a>
+                      <p class="mb-0 me-2">Sua loja é cadastrada? </p>
+                      <a href="../../pages/loginshop" ><button type="button" name="btncad" class="btn btn-danger "> Faça Login</button></a>
                     </div>
                   </div>
                 </div>

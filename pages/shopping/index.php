@@ -5,9 +5,7 @@ include_once '../../includes/config.php';
 //ao invés depaginação. colocar aquele mostrar mais para colocar mais produtos... 
 //a paginação acho que não vai funcionar no sosso caminho, pq já estamos usando a rota pra definir a loja 
 
-$pagatual = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
 $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
-$pag = (!empty($pagatual)) ? $pagatual : 1;
 
 $sql = "SELECT * FROM shop WHERE shop_id = $id";
 $resultado = $conn->prepare($sql);
@@ -19,15 +17,11 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
   
 }
 
-    $limitereg = 10;
-
-    $inicio = ($limitereg * $pag) - $limitereg;
-
   
     $busca= "SELECT *
     FROM products  WHERE 
     shop = $id AND
-    prod_status = 'online' AND prod_stock > 0 LIMIT $inicio , $limitereg";
+    prod_status = 'online' AND prod_stock > 0 ";
 
     $resultado = $conn->prepare($busca);
     $resultado->execute(); 
@@ -126,7 +120,7 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
   extract($resposta);
 
 ?>
-<!-- a classe col-md-2 funciona muito bem para telas grandes, mas em telas menores está uma porcaria -->
+
       <div class="card bg-light w-25 p-3 col-md-2">
       <a target="_blank" <?php echo "href='../viewprod?id=$prod_id'"?>><img class="card-img-top" src="<?php echo $prod_photo ?>" alt="Imagem de <?php echo $prod_name ?>" style=width:100%;height:25rem; ></a>
         <div class="card-body">
@@ -177,54 +171,6 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
 
 
 
-
-
-
-
-
-
-
- 
- <?php
-//Contar os registros no banco
-    $qtregistro = "SELECT COUNT(prod_id) AS registros FROM
-    products WHERE 
-    shop = $id AND prod_status = 'online' AND prod_stock > 0 ";  
-     $resultado = $conn->prepare($qtregistro);
-     $resultado->execute();
-     $resposta = $resultado->fetch(PDO::FETCH_ASSOC);
-
-     //Quantidade de página que serão usadas - quantidade de registros
-     //dividido pela quantidade de registro por página
-     $qnt_pagina = ceil($resposta['registros'] / $limitereg);
-
-      // Maximo de links      
-      $maximo = 2;
-
-      echo "<a href='../shopping?page=1'>Primeira</a> ";
-    // Chamar página anterior verificando a quantidade de páginas menos 1 e 
-    // também verificando se já não é primeira página
-    for ($anterior = $pag - $maximo; $anterior <= $pag - 1; $anterior++) {
-        if ($anterior >= 1) {
-            echo "  <a href='../shopping?page=$anterior'>$anterior</a> ";
-        }
-    }
-
-    //Mostrar a página ativa
-    echo "$pag";
-
-    //Chamar próxima página, ou seja, verificando a página ativa e acrescentando 1
-    // a ela
-    for ($proxima = $pag + 1; $proxima <= $pag + $maximo; $proxima++) {
-        if ($proxima <= $qnt_pagina) {
-            echo "<a href='../shopping?page=$proxima'>$proxima</a> ";
-        }
-    }
-
-    echo "<a href='../shopping?page=$qnt_pagina'>Última</a> ";
-
-
-?>
 </div>
  
 <!-- Footer -->

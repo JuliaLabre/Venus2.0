@@ -46,72 +46,41 @@ if (isset($_POST['send'])) :
 endif;
 
 ?>
-<div class="wrap">
-    <h2 class='text-center'>Faça contato</h2>
-    <div class="container">
-      
-        <form method="post" action="" >
+<div class="container">
+    <div class="col-md-3"></div>
+    <div class="col-md-6" >
+    <h2 class='text-center'>Faça contato com a Venus Shop</h2>
 
-            <div class="form-row"> 
-                <div class="col-md-6 mb-3">
-                    <label for="validationDefault01">Nome Completo</label>
-                    <input name="name" type="text" class="form-control" id="validationDefault01" placeholder="Nome" required>
-                </div>
+        <form method="post" action="">
 
-            
-            <div class="form-row">
-                <div class="col-md-6 mb-3">
-                    <label for="validationDefaultUsername">Email</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroupPrepend2">@</span>
-                        </div>
-                        <input name="email" type="email" class="form-control" id="validationDefaultUsername" placeholder="Email"
-                            aria-describedby="inputGroupPrepend2" required>
-                      </div>
-                  </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="nameContacts">Nome</label>
+                <input name="name" type="text" class="form-control" id="nameContacts" placeholder="Nome" required minlength="3">
+            </div>
 
-                  <div class="form-row"> 
-                <div class="col-md-6 mb-3">
-                    <label for="validationDefault01">Assunto</label>
-                    <input name="subject" type="text" class="form-control" id="validationDefault01" placeholder="Assunto" required >
-                </div>
-                <div class="form-row"> 
-                <div class="col-md-6 mb-3">
-                    <label for="validationDefault01">Mensagem</label>
-                    <input name="message" type="text" class="form-control" id="validationDefault01" placeholder="Sua mensagem aqui..." required>
-                </div>
 
-            
-            <div class="form-row">
-                  <div class="col-md-12 mb-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-                            <label class="form-check-label" for="invalidCheck2">
-                                <p>Desejo fazer contato</p>
-                            </label>
-                        </div>
-                    </div>
-          
-            <div class="form-row">
-                  <div class="col-md-6 mb-3">
-                    <input class="btn btn-primary btn-lg btn-block-cad" type="submit" value='enviar' name='send' >
-                  </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="emailContacts">Email</label>
+                <input name="email" type="email" class="form-control" id="emailContacts"placeholder="Email" aria-describedby="inputGroupPrepend2" required>
+
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="subjectContacts">Assunto</label>
+                <input name="subject" type="text" class="form-control" id="subjectContacts" placeholder="Assunto" required minlength="5">
+            </div>
+            <div class="form-group row">
+                <label for="messagesubjectContacts" class="col-sm-2 col-form-label">Mensagem</label>
+                <textarea name="message" class="form-control" id="messagesubjectContacts" rows="3" minlength="5" placeholder="Sua mensagem aqui..." required></textarea>
+            </div>
+
+            <div class="form-group">
+                <input class="btn btn-primary" type="submit" value='enviar' name='send'>
+            </div>
         </form>
     </div>
+    <div class="col-md-3"></div>
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-
-
-
-
-
-
 
 
 

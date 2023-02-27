@@ -42,8 +42,8 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
 
 ?>
     
-      <div class="card bg-light text-center max-width:20rem;">
-        <a target="_blank" <?php echo "href='../viewprod?id=$prod_id'"?>><img class="card-img-top" src="<?php echo $prod_photo ?>" alt="Imagem de <?php echo $prod_name ?>" style=width:100%;height:25rem;max-width:20rem;></a>
+      <div class="card bg-light text-center" style=max-width:27rem;>
+        <a target="_blank" <?php echo "href='../viewprod?id=$prod_id'"?>><img class="card-img-top img-fluid" src="<?php echo $prod_photo ?>" alt="Imagem de <?php echo $prod_name ?>" style=width:100%;height:25rem;></a>
         <div class="card-body">
         <h5 class="card-title"><?php echo $prod_name ?></h5>
         <p class="card-text">R$<?php echo $prod_price ?>,00</p> 

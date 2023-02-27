@@ -43,7 +43,7 @@ $busca= "SELECT *
 
 <div class="wrap">
    <form action="../checkout/index.php" method="post"> 
-    <table class="table"> <!--table-responsive COLOCAR ESSA CLASSE E ESTILIZAR PRA TENTAR DEIXAR TABLE RESPONSIVE-->
+    <table class="table table-responsive"> <!--table-responsive COLOCAR ESSA CLASSE E ESTILIZAR PRA TENTAR DEIXAR TABLE RESPONSIVE-->
             <thead>
      <tr>
         <th scope="col">Produto</th>
@@ -65,12 +65,12 @@ $busca= "SELECT *
         <tr>
           <td scope="row"><img src="<?php echo $prod_photo ?>"style=widht:100px;height:100px;></td>
           <td><?php echo $prod_name ?></td>
-          <td><?php echo "R$ ".$prod_price ?></td>
+          <td><?php echo "R$ ".$prod_price ?>,00</td>
           <td><?php echo $quant ?></td>
-          <td ><?php echo "R$ ".$total = $quant * $prod_price; $totalbuy += $total; ?></td>
+          <td ><?php echo "R$ ".$total = $quant * $prod_price; $totalbuy += $total; ?>,00</td>
           <!--total compra é acumulador entao temos que criar a variavel antes-->
          
-        <td>
+        <td class="btnexc">
         <a href="../../finalecart"><button type="submit" class="btn-cartExcluir" data-toggle="tooltip" data-placement="bottom" title="Excluir" name="delete" value="<?php echo $prod_id; ?>"><i class="fa-regular fa-square-minus"></i></button></a> 
 <!--o while é repetição vai pegar todos os dados e ir colocando um botão de acordo com o produto, mudando para button e colocando a variável do codigo produto pra excluir exatamente o produto que estou clicando-->
           </td>
@@ -79,11 +79,11 @@ $busca= "SELECT *
 
 <?php   
 } ?>
-
-<!--depois que fizer while é que mostro total da compra-->
-<tr><td><?php echo "<strong>Total da compra - R$ </strong>".$totalbuy; ?></td></tr>
 </tbody>
 </table>
+
+<!--depois que fizer while é que mostro total da compra-->
+<tr><td><?php echo "<strong class='compratotal'>Total da compra - R$ ".$totalbuy; ?>,00</strong></td></tr>
 
 <input type="hidden" name="totalbuy" value ="<?php echo $totalbuy?>">
 
@@ -95,7 +95,7 @@ $busca= "SELECT *
 
 </form>
 </div>
-</div>
+
 <?php
   }
 
