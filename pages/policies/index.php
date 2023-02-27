@@ -4,7 +4,7 @@ require '../../includes/header.php';
 ?> 
 
 <!--<link rel="stylesheet" href="policies.css"> -->
-<div class="wrap">
+
 <article class="borda-policies">
 <h2 class="policies-title">Políticas de Privacidade</h2><br>
 <p class="policies">A sua privacidade é importante para nós. É política da <em>Vênus Shop</em> respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site <em>Vênus Shop</em>, e outros sites que possuímos e operamos.</p>
@@ -77,7 +77,7 @@ require '../../includes/header.php';
     <p><em>Esta política é efetiva a partir de 03 de fevereiro de 2023 às 15:40.</em></p>
 </article>
 
-</div>
+    
     <?php
 require '../../includes/footer.php'
 ?>

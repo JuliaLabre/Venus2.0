@@ -20,6 +20,9 @@ html, body {
 a{
   text-decoration: none;
 }
+.btn .btn-danger{
+border: none;
+}
 
 /*Gradiente*/
 .gradient-custom-2 {

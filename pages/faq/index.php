@@ -1,104 +1,75 @@
+
 <?php
 
 require '../../includes/header.php';
 ?>
 
+
+<!-- Conteudo -->
 <div class="wrap">
-<h2 class="faqh2">Perguntas frequentes</h2>
-<div class="accordion" id="accordionExample">
+<div class="duvidasfreq">
+    <div class="row">
+      <div class="col-md-12 text-center">
+              </div>
+    </div>
   
-  <div class="card">
-    <div class="card-header" id="headingOne">
-        <h5 class="mb-0">
-            <button class="btn btn-link nounderlinefaq" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                <h3>O que é a Vênus Shop e como funciona?</h3>
-            </button>
-        </h5>
-      </div>
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-          <div class="card-body">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime corrupti ratione architecto nobis, magnam in doloribus cupiditate.
-          </div>
-        </div>
-    </div>
 
-  <div class="card">
-    <div class="card-header" id="headingTwo">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed nounderlinefaq" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          <h3>Como saber se um vendedor é confiável?</h3>
-        </button>
-      </h5>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-      <div class="card-body">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime corrupti ratione architecto nobis, magnam in doloribus cupiditate.
-        </div>
-      </div>
-  </div>
+    <h1 class="duvfreq"> Dúvidas frequentes</h1><br>
 
-  <div class="card">
-    <div class="card-header" id="headingThree">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed nounderlinefaq" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          <h3>Como escolher de qual vendedor comprar?</h3>
-        </button>
-      </h5>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-      <div class="card-body">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime corrupti ratione architecto nobis, magnam in doloribus cupiditate.
-          </div>
-    </div>
+        <h2 class="h2DuvFreq">O que é a Vênus Shop e como funciona?</h2>
+  
+  <div class="container-fluid">
+      <p class="pduvFreq">A Vênus Shop é uma plataforma que permite anunciar, comprar, pagar e vender produtos de forma muito prática.</p>
   </div>
+  
 
-  <div class="card">
-    <div class="card-header" id="headingFour">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed nounderlinefaq" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-          <h3>Posso negociar com várias contas?</h3>
-        </button>
-      </h5>
-    </div>
-    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-      <div class="card-body">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime corrupti ratione architecto nobis, magnam in doloribus cupiditate.
-        </div>
-    </div>
-  </div>
+  <h2 class="h2DuvFreq">
+       Como comprar pela Vênus Shop?</h2>
+  
+        <p class="pduvFreq">Primeiro você precisa criar uma conta preenchendo os campos (nome completo, e-mail e senha).</p>
+        <p class="pduvFreq">Por favor leia as <a href="../../pages/policies">Políticas de privacidade</a> e <a href="../../pages/termos">Termos de uso </a>da Vênus Shop para compreender os direitos e as obrigações dos usuários.</p>
+        <p class="pduvFreq">Ao finalizar esses passos, você terá um perfil na Vênus Shop.
+        <p class="pduvFreq">Navegando no site escolha a loja de sua preferência pela categoria, produtos mais vendidos ou promocionais, clique em comprar e finalize seu pedido</p>
 
-  <div class="card">
-    <div class="card-header" id="headingFive">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed nounderlinefaq" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-          <h3>Como pagar minha compra?</h3>
-        </button>
-      </h5>
-    </div>
-    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-      <div class="card-body">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime corrupti ratione architecto nobis, magnam in doloribus cupiditate.
-        </div>
-    </div>
-  </div>
+   
 
-  <div class="card">
-    <div class="card-header" id="headingSix">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed nounderlinefaq" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-          <h3>Como a Venus Shop protege os compradores?</h3>
-        </button>
-      </h5>
-    </div>
-    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
-      <div class="card-body">
-        </div>
-    </div>
-  </div>
+      <h2 class="h2DuvFreq">
+        Como funciona a entrega de produtos?</h2>
+    
+        <p class="pduvFreq">A entrega é feita totalmente pelo lojista.</p>
+        <p class="pduvFreq">Ao realizar a compra você estará em contato diretamente com o vendedor.</p>
+
+        <p class="pduvFreq">No seu perfil terá preenchido seus dados para entrega e fará a confirmação sempre que realizar uma compra</p>
+    
+
+    <h2 class="h2DuvFreq">
+      Posso favoritar produtos e finalizar compra depois?
+</h2>
+    
+          <p class="pduvFreq">Sim! Você pode favoritar os produtos e depois no seu perfil eles estarão disponíveis para compra.</p>
+          
+   
+          <h2 class="h2DuvFreq">
+      Como avaliar pedido finalizado?
+</h2>
+    
+          <p class="pduvFreq">Após mudança no status do pedido para entregue, você poderá comentar sobre a experiência da compra.</p>
+          <p class="pduvFreq">Terá um campo de avaliação também disponibilizado no seu perfil.</p>
+
+
+
+          <div class="row d-flex justify-content-center ">
+<a class="botaoUs" href="../navshops" type="submit">Visite nossas Lojas!</a>
+</div>
 </div>
 </div>
 
 
-<?php
+
+
+
+
+
+    <?php
 require '../../includes/footer.php'
 ?>

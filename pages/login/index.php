@@ -100,7 +100,7 @@ if(isset($_SESSION['msg'])){
                   <form method="POST" id="login-form" class="form" action= "">
                     <p>Por favor, preencha os campos abaixo</p>
   
-                    <div class="form-outline mb-4">
+                    <div class="form-outline mb-4"> 
                       <input type="email" id="form2Example11" class="form-control" name="user"
                         placeholder="email" />
                       <label class="form-label" for="form2Example11">usuário</label>
@@ -112,7 +112,7 @@ if(isset($_SESSION['msg'])){
                     </div>
   
                     <!-- <div class="text-center pt-1 mb-5 pb-1"> -->
-                    <input type="submit" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" name="btnlogin" value="Log in">                     
+                    <input type="submit" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 botaoLogin"  name="btnlogin" value="Log in">                     
                       <a class="text-muted" href="#!">Esqueceu a senha?</a>
                     <!-- </div> -->
   

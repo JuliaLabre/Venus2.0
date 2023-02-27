@@ -164,7 +164,7 @@ width: 4rem;
 /*Botão quero vender */
 .footersup p input{
   position: relative;
-  background-color: #bb1919;
+  background-color: #213943;
   border-radius: 8px;
   border: 0px;
   font-size: 1.5rem;
@@ -176,8 +176,9 @@ width: 4rem;
   overflow: hidden;
 }
 .footersup p input:hover{
-  background-color: #a01616;
+  background-color: #335766;
   color: white;
+  transition: 0.5s;
 }
 
 /* Inferior */
@@ -192,8 +193,186 @@ width: 4rem;
 }
 
 /******************
-* Responsividades *
+* SOBRE NÓS - ABOUTUS 
 ******************/
+.h2AbtUsIn{
+  text-align: center;
+}
+.h2AbtUs {
+  
+    font-size: 30px;
+    margin-top: 20px;
+    font-weight: 100;
+  }
+.pAbtUs{
+  font-size: 17px;
+  
+}
+  .aboutUs {
+  color: rgb(66, 65, 65);
+  margin: 40px 40px 40px;
+  padding: 20px 20px 0px;
+  border: 2px solid #FF7A00;
+  padding-top: 25px;
+  border-radius: 5px;
+  background-color: #ADC483;
+  box-shadow: 0px 4px 10px rgba(90, 44, 2, 0.05);
+  margin-bottom: 40px;
+  }
+  @media (max-width: 320px) {
+    .aboutUs {
+      width: 100%;
+      margin: auto;
+    }
+  }
+  .negrito {
+      font-size: 18px;
+  }
+  
+  .botaoUs {
+      display: block;
+      background-color: #213943;
+      border-radius: 15px;
+      border: 0px;
+      font-size: 2rem;
+      color: white;
+      margin: 50px 30px 70px 30px;
+      padding: 5px 5px 5px 5px;
+      width: 250px;
+      text-align: center;
+      height: 40px;
+      
+    }
+    @media (max-width: 320px) {
+      .botaoUs {
+        width: 20rem;
+        height: 30px;
+        font-size: 14px;
+        margin: 20px 0px;
+        margin-bottom: 70px;
+        padding: 0.5rem;
+        margin-top: 50px;
+      }
+    }
+    .botaoUs:hover{
+      background-color: #335766;
+      color: white;
+      text-decoration: none;
+      transition: 0.5s;
+  
+  }
+/******************
+* SOBRE NÓS LOJA - ABOUTSHOP
+******************/
+.h2AbtShop {
+  
+  font-size: 30px;
+  margin-top: 20px;
+  font-weight: 100;
+}
+.pAbtShop{
+  font-size: 17px;
+}
+.aboutShop {
+  color: rgb(66, 65, 65);
+  margin: 40px 40px 40px;
+  padding: 20px 20px 0px;
+  border: 2px solid #FF7A00;
+  padding-top: 25px;
+  border-radius: 5px;
+  background-color: #ADC483;
+  box-shadow: 0px 4px 10px rgba(90, 44, 2, 0.05);
+  margin-bottom: 40px;
+}
+@media (max-width: 320px) {
+  .aboutShop {
+    width: 100%;
+    margin: auto;
+  }
+}
+.pAbtShop a {
+  text-decoration: none;
+}
+
+.container-fluid {
+    font-size: 26px;
+    text-align:left;
+   
+}
+
+.botaoloja {
+  background-color: #213943;
+  border-radius: 15px;
+  border: 0px;
+  text-align: center;
+  font-size: 2rem;
+  color: white;
+  margin: 70px 40px 70px 40px;
+  padding: 6px 5px 5px 5px;
+  width: 27rem;
+  height: 40px;
+    
+    }
+    @media (max-width: 320px) {
+      .botaoloja {
+        width: 20rem;
+    height: 40px;
+    font-size: 14px;
+        margin: 20px 0px;
+
+
+      }
+    }
+  .botaoloja:hover{
+    background-color: #335766;
+      color: white;
+      text-decoration: none;
+      transition: 0.5s;
+}
+.btnloja {
+  background-color: #213943;
+  border-radius: 15px;
+  border: 0px;
+  text-align: center;
+  font-size: 2.1rem;
+  color: white;
+  margin: 70px 40px 70px 40px;
+  padding: 6px 5px 5px 5px;
+  width: 27rem;
+  height: 40px;
+
+}
+@media (max-width: 320px) {
+  .btnloja {
+    display: grid;
+    align-items: center;
+    font-size: 14px;
+    width: 200px;
+    margin: 0px 0px 20px 0px;
+}
+  }
+
+.btnloja:hover{
+  background-color: #335766;
+      color: white;
+      text-decoration: none;
+      transition: 0.5s;
+
+}
+.btnShop {
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+}
+@media (max-width: 320px) {
+  .btnShop {
+    display: grid;
+    align-items: center;
+    font-size: 18px;
+    width: 200px;
+    margin: 0px 0px 20px 0px;
+}
+  }
 
 
 
@@ -203,10 +382,10 @@ width: 4rem;
 .borda-policies, .borda-termos {
   margin: 40px 40px 40px;
   padding: 20px 20px 0px;
-  border: 2px solid #f7b78d;
+  border: 2px solid #FF7A00;
   padding-top: 25px;
   border-radius: 3px;
-  background-color: rgb(248, 217, 197);
+  background-color: #ADC483;
   box-shadow: 0px 4px 10px rgba(90, 44, 2, 0.05);
   margin-bottom: 40px;
 }
@@ -224,30 +403,44 @@ width: 4rem;
 /*********
 * FAQ *
 *********/
-.accordion {
-  margin: 20px 20px 20px;
-  padding: 20px 20px 0px;
-  border: 2px solid #f7b78d;
-  padding-top: 25px;
-  border-radius: 3px;
-  background-color: rgb(248, 217, 197);
-  box-shadow: 0px 4px 10px rgb(0 0 0 / 5%);
-  margin-bottom: 40px;
-}
-.faqh2 {
+.duvfreq{
   text-align: center;
-  padding: 25px;
 }
-.nounderlinefaq {
-  text-decoration: none !important;
-}
-/* tira a linha envolta do accordion */
-.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
-  outline: none;
-}
-.card-header {
-  background-color: rgb(255, 255, 255);
-}
+  .h2DuvFreq {
+  
+    font-size: 30px;
+    margin-top: 20px;
+    font-weight: 100;
+  }
+  .pduvFreq{
+    font-size: 17px;
+  }
+  .duvidasfreq {
+    color: rgb(66, 65, 65);
+    margin: 40px 40px 40px;
+    padding: 20px 20px 0px;
+    border: 2px solid #FF7A00;
+    padding-top: 25px;
+    border-radius: 5px;
+    background-color: #ADC483;
+    box-shadow: 0px 4px 10px rgba(90, 44, 2, 0.05);
+    margin-bottom: 40px;
+  }
+  @media (max-width: 320px) {
+    .duvidasfreq {
+      width: 100%;
+      margin: auto;
+    }
+  }
+  .pduvFreq a {
+    text-decoration: none;
+  }
+  
+  .container-fluid {
+      font-size: 26px;
+      text-align:left;
+     
+  }
 
 /*********
 * FOOTER *
@@ -273,7 +466,6 @@ width: 4rem;
     color: white;
   }
 }
-
 
 
 /*********
@@ -343,7 +535,7 @@ div.alertCart {
     margin: 0px 500px 0px 500px;
     border: 2px solid black;
     border-radius: 20px;
-    background-color: rgba(245, 183, 168, 0.973);
+    background-color: #E38BFF;
     box-shadow: 0px 4px 10px rgba(99, 2, 2, 0.05);
     width: 300px;
     height: 300px;
@@ -353,10 +545,10 @@ div.alertCart {
   display: block;
   margin: 70px 70px;
   margin-top: 100px;
-  background: linear-gradient(rgb(145, 58, 51), rgb(236, 122, 97));   
+  background: linear-gradient(#441652, #9A45B4, #E193F8);   
   color: white;
   border: none;
-  box-shadow: 5px 5px 10px 0px rgba(138, 138, 138, 1);
+  box-shadow: 5px 5px 10px 0px #441652;
   cursor: pointer;
   padding: .25rem .5rem;
   border-radius: 1.2rem;
@@ -364,7 +556,7 @@ div.alertCart {
 }
 
 .btnAlert:hover {
-  background: linear-gradient(rgb(236, 122, 97), rgb(145, 58, 51));
+  background: linear-gradient(#E193F8, #9A45B4, #441652);
 }
 
 /*tira o text-decoration dos botoes do bootstrap, coloca essa classe depois do a href*/
@@ -377,58 +569,241 @@ div.alertCart {
 /*********
 Carrinho
 *********/
-.tabcart {
-  margin: 0px 30px 0px 30px; /*estrutura da tabela*/
+.compratotal {
+margin-left: 99rem;
+margin-top: 15px;
 }
-.align {
-  text-align: center; /*alinhamento das informações*/
+@media (max-width: 320px) {
+.compratotal {
+  margin-left: 2rem;
+  font-size: 1.2rem;
+}
+}
+td img {
+  max-width: 50px;
+  max-height: 50px;
+}
+.cartname {
+  text-align: left;
+  margin-left: 60px;
+}
+.table {
+  margin: 0px 25px; /*estrutura da tabela*/
+}
+.btn-cartExcluir {
+  background-color: transparent;
+  border: none;
+  width: auto;
+}
+.btn-cartExcluir:hover {
+  background-color: transparent;
+}
+.fa-square-minus{ /*menos*/
+  color: rgb(235, 52, 52);
+  font-size: 15px;
+
+}
+.btnexc {
+  width: 45px;
 }
 .btnfinal { 
-  display: inline-block;  /*botão finalizar*/
-  margin: 60px 40px 70px;
-  background: linear-gradient(rgb(1, 82, 16), rgb(41, 161, 47));   
+  display: block;
+  margin: 10px 5px 0px 10px;  /*botão finalizar*/
+  margin-bottom: 30px;
+  background: linear-gradient(rgb(14, 143, 38), rgb(8, 170, 16));   
   color: white;
   border: none;
   cursor: pointer;
   padding: .10rem .2rem;
   border-radius: 10px;
-  font-size: 20px;
-  width: 250px;
+  font-size: 24px;
+  width: 100%;
   height: 40px;
 }
 .btnfinal:hover {
-  background: linear-gradient(rgb(41, 161, 47), rgb(1, 82, 16));
+  background: linear-gradient(rgb(21, 235, 31), rgb(7, 167, 36));
+  color: #474747;
 }
+@media (max-width: 475px) {
+  .btnfinal {
+    display: block;
+    align-items: center;
+    margin-top: 40px;
+    margin-left: 1rem;
+    font-size: 18px;
+    width: 200px;
+  }
+}
+  .btncontcompra {
+    display: inline-block;
+    margin: 30px 0px 0px 10px;
+    background: linear-gradient(rgb(27, 120, 207), rgb(83, 174, 235));
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0.1rem 0.2rem;
+    border-radius: 10px;
+    font-size: 20px;
+    width: 270px;
+    height: 45px;
+}
+.btncontcompra:hover{
+  background: linear-gradient(rgb(83, 174, 235), rgb(27, 120, 207));
+  color: white;
+}
+.fa-cart-shopping{
+  color: rgb(248, 237, 225);
+  font-size: 20px;
+}
+  @media (max-width: 475px) {
+    .btncontcompra {
+      display: block;
+      align-items: center;
+      margin-top: 20px;
+      width: 200px;
+      font-size: 15px;
+      color: #fdfafa;
+    }
+  .fa-cart-shopping{
+    color: rgb(248, 237, 225);
+    font-size: 15px;
+  }
+  }
 .btnesvaziar {   
-  display: inline-block;  /*botão esvaziar carrinho*/
-  margin: 60px 30px 70px;
-  background: linear-gradient(rgb(189, 26, 26), rgb(221, 95, 91));   
+  display: block;
+  justify-content: flex-start;
+  align-items: baseline;
+  margin-left: auto;
+  margin-top: 30px;
+  margin-bottom: 60px;
+  background: linear-gradient(rgb(189, 26, 26), rgb(221, 95, 91));
   color: white;
   border: none;
   cursor: pointer;
-  padding: .10rem .2rem;
+  padding: 0.2rem 0.3rem;
   border-radius: 10px;
-  font-size: 20px;
-  width: 250px;
+  font-size: 18px;
+  width: 190px;
   height: 40px;
 }
 .btnesvaziar:hover {
   background: linear-gradient(rgb(221, 95, 91), rgb(189, 26, 26));
+  color: #474747;
 }
-.btncontcompra {
-  display: inline-block;  /*botão cntinuar comprando*/
-  margin: 60px 30px 70px;
-  background: linear-gradient(rgb(27, 120, 207), rgb(83, 174, 235));   
-  color: white;
-  border: none;
-  cursor: pointer;
-  padding: .10rem .2rem;
-  border-radius: 10px;
-  font-size: 20px;
-  width: 250px;
-  height: 40px;
+.fa-trash-can {
+color: rgb(248, 237, 225);
+font-size: 18px;
 }
-.btncontcompra:hover{
-  background: linear-gradient(rgb(83, 174, 235), rgb(27, 120, 207));
+@media (max-width: 475px) {
+    .btnesvaziar {
+      display: block;
+      align-items: center;
+      margin-top: 20px;
+      margin-left: 1rem;
+      width: 200px;
+      font-size: 18px;
+    }
+  .fa-trash-can{
+    color: rgb(248, 237, 225);
+    font-size: 15px;
+  }
+  }
+  
+
+/* Table Base -TESTAR PRA VER SE CONSIGO DEIXAR TABELA RESPONSIVA*/
+table {
+  max-width: 100%;
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-family: arial;
+}
+.table {
+  display: table;
+  border-bottom: #030303 solid 0.5px;
+  width: 100%;
+  margin-bottom: 20px;
+  margin: 0px 20px 0px 10px;
+  border: black solid 0.5px;
+
+}
+.table th,
+.table td {
+  border-right: #999999 solid 1px;
+  font-size: 12px;
+  padding: 8px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align:middle;
+}
+.table td:last-child {
+   border-right: 0;
+}
+.table thead th {
+  font-weight: normal;
+  background-color: transparent;
+  color: #0f0f0f;
+  font-size: 15px;
+  width: 150px;
+}
+.table tbody > tr:nth-child(odd) > td,
+.table tbody > tr:nth-child(odd) > th {
+  background-color: transparent;
+}
+/* Small Sizes */
+@media (max-width: 319px) { 
+/* Responsive Table */
+.table-responsive {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+.table-responsive thead,
+.table-responsive tbody,
+.table-responsive th,
+.table-responsive td,
+.table-responsive tr {
+  display: block;
+}
+.table-responsive td,
+.table-responsive th {
+  height: 35px;
+}
+.table-responsive thead {
+  float: left;
+}
+.table-responsive tbody {
+  width: auto;
+  position: relative;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+}
+.table-responsive tbody tr {
+  display: inline-block;
+}
+.table td:last-child {
+   border-right: #999999 solid 1px;
+   height: 100px;
 }
 
+.table>thead:first-child>tr:first-child>th {
+border-top: 0;
+    width: auto;
+    height: 110px;
+    text-align: center;
+}
+td img {
+  max-width: 50px;
+  max-height: 50px;
+}
+.table tbody > tr:nth-child(odd) > td, .table tbody > tr:nth-child(odd) > th {
+height: 100px;
+}
+.table tbody > tr:nth-child(odd) > td, .table tbody > tr:nth-child(odd) > th {
+  height: 100px;
+}
+  .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    height: 100px;
+}
+}
