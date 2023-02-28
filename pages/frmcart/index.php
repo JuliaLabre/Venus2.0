@@ -37,7 +37,7 @@ $busca= "SELECT *
     }
     $user_id = $_SESSION['user_id'];
     ?>
-    <h3 class='cartname'>Olá, <?php echo $_SESSION['user_name']?>! Esse é o seu carrinho!</h3>
+    <h3 class='cartname text-center'><?php echo $_SESSION['user_name']?>! Esse é o seu carrinho!</h3>
     <br>
 
 

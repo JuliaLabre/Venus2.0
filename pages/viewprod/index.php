@@ -19,7 +19,7 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
 <h2 class="text-center"><?php echo $prod_name ?></h2>
 <div class="wrap">
 <div class="container">
-    <div class="col-md-8">
+    <div class="col-md-6">
         <img src="<?php echo $prod_photo ?>" alt="Imagem de <?php echo $prod_name ?>" class="img-fluid">
     </div>
 
@@ -60,10 +60,13 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
                
         <input type="submit" class="btn btn-primary" name="carrinho" value="Adicionar ao carrinho">
         </form>
-
-      <div class="list-group">
+        </div>
+        </div>
+        <br>
+      <div class="container-fluid">
+      <h4>O que dizem desse produto :</h4>
 <?php
-        $SQL = "SELECT *, DATE_FORMAT(com_date, '%d/%m/%Y') AS datebr FROM comments WHERE produto = $prod_id";
+        $SQL = "SELECT *, DATE_FORMAT(com_date, '%d/%m/%Y') AS datebr FROM comments WHERE produto = $prod_id ORDER BY com_date DESC ";
         $comments = $conn->prepare($SQL);
         $comments->execute();
 
@@ -72,27 +75,25 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
           extract($resp);
 
 ?>
-
-O que dizem desse produto :
-
-    <div class="d-flex w-100 justify-content-between">
+<div class=" list-group-item">
+    <div>
           <small><?php echo $datebr ?></small>
     </div>
     <p class="mb-1"><?php echo $comment ?></p>
     <small><?php echo $com_name ?></small>
-
+    </div>
 
 
 <?php
         }
       }
 ?>   
-</div>
+
     </div>
 </div>
 
 <!-- Não funciona quando ele está na página de pesquisa, dá erro -->
-<a <?php echo "href='$pag'" ?> ><button type="button" class="btn btn-secondary">Voltar</button></a>
+<!-- <a <?php echo "href='$pag'" ?>><button type="button" class="btn btn-sm">Voltar</button></a> -->
 
 </div>
 <!-- Footer -->

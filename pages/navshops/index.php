@@ -12,25 +12,21 @@ $resultado->execute();
 <!-- Conteudo -->
 <h2 class='text-center'>Lojas na Venus</h2>
 <div class="wrap">
-<div class="container-fluid">
+<div class="container">
+      <div class="row mb-4 d-flex" >
 
 <?php
-$max=5;
-$card=0;
 
 if(($resultado) AND ($resultado->rowCount()!= 0)){
 while($resposta = $resultado->fetch(PDO::FETCH_ASSOC)){
 
 extract($resposta);
-$card++;
-if(($card - 1)% $max == 0){
-  echo '</div><div class="row mb-4">';
-}
+
 
 ?>
 
 
-  <div class="card bg-light text-center" style="outline-color: gray; outline-style: outset; max-width:24rem;margin-left:2rem;">
+  <div class="card bg-light text-center" style="outline-color: gray; outline-style: outset; max-width:24rem;margin:1rem;">
   <a <?php echo "href='../../pages/shopping?id=$shop_id'"?>><img class="card-img-top img-fluid" style=width:100%;height:25rem; src="../../pages/photoshop/<?php echo $shop_photo ?>" alt="Logo da <?php echo $shop_name ?>"></a>
     <div class="card-body">
         <h4 class="card-title"><strong><?php echo $shop_name ?></strong></h4>
@@ -48,6 +44,7 @@ if(($card - 1)% $max == 0){
 }
 
 ?>
+</div>
 </div>
 </div>
 

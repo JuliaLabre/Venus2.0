@@ -6,7 +6,7 @@
       <div class="row text-center footersup">
         <div class="col-md-2">
           <p>
-            <a href="/" title="Venus Shop"><img src="../../img/variacao.png" width="190px" alt="Venus Shop - O sistema delas"></a>
+            <a href="#" title="Venus Shop"><img src="../../img/logo-principal.png" width="190px" alt="Venus Shop - O sistema delas"></a>
           </p>
           <p>
             <a href="#" title="Facebook Venus Shop"><i class="fa-brands fa-facebook-f"></i></a>
@@ -25,7 +25,7 @@
         <div class="col-md-3">
           <h4 id="titlef">Ajuda</h4>
           <p><a href="../../pages/faq">Dúvidas frequentes</a></p>
-          <p><a href="#">Fale com a gente</a></p>
+          <p><a href="../../pages/contacts">Fale com a gente</a></p>
           <p><a href="../../pages/aboutshop">Como vender</a></p>
           
         </div>
@@ -39,7 +39,7 @@
       <!--Rodapé inferior-->
       <div class="row text-center footerinf">
         <div class="col-md-12" id="copy">
-          venus shop &copy; 2023 - todos os direitos reservados <a href="../../pages/loginadmin"><i class="fa-solid fa-venus"></i></a>
+          venus shop &copy; 2023 - todos os direitos reservados <a style="text-decoration:none; color:#474747; cursor:text;" href="../../pages/loginadmin"><i class="fa-solid fa-venus"></i></a>
           <!-- Pensei em tirar a cor e o ponteiro de clique, pra ficar m,eio que secreto o ling de admin no venus, por questão de segurança-->
         </div>
       </div>

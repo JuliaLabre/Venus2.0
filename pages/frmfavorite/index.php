@@ -91,12 +91,12 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
   }
 
 }else{
-  echo '<div class="alertCart" role="alert">
+  echo '<p>
   <i class="fa-sharp fa-regular fa-face-frown" id="ialert"></i>
   <strong> Ooooooooooooops!</strong><br>
   Você ainda não tem produtos adicionados nos favoritos...
   <a href="../navshops" class="nounderline"><button type="button" class="btnAlert">Adicionar produtos!</button></a>
- </div>';
+ </o>';
 }
 ?>
 

@@ -2,22 +2,12 @@
 session_start();
 ob_start();
 ?>
-
-<?php
-/*if(count($_COOKIE) > 0) {
-    echo "Cookies estão ativos.";
-} else {
-    echo "Cookies não estão ativos.";
-}*/
-      
-    ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
   <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="../../img/icondosite.png">
+    <link rel="icon" href="../../img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venus Shop - O Sistema Delas</title>
@@ -27,7 +17,6 @@ ob_start();
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
     <link rel="stylesheet" href="../../layout2.css">
-    <link rel="stylesheet" href="aboutloja.css">
   </head>
 
   <body>
@@ -36,7 +25,7 @@ ob_start();
 
       <nav class="navbar navbar-expand-lg navbar-light">
         <!--Nome + Icon-->
-          <a class="navbar-brand" href="/"><img src="../../img/logo-principal.png" alt="Logo da VenusShop" title="Venus Shop"></a>
+          <a class="navbar-brand" href="/"><img src="../../img/logo-2.png" alt="Logo da VenusShop" title="Venus Shop"></a>
           <!--Dropdown para telas menores-->  		
           <button type="button" data-target="#conteudoNavbarSuportado" data-toggle="collapse" class="navbar-toggle">
             <span class="navbar-toggler-icon"></span>
@@ -104,44 +93,24 @@ ob_start();
      
      // Se o usuário está logado...
      if (isset($_SESSION['user_name'])) :
+      $user_id = $_SESSION['user_id'];
 
      ?>
             <!--Perfil do usuário logado e tiver foto-->
             <li class="nav-item">
-              <a href="#" data-toggle="dropdown" class="dropdown-toggle user-action ">
-              <?php
-                if (!empty($_SESSION['user_photo'])):
-                  ?>
-              <img  src="../../pages/photousers/<?php echo $_SESSION['user_photo']?>"  class="mr-3 rounded-circle" style=width:75%;height:3rem;>
-              </a>
-              <?php 
-                else:
-                  ?>
-             <i class="fa-solid fa-circle-user" title="minha conta" alt="Minha conta"></i></a>
-  
-             <?php
-               endif;
-               ?>
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle user-action ">            
+              <i class="fa-solid fa-user-astronaut" title="minha conta" alt="Minha conta"></i>
+            </a> 
+           
               <ul class="dropdown-menu">
-                <li class="nav-profile nav-item">
-                  <?php
-                if (!empty($_SESSION['user_photo'])):
-                  ?>                
-                <li class="nav-profile"><a href="../../pages/profile"><img src="../../pages/photousers/<?php echo $_SESSION['user_photo'] ?>"> meu perfil</a></li>
-                <?php 
-                else:
-                  ?>
-                   <li><a href="../../pages/profile"><i class="fa-solid fa-user-astronaut"></i> meu perfil</a></li>                
-                
-               <?php
-               endif;
-               ?>
-                <li><a href="#"><i class="fa-solid fa-bag-shopping"></i> continue comprando</a></li>
+                <li class="nav-profile nav-item">               
+                <li><a href="../../pages/profile"><i class="fa-solid fa-user-astronaut"></i> meu perfil</a></li>                            
+                <li><a href="../../pages/frmcart"><i class="fa-solid fa-bag-shopping"></i> continue comprando</a></li>
                 <li><a href="../../pages/frmfavorite"><i class="fa-solid fa-heart"></i> favoritos</a></li>
                 <li><a href="../../pages/sale"><i class="fa-solid fa-cart-shopping"></i> minhas compras</a></li>
                 <li class="divider"></li>
-                <li><a href="#"><i class="fa-solid fa-circle-question"></i> ajuda</a></li>
-                <li><a href="#"><i class="fa-solid fa-gear"></i> configurações</a></li>
+                <li><a href="../../pages/faq"><i class="fa-solid fa-circle-question"></i> ajuda</a></li>
+                <li><a <?php echo "href='../../pages/edituser?id=$user_id'" ?>><i class="fa-solid fa-gear"></i> configurações</a></li>
                 <li class="divider"></li>
                 <li><a href="../../pages/exit"><i class="fa-solid fa-right-from-bracket"></i> <b>sair</b></a></li>
               </ul>
@@ -154,7 +123,7 @@ ob_start();
       ?>
       <li>
       <li class="nav-item">
-      <a class="nav-link" href="../../pages/login"><i class="fa-solid fa-circle-user" title="Fazer Login" alt="Fazer Login"></i></a>
+      <a class="nav-link" href="../../pages/login"><i class="fa-regular fa-circle-user" title="Fazer Login" alt="Fazer Login"></i></a>
 
       <?php
       endif;

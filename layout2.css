@@ -13,7 +13,7 @@
   outline: none;
 }
 
-html, body { 
+html, body {
   background: white;
   color: #474747;
 }
@@ -21,7 +21,14 @@ html, body {
 a{
   text-decoration: none;
 }
-
+.wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-width: 280px;
+  max-width: 1024px;
+  margin: auto;
+}
 
 
 /*****************
@@ -56,15 +63,15 @@ width: 4rem;
   padding-right: 30px;
 }
 .navbar .navbar-brand img {
-  margin-right: 50px;
+  margin-right: 20px;
   margin-left: 2rem;
-  width: 70px;
-  height: 40px;
+  width: 120px;
+  height: 30px;
 }
 
 /*Barra de pesquisa*/
 #search-box{
-  position:sticky;
+  position: relative;
   margin: 0px 98px -22px 0px;
   color:#474747;
   width: 25rem;
@@ -103,7 +110,6 @@ width: 4rem;
 #btnvender{
   padding-top: 30px;
   padding-right: 30px;
-  
 }
 
 /*links do menu*/
@@ -112,10 +118,9 @@ width: 4rem;
   padding-right: 30px;
   border: none;
   background: none;
-  
 }
 
-#navlink a{
+#linknav a{
   color: #474747
 }
 
@@ -462,11 +467,6 @@ width: 4rem;
   }
 }
 
-/* wrap */
-.wrap{
-padding: 4rem;
-
-}
 
 /*********
 * COOKIES *
@@ -570,7 +570,7 @@ div.alertCart {
 Carrinho
 *********/
 .compratotal {
-margin-left: 99rem;
+margin-left: 78rem;
 margin-top: 15px;
 }
 @media (max-width: 320px) {

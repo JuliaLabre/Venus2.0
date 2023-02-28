@@ -37,6 +37,11 @@ $user_id = $_SESSION['user_id'];
                         class="fa-solid fa-camera fa-fw"></i> &nbsp; Edite sua foto </a>
 
             </div>
+            <div class="row" style="padding:1rem;">
+
+    <a style="width:100%" <?php echo "href='../frmfavorite'" ?> class="list-group-item"><i class="fa-solid fa-heart fa-fw"></i> &nbsp; Seus Favoritos </a>
+
+</div>
 
             <div class="row" style="padding:1rem;">
 
@@ -60,7 +65,7 @@ $user_id = $_SESSION['user_id'];
         </div>
 
         <div class="col-md-8" >
-        <div class="row list-group-item" style="padding:1rem; margin-left:.5rem; ">
+        <div class="row list-group-item d-flex" style="padding:1rem; margin-left:.5rem; ">
 
             <p>Último pedido:</p>
 
@@ -217,8 +222,10 @@ WHERE f.fav_user = $user_id ORDER BY fav_id DESC LIMIT 3";
                 </div>
         </div>
     </div>
-
+    
+<br>
     <a href="../exit"><button type="submit" class="btn">Sair</button></a>
+</div>
     <!-- Footer -->
     <?php
 require '../../includes/footer.php'

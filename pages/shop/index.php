@@ -2,26 +2,33 @@
 session_start();
 ob_start();
 
-
 //require '../../includes/header.php';
 include_once '../../includes/config.php';
 
 $shop_id = $_SESSION['shop_id'];
+$quant=0;
+include_once '../../includes/headershop.php';
 
 
-$produtos = "SELECT p.prod_id, p.prod_name,p.prod_photo, p.prod_price, p.prod_size, p.prod_stock, p.prod_desc, p.prod_status, c.cat_name
-     FROM products p, category c 
-     WHERE shop = $shop_id 
-     AND p.prod_cat = c.cat_id AND prod_status = 'online' ";
+$produtos = "SELECT * FROM sale s 
+INNER JOIN request r ON s.sale_id= r.req_sale
+INNER JOIN delivery d ON s.sale_id=d.deli_sale
+INNER JOIN products p ON r.req_prod=p.prod_id 
+INNER JOIN category c ON c.cat_id = p.prod_cat
+INNER JOIN users u ON s.sale_client=u.user_id
+WHERE p.shop = $shop_id ORDER BY sale_date DESC";
            
 $resultado= $conn->prepare($produtos); 
 $resultado->execute();
 
 ?>
+
 <!-- Podemos acrescentar um botão pra ver os produtos offline, e a questão do estoque, se ele tiver zerado, ter alguma coisa diferente.  -->
 <!-- Pensei em um menu ao lado com opções do que ele pode fazer, como editar os produtos, cadastrar produtos e na area principal pode ficar os produtos mais vendidos-->
+<div class="wrap">
+<main>
 <div class="perfil-bonito">
-  <h2 class='text-center'>Espaço <?php echo $_SESSION['shop_name']?></h2>
+  <h2 class='text-center'>Olá, <?php echo $_SESSION['shop_name']?>!</h2>
    <div class="perfil">
 
    <?php
@@ -43,17 +50,11 @@ $resultado->execute();
       <ul>
         <li><?php echo $_SESSION['shop_name'] ?></li>
         <li>Membro desde <?php echo $_SESSION['datebr'] ?></li>
-        <li>Total de itens vendidos : </li>
       </ul>
     </div>
 </div>
-<a <?php echo "href='../editshop?id=$shop_id'" ?>>
-<input type="submit" class="btn btn-primary" name="editar" value="Editar Perfil da loja">
-</a>
-<a href='../cadprod'>
-<input type="submit" class="btn btn-primary" name="editar" value="Cadastrar Produto">
-</a>
-<h2 class="text-center">Seus Produtos</h2>
+
+<h2 class="text-center">Ultimas vendas:</h2>
 
 <table class="table">
   <thead>
@@ -61,12 +62,11 @@ $resultado->execute();
       <th scope="col">Foto</th>
       <th scope="col">Nome</th>
       <th scope="col">Valor</th>
-      <th scope="col">Tamanho</th>
-      <th scope="col">Quantidade</th>      
-      <th scope="col">Descrição</th>
-      <th scope="col">Categoria</th>
+      <th scope="col">Quantidade</th>
+      <th scope="col">CEP da Entregue</th>
+      <th scope="col">Numero da casa</th>
+      <th scope="col">Complemento</th>
       <th scope="col">Status</th>
-      <th scope="col"></th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -88,19 +88,36 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
           </a>
         </td>
         <td> <?php echo $prod_name ?> </td>
-        <td><?php echo $prod_price ?></td>
-        <td><?php echo $prod_size ?></td>
-        <td><?php echo $prod_stock ?></td>
-        <td><?php echo $prod_desc ?></td>
-        <td><?php echo $cat_name ?></td>
-        <td><?php echo $prod_status ?></td>
+        <td><?php echo $req_value ?></td>
+        <td><?php $quant=$quant+$req_quant; echo $req_quant; ?></td>
+        <td><?php echo $user_CEPadress ?></td>
+        <td><?php echo $user_num ?></td>
+        <td><?php echo $user_comp ?></td>
+        <td><?php echo $deli_status ?></td>
         <td>
-        <?php echo "<a href='../editprod?id=$prod_id'>"; ?>
-        <input type="submit" class="btn btn-primary" name="edit" value="Editar">
-        </td>
-        <td>
-        <?php echo "<a href='../delprod?id=$prod_id'>" ?>
-        <input type="submit" class="btn btn-danger" name="delete" value="Excluir">
+
+
+        <?php 
+        if($deli_status == 'Em Separação'){
+         echo "<a href='../deliprod?id=$deli_id'>"; 
+         ?>
+         <form action="" method="post">
+         <input type="hidden" name="del_id" value="<?php echo $deli_id ?>">
+          <input type="submit" class="btn btn-primary" name="enviado" value="Produto enviado">
+          </form></a>
+<?php
+        }if($deli_status == 'Em Trânsito'){       
+         
+          ?>
+          <form action="" method="post">
+            <input type="hidden" name="del_id" value="<?php echo $deli_id ?>">
+          <input type="submit" class="btn btn-primary" name="entregue" value="Entregue">
+          </form></a>
+        <?php
+        }
+        ?> 
+        
+     
         </td>
       </tr>
 
@@ -113,8 +130,82 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
    </tbody>
  </table>
 
+ <p>Total de itens vendidos : <?php echo $quant ?></p>
+
 
 <?php
+$delivery = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+// Se o formulário foi enviado:
+  if (isset($_POST['enviado'])) :
+    $vazio = false;
+    $delivery = array_map('trim', $delivery);
+    $date = date('y-m-d');
+
+    if (!$vazio) {
+     // Monta SQL para salvar contato no banco de dados:
+    $sql = "UPDATE delivery SET deli_status='Em Trânsito', deli_date=:date
+    WHERE deli_id = :id";
+
+  $salvar= $conn ->prepare($sql);
+  $salvar -> bindParam(':date', $date,PDO::PARAM_STR);
+  $salvar -> bindParam(':id', $delivery['del_id'],PDO::PARAM_INT);
+  $salvar -> execute();
+
+
+  if ($salvar->rowCount()) {
+      
+      echo "<script>
+        alert('Status de Entrega atualizado!');
+    </script>";
+      unset($contacts);
+  } else {
+      echo "<script>
+        alert('Erro: Tente novamente');   
+    </script>";
+      
+  }
+
+}
+// if (isset($_POST['send'])) :
+endif;
+
+if (isset($_POST['entregue'])) :
+  $vazio = false;
+  $delivery = array_map('trim', $delivery);
+  $date = date('y-m-d');
+
+  if (!$vazio) {
+   // Monta SQL para salvar contato no banco de dados:
+  $sql = "UPDATE delivery SET deli_status='Entregue', deli_date=:date
+  WHERE deli_id = :id";
+
+$salvar= $conn ->prepare($sql);
+$salvar -> bindParam(':date', $date,PDO::PARAM_STR);
+$salvar -> bindParam(':id', $delivery['del_id'],PDO::PARAM_INT);
+$salvar -> execute();
+
+
+if ($salvar->rowCount()) {
+    
+    echo "<script>
+      alert('Status de Entrega atualizado!');
+  </script>";
+    unset($contacts);
+} else {
+    echo "<script>
+      alert('Erro: Tente novamente');   
+  </script>";
+    
+}
+
+}
+// if (isset($_POST['send'])) :
+endif;
+
+
+
+
+
 if(!isset($_SESSION['shop_name'])){
   $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">
   Erro: Necessário realizar login
@@ -123,4 +214,9 @@ if(!isset($_SESSION['shop_name'])){
 }
 ?>
 
-<a href="../exit"><button type="submit">Sair</button></a>
+<a href="../exit"><button type="submit" class="btn">Sair</button></a>
+</div>
+
+<?php
+   require '../../includes/footershop.php';
+?>
