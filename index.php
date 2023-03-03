@@ -47,7 +47,7 @@ extract($resposta);
     </a>
         <div class="card-body">
         <h5 class="card-title"><?php echo $prod_name ?></h5>
-        <p class="card-text"> <?php echo $prod_desc?> - R$<?php echo $prod_price ?>,00</p> 
+        <p class="card-text"> R$<?php echo $prod_price ?>,00</p> 
         <form method="post" action="../../pages/cart/index.php">
         <h6>   
         <label>Quant</label>

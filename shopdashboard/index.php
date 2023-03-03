@@ -3,6 +3,11 @@ require '../shopdashboard/includes/header.php';
 require '../shopdashboard/includes/nav.php';
 require '../shopdashboard/includes/footer.php';
 include_once '../includes/config.php';
+
+
+
+
+$shop_id = $_SESSION['shop_id'];
 ?>
 
 <!-------------------
@@ -30,7 +35,23 @@ include_once '../includes/config.php';
                 <div class="card-body">
                   <div class="d-inline-block">
                     <h5 class="text-muted">Total de clientes</h5>
-                    <h2 class="mb-0"> 150</h2>
+                    <?php
+
+$totaldeclientes ="SELECT COUNT(s.sale_client) as clientes FROM sale s 
+INNER JOIN request r ON s.sale_id= r.req_sale
+INNER JOIN delivery d ON s.sale_id=d.deli_sale
+INNER JOIN products p ON r.req_prod=p.prod_id 
+INNER JOIN category c ON c.cat_id = p.prod_cat
+INNER JOIN users u ON s.sale_client=u.user_id
+WHERE p.shop = $shop_id";
+
+$tclientes= $conn->prepare($totaldeclientes); 
+$tclientes->execute();
+
+$clientes = $tclientes->fetch(PDO::FETCH_ASSOC);
+
+?>
+                    <h2 class="mb-0"><?php echo $clientes['clientes'] ?></h2>
                   </div>
                   <div class="float-right icon-circle-medium  icon-box-lg  bg-primary-light mt-1">
                     <i class="fa fa-user fa-fw fa-sm text-primary"></i>
@@ -45,7 +66,24 @@ include_once '../includes/config.php';
                 <div class="card-body">
                   <div class="d-inline-block">
                     <h5 class="text-muted">Total de vendas</h5>
-                    <h2 class="mb-0"> R$20.000,00</h2>
+  <?php
+
+  $totaldevendas ="SELECT SUM(r.req_value) as vendas FROM sale s 
+  INNER JOIN request r ON s.sale_id= r.req_sale
+  INNER JOIN delivery d ON s.sale_id=d.deli_sale
+  INNER JOIN products p ON r.req_prod=p.prod_id 
+  INNER JOIN category c ON c.cat_id = p.prod_cat
+  INNER JOIN users u ON s.sale_client=u.user_id
+  WHERE p.shop = $shop_id";
+
+$tvendas= $conn->prepare($totaldevendas); 
+$tvendas->execute();
+
+$valortotal = $tvendas->fetch(PDO::FETCH_ASSOC);
+
+?>
+
+                    <h2 class="mb-0"><?php echo $valortotal['vendas'] ?></h2>
                   </div>
                   <div class="float-right icon-circle-medium  icon-box-lg  bg-brand-light mt-1">
                     <i class="fa fa-money-bill-alt fa-fw fa-sm text-brand"></i>
@@ -60,7 +98,25 @@ include_once '../includes/config.php';
                 <div class="card-body">
                   <div class="d-inline-block">
                     <h5 class="text-muted">Pedidos</h5>
-                    <h2 class="mb-0">250</h2>
+                    <?php
+
+$totaldepedidos ="SELECT COUNT(r.req_id) as pedidos FROM sale s 
+INNER JOIN request r ON s.sale_id= r.req_sale
+INNER JOIN delivery d ON s.sale_id=d.deli_sale
+INNER JOIN products p ON r.req_prod=p.prod_id 
+INNER JOIN category c ON c.cat_id = p.prod_cat
+INNER JOIN users u ON s.sale_client=u.user_id
+WHERE p.shop = $shop_id";
+
+$tpedidos= $conn->prepare($totaldepedidos); 
+$tpedidos->execute();
+
+$pedidos = $tpedidos->fetch(PDO::FETCH_ASSOC);
+
+?>
+
+
+                    <h2 class="mb-0"><?php echo $pedidos['pedidos'] ?></h2>
                   </div>
                   <div class="float-right icon-circle-medium  icon-box-lg  bg-secondary-light mt-1">
                     <i class="fa fa-handshake fa-fw fa-sm text-secondary"></i>

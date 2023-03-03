@@ -4,7 +4,12 @@ ob_start();
 
 //require '../../includes/header.php';
 include_once '../../includes/config.php';
-
+if(!isset ($_SESSION['shop_id'])){
+  echo "<script>
+            alert('Faça login para acessar essa área!');
+            parent.location = '../loginshop' ;
+            </script>";
+}
 $shop_id = $_SESSION['shop_id'];
 $quant=0;
 include_once '../../includes/headershop.php';

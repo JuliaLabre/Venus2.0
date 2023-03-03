@@ -3,12 +3,17 @@ require '../../../shopdashboard/includes/headerpages.php';
 require '../../../shopdashboard/includes/nav.php';
 require '../../../shopdashboard/includes/footerpages.php';
 include_once '../../../includes/config.php';
+
+$shop_id = $_SESSION['shop_id'];
+$name = $_SESSION['shop_name'];
+$foto = $_SESSION['shop_photo'];
+
 ?>
 
 <!-- chama o css da página-->
 <link rel="stylesheet" href="../shopdashboard/pages/profile/style.css">
 <!-- Título da página -->
-<title>Perfil da Loja - Dashboard</title>
+<title>Perfil <?php echo $name ?> </title>
 
 <!-- ============================================================== -->
         <!-- wrapper  -->
@@ -52,10 +57,10 @@ include_once '../../../includes/config.php';
                             <div class="card">
                                 <div class="card-body">
                                     <div class="user-avatar text-center d-block">
-                                        <img src="assets/images/avatar-1.jpg" alt="User Avatar" class="rounded-circle user-avatar-xxl">
+                                        <img src="../../../../pages/photoshop<?php echo $foto ?>" alt="Foto de <?php echo $name ?>" class="rounded-circle user-avatar-xxl">
                                     </div>
                                     <div class="text-center">
-                                        <h2 class="font-24 mb-0">Michael J. Christy</h2>
+                                        <h2 class="font-24 mb-0"><?php echo $name ?></h2>
                                         <p>Project Manager @Influnce</p>
                                     </div>
                                 </div>
