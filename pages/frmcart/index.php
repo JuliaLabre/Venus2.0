@@ -30,16 +30,17 @@ $busca= "SELECT *
     $totalbuy=0;  /*total compra é acumulador então temos que criar a variável antes */
 
     if(!isset($_SESSION['user_name'])){
-      $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">
-      Erro: Necessário realizar login
-     </div>';
-      header("Location: ../login");
-    }
+     ?> 
+      <h3 class='cartname text-center'>Esse é o seu carrinho!</h3>
+<?php
+    }else{
     $user_id = $_SESSION['user_id'];
     ?>
     <h3 class='cartname text-center'><?php echo $_SESSION['user_name']?>! Esse é o seu carrinho!</h3>
     <br>
-
+<?php
+}
+?>
 
 <div class="wrap">
    <form action="../checkout/index.php" method="post"> 
